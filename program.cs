@@ -19,7 +19,9 @@ try
                 .AddNetDaemonScheduler();
             services.AddScoped<IWindowStateChangedStrategy, OpenWindowBedroomStrategy>();
             services.AddScoped<IWindowStateChangedStrategy, OpenWindowEvaStrategy>();
-            services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideChangedLivingroomStrategy>();
+            services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
+            services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
+            services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
         }
             
             
