@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HemmsenHA.apps
+﻿namespace HemmsenHA.apps
 {
     [NetDaemonApp]
     public class CarbonDioxideChangedApp
@@ -27,7 +21,8 @@ namespace HemmsenHA.apps
                         };
                         mediator.Publish(carbonDioxideChanged);
                     });
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 logger.LogCritical(ex, "Error starting {AppName}", nameof(CarbonDioxideChangedApp));
             }
