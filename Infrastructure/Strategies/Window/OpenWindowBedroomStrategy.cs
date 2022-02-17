@@ -26,6 +26,7 @@ namespace HemmsenHA.Infrastructure.Strategies
             {
                 ScheduleNotification(windowStateChanged);
                 services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "off");
+                return Task.CompletedTask;
             }
             services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "heat");
             return Task.CompletedTask;
