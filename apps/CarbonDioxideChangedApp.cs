@@ -1,6 +1,7 @@
 ﻿namespace HemmsenHA.apps
 {
     [NetDaemonApp]
+    [Focus]
     public class CarbonDioxideChangedApp
     {
         public CarbonDioxideChangedApp(IHaContext haContext, ILogger<CarbonDioxideChangedApp> logger, IMediator mediator)
@@ -9,7 +10,7 @@
             var services = new Services(haContext);
             try
             {
-                entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseCo2
+                entities.Sensor.NetatmoEngelstoft157IndoorCo2
                     .StateAllChanges()
                     .Subscribe(s =>
                     {
