@@ -1,7 +1,7 @@
 ﻿namespace HemmsenHA.apps.Bedroom
 {
     [NetDaemonApp]
-    [Focus]
+    //[Focus]
     public class BedroomWindowSensorApp
     {
         public BedroomWindowSensorApp(IHaContext haContext, IMediator mediator, ILogger<BedroomWindowSensorApp> logger)
