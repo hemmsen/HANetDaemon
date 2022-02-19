@@ -39,6 +39,7 @@ namespace HemmsenHA.Infrastructure.Strategies
                 var currentTemp = entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseTemperature;
                 var currentCo2 = entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseCo2;
                 var humidity = entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseHumidity;
+                var windowOpen = entities.BinarySensor.BedroomWindow.IsOn();
                 if ((currentTemp.State < 17 || currentCo2.State < 600) && DateTime.Now.TimeOfDay < new TimeSpan(22, 0, 0))
                 {
                     var notification = new CloseWindowInRoomNotification()
@@ -46,7 +47,10 @@ namespace HemmsenHA.Infrastructure.Strategies
                         CurrentTemperature = currentTemp.State,
                         EntityId = windowStateChanged.EntityId
                     };
-                    mediator.Publish(notification);
+                    if (windowOpen)
+                    {
+                        mediator.Publish(notification);
+                    }
                 }
                 else
                 {
