@@ -15,7 +15,7 @@
                      .Where(x => x.New.Attributes.Status == "Charging")
                      .Subscribe(x =>
                      {
-                         if(DateTime.Now.Hour < 8)
+                         if(DateTime.Now.Hour < 7)
                          {
                              services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.LivingroomLights.EntityId));
                              services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.KokkenSpotsLevelOnOff.EntityId));
