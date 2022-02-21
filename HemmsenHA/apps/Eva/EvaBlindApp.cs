@@ -19,6 +19,7 @@ namespace HemmsenHA.apps.Eva
 
                 entities.Number.EvaBlindPercentageOpen
                     .StateAllChanges()
+                    .Throttle(TimeSpan.FromMinutes(2))
                     .Subscribe(x =>
                     {
                         mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindPercentageOpen.EntityId, PercentageOpen = Convert.ToInt32(x.New.State.Value) });

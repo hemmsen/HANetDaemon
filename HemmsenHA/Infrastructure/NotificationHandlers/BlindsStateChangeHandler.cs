@@ -16,12 +16,13 @@
             if (notification.PercentageOpen == 100)
             {
                 services.InputBoolean.TurnOff(ServiceTarget.FromEntity(entities.InputBoolean.Evablindsclosed.EntityId));
+                services.Number.SetValue(ServiceTarget.FromEntity(notification.EntityId), notification.PercentageOpen.ToString());
             }
-            if(notification.PercentageOpen == 0)
+            if (notification.PercentageOpen == 0)
             {
                 services.InputBoolean.TurnOn(ServiceTarget.FromEntity(entities.InputBoolean.Evablindsclosed.EntityId));
+                services.Number.SetValue(ServiceTarget.FromEntity(notification.EntityId), notification.PercentageOpen.ToString());
             }
-            services.Number.SetValue(ServiceTarget.FromEntity(notification.EntityId), notification.PercentageOpen.ToString());
             services.Logbook.Log(nameof(BlindsStateChangeHandler), $"Changed blinds settings for entity to {notification.PercentageOpen}", notification.EntityId);
             return Task.CompletedTask;
         }
