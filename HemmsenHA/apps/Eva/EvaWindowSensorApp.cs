@@ -8,7 +8,7 @@
             try
             {
                 var _entities = new Entities(haContext);
-                _entities.BinarySensor.BedroomWindow
+                _entities.BinarySensor.LumiLumiSensorMagnetAq261992507OnOff
                     .StateAllChanges()
                     .Subscribe(x =>
                     {
