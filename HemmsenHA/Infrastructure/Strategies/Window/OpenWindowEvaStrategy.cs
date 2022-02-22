@@ -25,10 +25,10 @@
             if (windowStateChanged.NewState.IsOn())
             {
                 ScheduleNotification(windowStateChanged);
-                services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), 8.0);
+                services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.NetatmoEva.EntityId), 8.0);
                 return Task.CompletedTask;
             }
-            services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "auto");
+            services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.NetatmoEva.EntityId), "auto");
             return Task.CompletedTask;
         }
 

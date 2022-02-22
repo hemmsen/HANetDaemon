@@ -1,9 +1,11 @@
-﻿namespace HemmsenHA.apps.Vacuum
+﻿using NetDaemon.Client;
+
+namespace HemmsenHA.apps.Vacuum
 {
     [NetDaemonApp]
     public class RobotVacuumApp
     {
-        public RobotVacuumApp(INetDaemonScheduler scheduler, IMediator mediator, IHaContext haContext, ILogger<RobotVacuumApp> logger)
+        public RobotVacuumApp(INetDaemonScheduler scheduler, IMediator mediator, IHaContext haContext, ILogger<RobotVacuumApp> logger, IHomeAssistantApiManager homeAssistantApiManager)
         {
             try
             {
