@@ -1,13 +1,12 @@
 #pragma warning disable CA1812
-using HemmsenHA.Infrastructure.Strategies;
-using HemmsenHA.Infrastructure.Strategies.CarbonDioxide;
-using HemmsenHA.Infrastructure.Strategies.Window;
+
 
 try
 {
     await Host.CreateDefaultBuilder(args)
-        .UseNetDaemonAppSettings()
+        .UseCustomLogging()
         .UseNetDaemonDefaultLogging()
+        .UseNetDaemonAppSettings()
         .UseNetDaemonRuntime()
         .UseNetDaemonTextToSpeech()
         .ConfigureServices((_, services) =>
@@ -22,10 +21,7 @@ try
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
-        }
-            
-            
-        )
+        })
         .Build()
         .RunAsync()
         .ConfigureAwait(false);
