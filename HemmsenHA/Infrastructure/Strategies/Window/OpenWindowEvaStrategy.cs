@@ -36,7 +36,7 @@
         {
             scheduler.Schedule(DateTimeOffset.Now.AddMinutes(5), () =>
             {
-                var currentTemp = entities?.Climate?.NetatmoEva?.Attributes?.Temperature;
+                var currentTemp = entities?.Climate?.NetatmoEva?.Attributes?.CurrentTemperature;
                 if (currentTemp < 17 && DateTime.Now.TimeOfDay < new TimeSpan(22, 0, 0))
                 {
                     var notification = new CloseWindowInRoomNotification()
@@ -44,12 +44,16 @@
                         CurrentTemperature = currentTemp,
                         EntityId = windowStateChanged.EntityId
                     };
-                    mediator.Publish(notification);
+                    if (entities?.BinarySensor?.LumiLumiSensorMagnetAq261992507OnOff.IsOn() ?? false)
+                    {
+                        mediator.Publish(notification);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
-                else
-                {
-                    ScheduleNotification(windowStateChanged);
-                }
+                ScheduleNotification(windowStateChanged);
             });
         }
     }
