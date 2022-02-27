@@ -51,11 +51,12 @@ namespace HemmsenHA.Infrastructure.Strategies
                     {
                         mediator.Publish(notification);
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
-                else
-                {
-                    ScheduleNotification(windowStateChanged);
-                }
+                ScheduleNotification(windowStateChanged);
             });
         }
     }
