@@ -46,4 +46,8 @@
     <ItemGroup>
       <Folder Include="apps\Shed\" />
     </ItemGroup>
+        
+    <ItemGroup>
+      <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
 </Project>
