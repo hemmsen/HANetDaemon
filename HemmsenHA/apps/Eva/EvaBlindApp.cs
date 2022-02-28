@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-namespace HemmsenHA.apps.Eva
+﻿namespace HemmsenHA.apps.Eva
 {
     [NetDaemonApp]
     public class EvaBlindApp
@@ -14,15 +12,15 @@ namespace HemmsenHA.apps.Eva
                 //Open blinds at Evas room
                 scheduler.RunDaily(new TimeSpan(9, 0, 0), () =>
                 {
-                    mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindPercentageOpen.EntityId, PercentageOpen = 100 });
+                    mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, PercentageOpen = 100 });
                 });
 
-                entities.Number.EvaBlindPercentageOpen
+                entities.Number.EvaBlindsPercentageOpen
                     .StateAllChanges()
                     .Throttle(TimeSpan.FromMinutes(2))
                     .Subscribe(x =>
                     {
-                        mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindPercentageOpen.EntityId, PercentageOpen = Convert.ToInt32(x.New.State.Value) });
+                        mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, PercentageOpen = Convert.ToInt32(x.New.State.Value) });
 
                     });
 
@@ -32,11 +30,11 @@ namespace HemmsenHA.apps.Eva
                     {
                         if (x.New.IsOff())
                         {
-                            mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindPercentageOpen.EntityId, PercentageOpen = 100 });
+                            mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, PercentageOpen = 100 });
                         }
                         if (x.New.IsOn())
                         {
-                            mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindPercentageOpen.EntityId, PercentageOpen = 0 });
+                            mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, PercentageOpen = 0 });
                         }
                     });
             }catch (Exception ex)
