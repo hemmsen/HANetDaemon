@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HemmsenHA.Infrastructure.Strategies.CarbonDioxide
+﻿namespace HemmsenHA.Infrastructure.Strategies.CarbonDioxide
 {
     public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedStrategy
     {
@@ -23,7 +17,22 @@ namespace HemmsenHA.Infrastructure.Strategies.CarbonDioxide
 
         public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
         {
-            services.Light.TurnOn(ServiceTarget.FromEntity(entities.Light.LivingroomLights.EntityId), new LightTurnOnParameters() { Flash = "short" });
+            //Check current light state
+            var lightStateLivingroom = entities.Light.LivingroomLights.EntityState;
+            var lightStateKitchen = entities.Light.LivingroomLights.EntityState;
+            
+            //Flash lights
+            services.Light.TurnOn(ServiceTarget.FromEntities(entities.Light.LivingroomLights.EntityId, entities.Light.KokkenSpotsLevelOnOff.EntityId), new LightTurnOnParameters() { Flash = "short" });
+            
+            //If old state is off then turn off light again
+            if (lightStateLivingroom.IsOff())
+            {
+                services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.LivingroomLights.EntityId));
+            }
+            if (lightStateKitchen.IsOff())
+            {
+                services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.KokkenSpotsLevelOnOff.EntityId));
+            }
             return Task.CompletedTask;
         }
     }
