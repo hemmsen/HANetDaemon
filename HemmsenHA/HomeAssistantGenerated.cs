@@ -12,6 +12,8 @@ namespace HomeAssistantGenerated
 
 		BinarySensorEntities BinarySensor { get; }
 
+		ButtonEntities Button { get; }
+
 		ClimateEntities Climate { get; }
 
 		CounterEntities Counter { get; }
@@ -67,6 +69,7 @@ namespace HomeAssistantGenerated
 
 		public AutomationEntities Automation => new(_haContext);
 		public BinarySensorEntities BinarySensor => new(_haContext);
+		public ButtonEntities Button => new(_haContext);
 		public ClimateEntities Climate => new(_haContext);
 		public CounterEntities Counter => new(_haContext);
 		public CoverEntities Cover => new(_haContext);
@@ -103,8 +106,6 @@ namespace HomeAssistantGenerated
 		public AutomationEntity AqaraMagicCube => new(_haContext, "automation.aqara_magic_cube");
 		///<summary>Eva Alarm temperatur for høj</summary>
 		public AutomationEntity EvaAlarmTemperaturForHoj => new(_haContext, "automation.eva_alarm_temperatur_for_hoj");
-		///<summary>Evas vindue lukket</summary>
-		public AutomationEntity EvasVindueLukket => new(_haContext, "automation.evas_vindue_lukket");
 		///<summary>Forminsk lysstyrke stuen</summary>
 		public AutomationEntity ForminskLysstyrkw => new(_haContext, "automation.forminsk_lysstyrkw");
 		///<summary>Forrige sang sonos</summary>
@@ -115,8 +116,6 @@ namespace HomeAssistantGenerated
 		public AutomationEntity NyAutomatisering2 => new(_haContext, "automation.ny_automatisering_2");
 		///<summary>Sonos next song</summary>
 		public AutomationEntity NyAutomatisering3 => new(_haContext, "automation.ny_automatisering_3");
-		///<summary>Eva vindue åbent</summary>
-		public AutomationEntity NyAutomatisering4 => new(_haContext, "automation.ny_automatisering_4");
 		///<summary>Forøj lya stue</summary>
 		public AutomationEntity NyAutomatisering5 => new(_haContext, "automation.ny_automatisering_5");
 		///<summary>Tænd lys hall</summary>
@@ -151,6 +150,8 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>Badeværelse Microphone</summary>
+		public BinarySensorEntity BadevaerelseMicrophone => new(_haContext, "binary_sensor.badevaerelse_microphone");
 		///<summary>barthroom_motion_sensor ias_zone</summary>
 		public BinarySensorEntity BarthroomMotionSensorIasZone => new(_haContext, "binary_sensor.barthroom_motion_sensor_ias_zone");
 		///<summary>bedroom_window on_off</summary>
@@ -191,8 +192,12 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity JonnaphoneSpeakerphone => new(_haContext, "binary_sensor.jonnaphone_speakerphone");
 		///<summary>JonnaPhone WiFi State</summary>
 		public BinarySensorEntity JonnaphoneWifiState => new(_haContext, "binary_sensor.jonnaphone_wifi_state");
+		///<summary>Kontor Microphone</summary>
+		public BinarySensorEntity KontorMicrophone => new(_haContext, "binary_sensor.kontor_microphone");
 		///<summary>Vindue Eva 61992507 on_off</summary>
 		public BinarySensorEntity LumiLumiSensorMagnetAq261992507OnOff => new(_haContext, "binary_sensor.lumi_lumi_sensor_magnet_aq2_61992507_on_off");
+		///<summary>Move Microphone</summary>
+		public BinarySensorEntity MoveMicrophone => new(_haContext, "binary_sensor.move_microphone");
 		///<summary>Move Power</summary>
 		public BinarySensorEntity MovePower => new(_haContext, "binary_sensor.move_power");
 		///<summary>Pixel 5 App Inactive</summary>
@@ -241,6 +246,58 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity RpiPowerStatus => new(_haContext, "binary_sensor.rpi_power_status");
 		///<summary>Updater</summary>
 		public BinarySensorEntity Updater => new(_haContext, "binary_sensor.updater");
+	}
+
+	public class ButtonEntities
+	{
+		private readonly IHaContext _haContext;
+		public ButtonEntities(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Home Control AS HC-SLM-1 38bf38fe identify</summary>
+		public ButtonEntity HomeControlAsHcSlm138bf38feIdentify => new(_haContext, "button.home_control_as_hc_slm_1_38bf38fe_identify");
+		///<summary>IKEA of Sweden FLOALT panel WS 60x60 a7710afe identify</summary>
+		public ButtonEntity IkeaOfSwedenFloaltPanelWs60x60A7710afeIdentify => new(_haContext, "button.ikea_of_sweden_floalt_panel_ws_60x60_a7710afe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb E27 W opal 1000lm 49a3c2fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbE27WOpal1000lm49a3c2feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_e27_w_opal_1000lm_49a3c2fe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb E27 WS opal 980lm 00402dfe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbE27WsOpal980lm00402dfeIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_e27_ws_opal_980lm_00402dfe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb E27 WS opal 980lm 69ab73fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbE27WsOpal980lm69ab73feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_e27_ws_opal_980lm_69ab73fe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb E27 WS opal 980lm e95300fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbE27WsOpal980lmE95300feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_e27_ws_opal_980lm_e95300fe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb GU10 WS 400lm 6ce7edfe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbGu10Ws400lm6ce7edfeIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_gu10_ws_400lm_6ce7edfe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb GU10 WS 400lm 9e7015fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbGu10Ws400lm9e7015feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_gu10_ws_400lm_9e7015fe_identify");
+		///<summary>IKEA of Sweden TRADFRI bulb GU10 WS 400lm fa6ad9fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriBulbGu10Ws400lmFa6ad9feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_bulb_gu10_ws_400lm_fa6ad9fe_identify");
+		///<summary>IKEA of Sweden TRADFRI remote control 0aebc3fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriRemoteControl0aebc3feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_remote_control_0aebc3fe_identify");
+		///<summary>IKEA of Sweden TRADFRI remote control 244e12fe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriRemoteControl244e12feIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_remote_control_244e12fe_identify");
+		///<summary>IKEA of Sweden TRADFRI remote control 6fce0bfe identify</summary>
+		public ButtonEntity IkeaOfSwedenTradfriRemoteControl6fce0bfeIdentify => new(_haContext, "button.ikea_of_sweden_tradfri_remote_control_6fce0bfe_identify");
+		///<summary>Eva Blind identify</summary>
+		public ButtonEntity LumiLumiCurtainAcn002Identify => new(_haContext, "button.lumi_lumi_curtain_acn002_identify");
+		///<summary>LUMI lumi.sensor_cube.aqgl01 d2aa9907 identify</summary>
+		public ButtonEntity LumiLumiSensorCubeAqgl01D2aa9907Identify => new(_haContext, "button.lumi_lumi_sensor_cube_aqgl01_d2aa9907_identify");
+		///<summary>LUMI lumi.sensor_magnet.aq2 61992507 identify</summary>
+		public ButtonEntity LumiLumiSensorMagnetAq261992507Identify => new(_haContext, "button.lumi_lumi_sensor_magnet_aq2_61992507_identify");
+		///<summary>LUMI lumi.sensor_magnet.aq2 77521007 identify</summary>
+		public ButtonEntity LumiLumiSensorMagnetAq277521007Identify => new(_haContext, "button.lumi_lumi_sensor_magnet_aq2_77521007_identify");
+		///<summary>LUMI lumi.weather 2fc55507 identify</summary>
+		public ButtonEntity LumiLumiWeather2fc55507Identify => new(_haContext, "button.lumi_lumi_weather_2fc55507_identify");
+		///<summary>LUMI lumi.weather ccad5507 identify</summary>
+		public ButtonEntity LumiLumiWeatherCcad5507Identify => new(_haContext, "button.lumi_lumi_weather_ccad5507_identify");
+		///<summary>Schneider Electric LK Dimmer c41250fe identify</summary>
+		public ButtonEntity SchneiderElectricLkDimmerC41250feIdentify => new(_haContext, "button.schneider_electric_lk_dimmer_c41250fe_identify");
+		///<summary>Schneider Electric LK/OUTLET/1 09d8c0fe identify</summary>
+		public ButtonEntity SchneiderElectricLkOutlet109d8c0feIdentify => new(_haContext, "button.schneider_electric_lk_outlet_1_09d8c0fe_identify");
+		///<summary>TUYATEC-bd5faf9p RH3040 695c76fe identify</summary>
+		public ButtonEntity TuyatecBd5faf9pRh3040695c76feIdentify => new(_haContext, "button.tuyatec_bd5faf9p_rh3040_695c76fe_identify");
 	}
 
 	public class ClimateEntities
@@ -315,6 +372,24 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity Co2leveltohighlivingroom => new(_haContext, "input_boolean.co2leveltohighlivingroom");
 		///<summary>EvaBlindsClosed</summary>
 		public InputBooleanEntity Evablindsclosed => new(_haContext, "input_boolean.evablindsclosed");
+		///<summary>netdaemon_daemonapp_apps_mobile_phones_wake_up_turn_on_espresso_machine_app</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsMobilePhonesWakeUpTurnOnEspressoMachineApp => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_mobile_phones_wake_up_turn_on_espresso_machine_app");
+		///<summary>netdaemon_hemmsen_ha_apps_bedroom_bedroom_window_sensor_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsBedroomBedroomWindowSensorApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_bedroom_bedroom_window_sensor_app");
+		///<summary>netdaemon_hemmsen_ha_apps_carbon_dioxide_changed_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsCarbonDioxideChangedApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_carbon_dioxide_changed_app");
+		///<summary>netdaemon_hemmsen_ha_apps_eva_eva_blind_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsEvaEvaBlindApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_eva_eva_blind_app");
+		///<summary>netdaemon_hemmsen_ha_apps_eva_eva_window_sensor_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsEvaEvaWindowSensorApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_eva_eva_window_sensor_app");
+		///<summary>netdaemon_hemmsen_ha_apps_kitchen_espresso_machine_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsKitchenEspressoMachineApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_kitchen_espresso_machine_app");
+		///<summary>netdaemon_hemmsen_ha_apps_sonos_sonos_move_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsSonosSonosMoveApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_sonos_sonos_move_app");
+		///<summary>netdaemon_hemmsen_ha_apps_trash_next_trash_can_empty_date_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsTrashNextTrashCanEmptyDateApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_trash_next_trash_can_empty_date_app");
+		///<summary>netdaemon_hemmsen_ha_apps_vacuum_robot_vacuum_app</summary>
+		public InputBooleanEntity NetdaemonHemmsenHaAppsVacuumRobotVacuumApp => new(_haContext, "input_boolean.netdaemon_hemmsen_ha_apps_vacuum_robot_vacuum_app");
 		///<summary>ProfitecReady</summary>
 		public InputBooleanEntity Profitecready => new(_haContext, "input_boolean.profitecready");
 		///<summary>SkipNextVacuumCleanLivingroom</summary>
@@ -375,7 +450,7 @@ namespace HomeAssistantGenerated
 		public LightEntity KokkenSpotsLevelOnOff => new(_haContext, "light.kokken_spots_level_on_off");
 		///<summary>Livingroom Lights</summary>
 		public LightEntity LivingroomLights => new(_haContext, "light.livingroom_lights");
-		///<summary>Eva blind on_off</summary>
+		///<summary>Eva Blind on_off</summary>
 		public LightEntity LumiLumiCurtainAcn002OnOff => new(_haContext, "light.lumi_lumi_curtain_acn002_on_off");
 		///<summary>PhillipsTV</summary>
 		public LightEntity Phillipstv => new(_haContext, "light.phillipstv");
@@ -445,8 +520,8 @@ namespace HomeAssistantGenerated
 		public NumberEntity BadevaerelseBass => new(_haContext, "number.badevaerelse_bass");
 		///<summary>Badeværelse Treble</summary>
 		public NumberEntity BadevaerelseTreble => new(_haContext, "number.badevaerelse_treble");
-		///<summary>Eva blind analog_output</summary>
-		public NumberEntity EvaBlindPercentageOpen => new(_haContext, "number.eva_blind_percentage_open");
+		///<summary>Eva Blind analog_output</summary>
+		public NumberEntity EvaBlindsPercentageOpen => new(_haContext, "number.eva_blinds_percentage_open");
 		///<summary>Kontor Bass</summary>
 		public NumberEntity KontorBass => new(_haContext, "number.kontor_bass");
 		///<summary>Kontor Treble</summary>
@@ -455,6 +530,8 @@ namespace HomeAssistantGenerated
 		public NumberEntity MoveBass => new(_haContext, "number.move_bass");
 		///<summary>Move Treble</summary>
 		public NumberEntity MoveTreble => new(_haContext, "number.move_treble");
+		///<summary>TV/Stue Audio Delay</summary>
+		public NumberEntity TvStueAudioDelay => new(_haContext, "number.tv_stue_audio_delay");
 		///<summary>TV/Stue Bass</summary>
 		public NumberEntity TvStueBass => new(_haContext, "number.tv_stue_bass");
 		///<summary>TV/Stue Treble</summary>
@@ -597,10 +674,18 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity KaffemaskineSmartenergyMetering => new(_haContext, "sensor.kaffemaskine_smartenergy_metering");
 		///<summary>Kaffemaskine smartenergy_metering summation_delivered</summary>
 		public NumericSensorEntity KaffemaskineSmartenergyMeteringSummationDelivered => new(_haContext, "sensor.kaffemaskine_smartenergy_metering_summation_delivered");
+		///<summary>Eva Blind device_temperature</summary>
+		public NumericSensorEntity LumiLumiCurtainAcn002DeviceTemperature => new(_haContext, "sensor.lumi_lumi_curtain_acn002_device_temperature");
+		///<summary>LUMI lumi.sensor_cube.aqgl01 d2aa9907 device_temperature</summary>
+		public NumericSensorEntity LumiLumiSensorCubeAqgl01D2aa9907DeviceTemperature => new(_haContext, "sensor.lumi_lumi_sensor_cube_aqgl01_d2aa9907_device_temperature");
 		///<summary>livingroom_cube power</summary>
 		public NumericSensorEntity LumiLumiSensorCubePower => new(_haContext, "sensor.lumi_lumi_sensor_cube_power");
+		///<summary>LUMI lumi.sensor_magnet.aq2 61992507 device_temperature</summary>
+		public NumericSensorEntity LumiLumiSensorMagnetAq261992507DeviceTemperature => new(_haContext, "sensor.lumi_lumi_sensor_magnet_aq2_61992507_device_temperature");
 		///<summary>Vindue Eva 61992507 power</summary>
 		public NumericSensorEntity LumiLumiSensorMagnetAq261992507Power => new(_haContext, "sensor.lumi_lumi_sensor_magnet_aq2_61992507_power");
+		///<summary>LUMI lumi.sensor_magnet.aq2 77521007 device_temperature</summary>
+		public NumericSensorEntity LumiLumiSensorMagnetAq277521007DeviceTemperature => new(_haContext, "sensor.lumi_lumi_sensor_magnet_aq2_77521007_device_temperature");
 		///<summary>bedroom_window power</summary>
 		public NumericSensorEntity LumiLumiSensorMagnetAq2Power => new(_haContext, "sensor.lumi_lumi_sensor_magnet_aq2_power");
 		///<summary>LUMI lumi.weather ccad5507 power</summary>
@@ -717,6 +802,10 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity RadiatortermostatEva1BatteryPercent => new(_haContext, "sensor.radiatortermostat_eva_1_battery_percent");
 		///<summary>Radiatortermostat Kontor 1 Battery Percent</summary>
 		public NumericSensorEntity RadiatortermostatKontor1BatteryPercent => new(_haContext, "sensor.radiatortermostat_kontor_1_battery_percent");
+		///<summary>Roborock S6 MaxV Current Clean Area</summary>
+		public NumericSensorEntity RoborockS6MaxvCurrentCleanArea => new(_haContext, "sensor.roborock_s6_maxv_current_clean_area");
+		///<summary>Roborock S6 MaxV Current Clean Duration</summary>
+		public NumericSensorEntity RoborockS6MaxvCurrentCleanDuration => new(_haContext, "sensor.roborock_s6_maxv_current_clean_duration");
 		///<summary>Roborock S6 MaxV Last Clean Area</summary>
 		public NumericSensorEntity RoborockS6MaxvLastCleanArea => new(_haContext, "sensor.roborock_s6_maxv_last_clean_area");
 		///<summary>Roborock S6 MaxV Last Clean Duration</summary>
@@ -799,7 +888,6 @@ namespace HomeAssistantGenerated
 		public SensorEntity JonnaphoneWifiIpAddress => new(_haContext, "sensor.jonnaphone_wifi_ip_address");
 		///<summary>Netatmo Engelstoft 157 (Skur) Vindmåler Direction</summary>
 		public SensorEntity NetatmoEngelstoft157SkurVindmalerDirection => new(_haContext, "sensor.netatmo_engelstoft_157_skur_vindmaler_direction");
-		public SensorEntity NetdaemonStatus => new(_haContext, "sensor.netdaemon_status");
 		///<summary>Pixel 5 App Importance</summary>
 		public SensorEntity Pixel5AppImportance => new(_haContext, "sensor.pixel_5_app_importance");
 		///<summary>Pixel 5 App Standby Bucket</summary>
@@ -890,15 +978,6 @@ namespace HomeAssistantGenerated
 
 		///<summary>Kaffemaskine on_off</summary>
 		public SwitchEntity KaffemaskineOnOff => new(_haContext, "switch.kaffemaskine_on_off");
-		public SwitchEntity NetdaemonAffaldvarmeapp => new(_haContext, "switch.netdaemon_affaldvarmeapp");
-		public SwitchEntity NetdaemonBedroomapp => new(_haContext, "switch.netdaemon_bedroomapp");
-		public SwitchEntity NetdaemonCo2checkerapp => new(_haContext, "switch.netdaemon_co2checkerapp");
-		public SwitchEntity NetdaemonEvablindsapp => new(_haContext, "switch.netdaemon_evablindsapp");
-		public SwitchEntity NetdaemonEvaclimateapp => new(_haContext, "switch.netdaemon_evaclimateapp");
-		public SwitchEntity NetdaemonNetatmooutdoorapp => new(_haContext, "switch.netdaemon_netatmooutdoorapp");
-		public SwitchEntity NetdaemonProfitecapp => new(_haContext, "switch.netdaemon_profitecapp");
-		public SwitchEntity NetdaemonVacuumapp => new(_haContext, "switch.netdaemon_vacuumapp");
-		public SwitchEntity NetdaemonWakeupturnonespressomachineapp => new(_haContext, "switch.netdaemon_wakeupturnonespressomachineapp");
 		///<summary>Soveværelse Weekdays Alarm 06:25</summary>
 		public SwitchEntity SonosAlarm1 => new(_haContext, "switch.sonos_alarm_1");
 		///<summary>Soveværelse Weekdays Alarm 07:05</summary>
@@ -995,6 +1074,17 @@ namespace HomeAssistantGenerated
 		}
 
 		public BinarySensorEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
+	public record ButtonEntity : Entity<ButtonEntity, EntityState<ButtonAttributes>, ButtonAttributes>
+	{
+		public ButtonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public ButtonEntity(Entity entity) : base(entity)
 		{
 		}
 	}
@@ -1297,6 +1387,15 @@ namespace HomeAssistantGenerated
 		public string? ReleaseNotes { get; init; }
 	}
 
+	public record ButtonAttributes
+	{
+		[JsonPropertyName("device_class")]
+		public string? DeviceClass { get; init; }
+
+		[JsonPropertyName("friendly_name")]
+		public string? FriendlyName { get; init; }
+	}
+
 	public record ClimateAttributes
 	{
 		[JsonPropertyName("attribution")]
@@ -1509,9 +1608,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("color_temp")]
 		public double? ColorTemp { get; init; }
 
-		[JsonPropertyName("effect")]
-		public string? Effect { get; init; }
-
 		[JsonPropertyName("effect_list")]
 		public object? EffectList { get; init; }
 
@@ -1569,11 +1665,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("entity_picture")]
 		public string? EntityPicture { get; init; }
 
-		[JsonPropertyName("entity_picture_local")]
-		public object? EntityPictureLocal { get; init; }
-
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
+
+		[JsonPropertyName("group_members")]
+		public object? GroupMembers { get; init; }
 
 		[JsonPropertyName("is_volume_muted")]
 		public bool? IsVolumeMuted { get; init; }
@@ -1616,9 +1712,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("sonos_group")]
 		public object? SonosGroup { get; init; }
-
-		[JsonPropertyName("source")]
-		public string? Source { get; init; }
 
 		[JsonPropertyName("source_list")]
 		public object? SourceList { get; init; }
@@ -1728,8 +1821,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.appInfo_com.android.chrome")]
 		public string? AndroidappInfoComandroidchrome { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.android.providers.downloads")]
-		public string? AndroidappInfoComandroidprovidersdownloads { get; init; }
+		[JsonPropertyName("android.appInfo_com.easybrain.sudoku.android")]
+		public string? AndroidappInfoComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.appInfo_com.facebook.katana")]
 		public string? AndroidappInfoComfacebookkatana { get; init; }
@@ -1740,35 +1833,32 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.appInfo_com.google.android.apps.maps")]
 		public string? AndroidappInfoComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.google.android.apps.photos")]
-		public string? AndroidappInfoComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.appInfo_com.google.android.calendar")]
+		public string? AndroidappInfoComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.google.android.dialer")]
-		public string? AndroidappInfoComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.appInfo_com.google.android.gm")]
+		public string? AndroidappInfoComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.google.android.googlequicksearchbox")]
-		public string? AndroidappInfoComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.appInfo_com.huawei.health")]
+		public string? AndroidappInfoComhuaweihealth { get; init; }
 
 		[JsonPropertyName("android.appInfo_com.instagram.android")]
 		public string? AndroidappInfoCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.lunarway.app")]
-		public string? AndroidappInfoComlunarwayapp { get; init; }
+		[JsonPropertyName("android.appInfo_com.lastpass.lpandroid")]
+		public string? AndroidappInfoComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.appInfo_com.linkedin.android")]
+		public string? AndroidappInfoComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.appInfo_com.microsoft.office.outlook")]
 		public string? AndroidappInfoCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidappInfoComnetcompanysmittestopExposureNotification { get; init; }
-
-		[JsonPropertyName("android.appInfo_com.netflix.mediaclient")]
-		public string? AndroidappInfoComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.appInfo_com.oculus.twilight")]
 		public string? AndroidappInfoComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.pinterest")]
-		public string? AndroidappInfoCompinterest { get; init; }
+		[JsonPropertyName("android.appInfo_com.oneplus.screenshot")]
+		public string? AndroidappInfoComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.appInfo_com.podimo")]
 		public string? AndroidappInfoCompodimo { get; init; }
@@ -1779,17 +1869,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.appInfo_com.stupeflix.replay")]
 		public string? AndroidappInfoComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.appInfo_com.tripledot.woodoku")]
-		public string? AndroidappInfoComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.appInfo_dk.bilka.app.release")]
 		public string? AndroidappInfoDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.appInfo_dk.coop.coopplus")]
-		public string? AndroidappInfoDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.appInfo_dk.gls.consigneeapp")]
-		public string? AndroidappInfoDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.appInfo_dk.danskebank.mobilepay")]
+		public string? AndroidappInfoDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.appInfo_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidappInfoDktaenkmitdigitaleselvforsvar { get; init; }
@@ -1797,26 +1881,26 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.appInfo_io.homeassistant.companion.android")]
 		public string? AndroidappInfoIohomeassistantcompanionandroid { get; init; }
 
+		[JsonPropertyName("android.bigText_com.easybrain.sudoku.android")]
+		public string? AndroidbigTextComeasybrainsudokuandroid { get; init; }
+
 		[JsonPropertyName("android.bigText_com.facebook.katana")]
 		public string? AndroidbigTextComfacebookkatana { get; init; }
 
-		[JsonPropertyName("android.bigText_com.google.android.apps.maps")]
-		public string? AndroidbigTextComgoogleandroidappsmaps { get; init; }
+		[JsonPropertyName("android.bigText_com.google.android.calendar")]
+		public string? AndroidbigTextComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.bigText_com.google.android.googlequicksearchbox")]
-		public string? AndroidbigTextComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.bigText_com.google.android.gm")]
+		public string? AndroidbigTextComgoogleandroidgm { get; init; }
 
 		[JsonPropertyName("android.bigText_com.instagram.android")]
 		public string? AndroidbigTextCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.bigText_com.lunarway.app")]
-		public string? AndroidbigTextComlunarwayapp { get; init; }
+		[JsonPropertyName("android.bigText_com.linkedin.android")]
+		public string? AndroidbigTextComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.bigText_com.microsoft.office.outlook")]
 		public string? AndroidbigTextCommicrosoftofficeoutlook { get; init; }
-
-		[JsonPropertyName("android.bigText_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidbigTextComnetcompanysmittestopExposureNotification { get; init; }
 
 		[JsonPropertyName("android.bigText_com.oculus.twilight")]
 		public string? AndroidbigTextComoculustwilight { get; init; }
@@ -1827,17 +1911,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.bigText_com.stupeflix.replay")]
 		public string? AndroidbigTextComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.bigText_com.tripledot.woodoku")]
-		public string? AndroidbigTextComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.bigText_dk.bilka.app.release")]
 		public string? AndroidbigTextDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.bigText_dk.coop.coopplus")]
-		public string? AndroidbigTextDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.bigText_dk.gls.consigneeapp")]
-		public string? AndroidbigTextDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.bigText_dk.danskebank.mobilepay")]
+		public string? AndroidbigTextDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.bigText_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidbigTextDktaenkmitdigitaleselvforsvar { get; init; }
@@ -1854,17 +1932,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.contains.customView_com.facebook.katana")]
 		public bool? AndroidcontainscustomViewComfacebookkatana { get; init; }
 
-		[JsonPropertyName("android.contains.customView_com.pinterest")]
-		public bool? AndroidcontainscustomViewCompinterest { get; init; }
-
-		[JsonPropertyName("android.conversationTitle_com.facebook.orca")]
-		public string? AndroidconversationTitleComfacebookorca { get; init; }
-
 		[JsonPropertyName("android.conversationUnreadMessageCount_com.facebook.orca")]
 		public double? AndroidconversationUnreadMessageCountComfacebookorca { get; init; }
-
-		[JsonPropertyName("android.conversationUnreadMessageCount_com.google.android.dialer")]
-		public double? AndroidconversationUnreadMessageCountComgoogleandroiddialer { get; init; }
 
 		[JsonPropertyName("android.conversationUnreadMessageCount_com.snapchat.android")]
 		public double? AndroidconversationUnreadMessageCountComsnapchatandroid { get; init; }
@@ -1872,11 +1941,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.hiddenConversationTitle_com.facebook.orca")]
 		public string? AndroidhiddenConversationTitleComfacebookorca { get; init; }
 
-		[JsonPropertyName("android.hiddenConversationTitle_com.google.android.dialer")]
-		public string? AndroidhiddenConversationTitleComgoogleandroiddialer { get; init; }
-
 		[JsonPropertyName("android.infoText_com.android.chrome")]
 		public string? AndroidinfoTextComandroidchrome { get; init; }
+
+		[JsonPropertyName("android.infoText_com.easybrain.sudoku.android")]
+		public string? AndroidinfoTextComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.infoText_com.facebook.katana")]
 		public string? AndroidinfoTextComfacebookkatana { get; init; }
@@ -1887,32 +1956,26 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.infoText_com.google.android.apps.maps")]
 		public string? AndroidinfoTextComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.infoText_com.google.android.apps.photos")]
-		public string? AndroidinfoTextComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.infoText_com.google.android.calendar")]
+		public string? AndroidinfoTextComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.infoText_com.google.android.dialer")]
-		public string? AndroidinfoTextComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.infoText_com.google.android.googlequicksearchbox")]
-		public string? AndroidinfoTextComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.infoText_com.google.android.gm")]
+		public string? AndroidinfoTextComgoogleandroidgm { get; init; }
 
 		[JsonPropertyName("android.infoText_com.instagram.android")]
 		public string? AndroidinfoTextCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.infoText_com.lunarway.app")]
-		public string? AndroidinfoTextComlunarwayapp { get; init; }
+		[JsonPropertyName("android.infoText_com.lastpass.lpandroid")]
+		public string? AndroidinfoTextComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.infoText_com.linkedin.android")]
+		public string? AndroidinfoTextComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.infoText_com.microsoft.office.outlook")]
 		public string? AndroidinfoTextCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.infoText_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidinfoTextComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.infoText_com.oculus.twilight")]
 		public string? AndroidinfoTextComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.infoText_com.pinterest")]
-		public string? AndroidinfoTextCompinterest { get; init; }
 
 		[JsonPropertyName("android.infoText_com.podimo")]
 		public string? AndroidinfoTextCompodimo { get; init; }
@@ -1923,17 +1986,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.infoText_com.stupeflix.replay")]
 		public string? AndroidinfoTextComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.infoText_com.tripledot.woodoku")]
-		public string? AndroidinfoTextComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.infoText_dk.bilka.app.release")]
 		public string? AndroidinfoTextDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.infoText_dk.coop.coopplus")]
-		public string? AndroidinfoTextDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.infoText_dk.gls.consigneeapp")]
-		public string? AndroidinfoTextDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.infoText_dk.danskebank.mobilepay")]
+		public string? AndroidinfoTextDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.infoText_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidinfoTextDktaenkmitdigitaleselvforsvar { get; init; }
@@ -1944,14 +2001,17 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.isGroupConversation_com.facebook.orca")]
 		public bool? AndroidisGroupConversationComfacebookorca { get; init; }
 
-		[JsonPropertyName("android.isGroupConversation_com.google.android.dialer")]
-		public bool? AndroidisGroupConversationComgoogleandroiddialer { get; init; }
-
 		[JsonPropertyName("android.isGroupConversation_com.snapchat.android")]
 		public bool? AndroidisGroupConversationComsnapchatandroid { get; init; }
 
+		[JsonPropertyName("android.largeIcon.big_com.oneplus.screenshot")]
+		public string? AndroidlargeIconbigComoneplusscreenshot { get; init; }
+
 		[JsonPropertyName("android.largeIcon_com.android.chrome")]
 		public string? AndroidlargeIconComandroidchrome { get; init; }
+
+		[JsonPropertyName("android.largeIcon_com.easybrain.sudoku.android")]
+		public string? AndroidlargeIconComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.largeIcon_com.facebook.katana")]
 		public string? AndroidlargeIconComfacebookkatana { get; init; }
@@ -1962,32 +2022,29 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.largeIcon_com.google.android.apps.maps")]
 		public string? AndroidlargeIconComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.largeIcon_com.google.android.apps.photos")]
-		public string? AndroidlargeIconComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.largeIcon_com.google.android.calendar")]
+		public string? AndroidlargeIconComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.largeIcon_com.google.android.dialer")]
-		public string? AndroidlargeIconComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.largeIcon_com.google.android.googlequicksearchbox")]
-		public string? AndroidlargeIconComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.largeIcon_com.google.android.gm")]
+		public string? AndroidlargeIconComgoogleandroidgm { get; init; }
 
 		[JsonPropertyName("android.largeIcon_com.instagram.android")]
 		public string? AndroidlargeIconCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.largeIcon_com.lunarway.app")]
-		public string? AndroidlargeIconComlunarwayapp { get; init; }
+		[JsonPropertyName("android.largeIcon_com.lastpass.lpandroid")]
+		public string? AndroidlargeIconComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.largeIcon_com.linkedin.android")]
+		public string? AndroidlargeIconComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.largeIcon_com.microsoft.office.outlook")]
 		public string? AndroidlargeIconCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.largeIcon_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidlargeIconComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.largeIcon_com.oculus.twilight")]
 		public string? AndroidlargeIconComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.largeIcon_com.pinterest")]
-		public string? AndroidlargeIconCompinterest { get; init; }
+		[JsonPropertyName("android.largeIcon_com.oneplus.screenshot")]
+		public string? AndroidlargeIconComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.largeIcon_com.podimo")]
 		public string? AndroidlargeIconCompodimo { get; init; }
@@ -1998,17 +2055,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.largeIcon_com.stupeflix.replay")]
 		public string? AndroidlargeIconComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.largeIcon_com.tripledot.woodoku")]
-		public string? AndroidlargeIconComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.largeIcon_dk.bilka.app.release")]
 		public string? AndroidlargeIconDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.largeIcon_dk.coop.coopplus")]
-		public string? AndroidlargeIconDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.largeIcon_dk.gls.consigneeapp")]
-		public string? AndroidlargeIconDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.largeIcon_dk.danskebank.mobilepay")]
+		public string? AndroidlargeIconDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.largeIcon_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidlargeIconDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2022,44 +2073,32 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.messages_com.facebook.orca")]
 		public string? AndroidmessagesComfacebookorca { get; init; }
 
-		[JsonPropertyName("android.messages_com.google.android.dialer")]
-		public string? AndroidmessagesComgoogleandroiddialer { get; init; }
-
 		[JsonPropertyName("android.messages_com.snapchat.android")]
 		public string? AndroidmessagesComsnapchatandroid { get; init; }
 
 		[JsonPropertyName("android.messagingStyleUser_com.facebook.orca")]
 		public string? AndroidmessagingStyleUserComfacebookorca { get; init; }
 
-		[JsonPropertyName("android.messagingStyleUser_com.google.android.dialer")]
-		public string? AndroidmessagingStyleUserComgoogleandroiddialer { get; init; }
-
 		[JsonPropertyName("android.messagingUser_com.facebook.orca")]
 		public string? AndroidmessagingUserComfacebookorca { get; init; }
-
-		[JsonPropertyName("android.messagingUser_com.google.android.dialer")]
-		public string? AndroidmessagingUserComgoogleandroiddialer { get; init; }
 
 		[JsonPropertyName("android.messagingUser_com.snapchat.android")]
 		public string? AndroidmessagingUserComsnapchatandroid { get; init; }
 
+		[JsonPropertyName("android.people.list_com.google.android.gm")]
+		public string? AndroidpeoplelistComgoogleandroidgm { get; init; }
+
 		[JsonPropertyName("android.people.list_com.snapchat.android")]
 		public string? AndroidpeoplelistComsnapchatandroid { get; init; }
 
-		[JsonPropertyName("android.picture_com.google.android.apps.photos")]
-		public string? AndroidpictureComgoogleandroidappsphotos { get; init; }
-
-		[JsonPropertyName("android.picture_com.netflix.mediaclient")]
-		public string? AndroidpictureComnetflixmediaclient { get; init; }
-
-		[JsonPropertyName("android.pictureIcon_com.google.android.apps.photos")]
-		public string? AndroidpictureIconComgoogleandroidappsphotos { get; init; }
-
-		[JsonPropertyName("android.pictureIcon_com.netflix.mediaclient")]
-		public string? AndroidpictureIconComnetflixmediaclient { get; init; }
+		[JsonPropertyName("android.picture_com.oneplus.screenshot")]
+		public string? AndroidpictureComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.progress_com.android.chrome")]
 		public double? AndroidprogressComandroidchrome { get; init; }
+
+		[JsonPropertyName("android.progress_com.easybrain.sudoku.android")]
+		public double? AndroidprogressComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.progress_com.facebook.katana")]
 		public double? AndroidprogressComfacebookkatana { get; init; }
@@ -2070,32 +2109,29 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progress_com.google.android.apps.maps")]
 		public double? AndroidprogressComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.progress_com.google.android.apps.photos")]
-		public double? AndroidprogressComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.progress_com.google.android.calendar")]
+		public double? AndroidprogressComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.progress_com.google.android.dialer")]
-		public double? AndroidprogressComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.progress_com.google.android.gm")]
+		public double? AndroidprogressComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.progress_com.google.android.googlequicksearchbox")]
-		public double? AndroidprogressComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.progress_com.google.android.youtube")]
+		public double? AndroidprogressComgoogleandroidyoutube { get; init; }
 
 		[JsonPropertyName("android.progress_com.instagram.android")]
 		public double? AndroidprogressCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.progress_com.lunarway.app")]
-		public double? AndroidprogressComlunarwayapp { get; init; }
+		[JsonPropertyName("android.progress_com.lastpass.lpandroid")]
+		public double? AndroidprogressComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.progress_com.linkedin.android")]
+		public double? AndroidprogressComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.progress_com.microsoft.office.outlook")]
 		public double? AndroidprogressCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.progress_com.netcompany.smittestop_exposure_notification")]
-		public double? AndroidprogressComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.progress_com.oculus.twilight")]
 		public double? AndroidprogressComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.progress_com.pinterest")]
-		public double? AndroidprogressCompinterest { get; init; }
 
 		[JsonPropertyName("android.progress_com.podimo")]
 		public double? AndroidprogressCompodimo { get; init; }
@@ -2106,23 +2142,20 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progress_com.stupeflix.replay")]
 		public double? AndroidprogressComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.progress_com.tripledot.woodoku")]
-		public double? AndroidprogressComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.progress_dk.bilka.app.release")]
 		public double? AndroidprogressDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.progress_dk.coop.coopplus")]
-		public double? AndroidprogressDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.progress_dk.gls.consigneeapp")]
-		public double? AndroidprogressDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.progress_dk.danskebank.mobilepay")]
+		public double? AndroidprogressDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.progress_dk.taenk.mitdigitaleselvforsvar")]
 		public double? AndroidprogressDktaenkmitdigitaleselvforsvar { get; init; }
 
 		[JsonPropertyName("android.progressIndeterminate_com.android.chrome")]
 		public bool? AndroidprogressIndeterminateComandroidchrome { get; init; }
+
+		[JsonPropertyName("android.progressIndeterminate_com.easybrain.sudoku.android")]
+		public bool? AndroidprogressIndeterminateComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.progressIndeterminate_com.facebook.katana")]
 		public bool? AndroidprogressIndeterminateComfacebookkatana { get; init; }
@@ -2133,32 +2166,26 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progressIndeterminate_com.google.android.apps.maps")]
 		public bool? AndroidprogressIndeterminateComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.progressIndeterminate_com.google.android.apps.photos")]
-		public bool? AndroidprogressIndeterminateComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.progressIndeterminate_com.google.android.calendar")]
+		public bool? AndroidprogressIndeterminateComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.progressIndeterminate_com.google.android.dialer")]
-		public bool? AndroidprogressIndeterminateComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.progressIndeterminate_com.google.android.googlequicksearchbox")]
-		public bool? AndroidprogressIndeterminateComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.progressIndeterminate_com.google.android.gm")]
+		public bool? AndroidprogressIndeterminateComgoogleandroidgm { get; init; }
 
 		[JsonPropertyName("android.progressIndeterminate_com.instagram.android")]
 		public bool? AndroidprogressIndeterminateCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.progressIndeterminate_com.lunarway.app")]
-		public bool? AndroidprogressIndeterminateComlunarwayapp { get; init; }
+		[JsonPropertyName("android.progressIndeterminate_com.lastpass.lpandroid")]
+		public bool? AndroidprogressIndeterminateComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.progressIndeterminate_com.linkedin.android")]
+		public bool? AndroidprogressIndeterminateComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.progressIndeterminate_com.microsoft.office.outlook")]
 		public bool? AndroidprogressIndeterminateCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.progressIndeterminate_com.netcompany.smittestop_exposure_notification")]
-		public bool? AndroidprogressIndeterminateComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.progressIndeterminate_com.oculus.twilight")]
 		public bool? AndroidprogressIndeterminateComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.progressIndeterminate_com.pinterest")]
-		public bool? AndroidprogressIndeterminateCompinterest { get; init; }
 
 		[JsonPropertyName("android.progressIndeterminate_com.podimo")]
 		public bool? AndroidprogressIndeterminateCompodimo { get; init; }
@@ -2169,17 +2196,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progressIndeterminate_com.stupeflix.replay")]
 		public bool? AndroidprogressIndeterminateComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.progressIndeterminate_com.tripledot.woodoku")]
-		public bool? AndroidprogressIndeterminateComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.progressIndeterminate_dk.bilka.app.release")]
 		public bool? AndroidprogressIndeterminateDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.progressIndeterminate_dk.coop.coopplus")]
-		public bool? AndroidprogressIndeterminateDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.progressIndeterminate_dk.gls.consigneeapp")]
-		public bool? AndroidprogressIndeterminateDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.progressIndeterminate_dk.danskebank.mobilepay")]
+		public bool? AndroidprogressIndeterminateDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.progressIndeterminate_dk.taenk.mitdigitaleselvforsvar")]
 		public bool? AndroidprogressIndeterminateDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2193,6 +2214,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progressMax_com.android.chrome")]
 		public double? AndroidprogressMaxComandroidchrome { get; init; }
 
+		[JsonPropertyName("android.progressMax_com.easybrain.sudoku.android")]
+		public double? AndroidprogressMaxComeasybrainsudokuandroid { get; init; }
+
 		[JsonPropertyName("android.progressMax_com.facebook.katana")]
 		public double? AndroidprogressMaxComfacebookkatana { get; init; }
 
@@ -2202,32 +2226,26 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progressMax_com.google.android.apps.maps")]
 		public double? AndroidprogressMaxComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.progressMax_com.google.android.apps.photos")]
-		public double? AndroidprogressMaxComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.progressMax_com.google.android.calendar")]
+		public double? AndroidprogressMaxComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.progressMax_com.google.android.dialer")]
-		public double? AndroidprogressMaxComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.progressMax_com.google.android.googlequicksearchbox")]
-		public double? AndroidprogressMaxComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.progressMax_com.google.android.gm")]
+		public double? AndroidprogressMaxComgoogleandroidgm { get; init; }
 
 		[JsonPropertyName("android.progressMax_com.instagram.android")]
 		public double? AndroidprogressMaxCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.progressMax_com.lunarway.app")]
-		public double? AndroidprogressMaxComlunarwayapp { get; init; }
+		[JsonPropertyName("android.progressMax_com.lastpass.lpandroid")]
+		public double? AndroidprogressMaxComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.progressMax_com.linkedin.android")]
+		public double? AndroidprogressMaxComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.progressMax_com.microsoft.office.outlook")]
 		public double? AndroidprogressMaxCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.progressMax_com.netcompany.smittestop_exposure_notification")]
-		public double? AndroidprogressMaxComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.progressMax_com.oculus.twilight")]
 		public double? AndroidprogressMaxComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.progressMax_com.pinterest")]
-		public double? AndroidprogressMaxCompinterest { get; init; }
 
 		[JsonPropertyName("android.progressMax_com.podimo")]
 		public double? AndroidprogressMaxCompodimo { get; init; }
@@ -2238,17 +2256,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.progressMax_com.stupeflix.replay")]
 		public double? AndroidprogressMaxComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.progressMax_com.tripledot.woodoku")]
-		public double? AndroidprogressMaxComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.progressMax_dk.bilka.app.release")]
 		public double? AndroidprogressMaxDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.progressMax_dk.coop.coopplus")]
-		public double? AndroidprogressMaxDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.progressMax_dk.gls.consigneeapp")]
-		public double? AndroidprogressMaxDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.progressMax_dk.danskebank.mobilepay")]
+		public double? AndroidprogressMaxDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.progressMax_dk.taenk.mitdigitaleselvforsvar")]
 		public double? AndroidprogressMaxDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2259,8 +2271,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.reduced.images_com.android.chrome")]
 		public bool? AndroidreducedimagesComandroidchrome { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.android.providers.downloads")]
-		public bool? AndroidreducedimagesComandroidprovidersdownloads { get; init; }
+		[JsonPropertyName("android.reduced.images_com.easybrain.sudoku.android")]
+		public bool? AndroidreducedimagesComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.reduced.images_com.facebook.katana")]
 		public bool? AndroidreducedimagesComfacebookkatana { get; init; }
@@ -2271,35 +2283,35 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.reduced.images_com.google.android.apps.maps")]
 		public bool? AndroidreducedimagesComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.google.android.apps.photos")]
-		public bool? AndroidreducedimagesComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.reduced.images_com.google.android.calendar")]
+		public bool? AndroidreducedimagesComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.google.android.dialer")]
-		public bool? AndroidreducedimagesComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.reduced.images_com.google.android.gm")]
+		public bool? AndroidreducedimagesComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.google.android.googlequicksearchbox")]
-		public bool? AndroidreducedimagesComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.reduced.images_com.google.android.youtube")]
+		public bool? AndroidreducedimagesComgoogleandroidyoutube { get; init; }
+
+		[JsonPropertyName("android.reduced.images_com.huawei.health")]
+		public bool? AndroidreducedimagesComhuaweihealth { get; init; }
 
 		[JsonPropertyName("android.reduced.images_com.instagram.android")]
 		public bool? AndroidreducedimagesCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.lunarway.app")]
-		public bool? AndroidreducedimagesComlunarwayapp { get; init; }
+		[JsonPropertyName("android.reduced.images_com.lastpass.lpandroid")]
+		public bool? AndroidreducedimagesComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.reduced.images_com.linkedin.android")]
+		public bool? AndroidreducedimagesComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.reduced.images_com.microsoft.office.outlook")]
 		public bool? AndroidreducedimagesCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.netcompany.smittestop_exposure_notification")]
-		public bool? AndroidreducedimagesComnetcompanysmittestopExposureNotification { get; init; }
-
-		[JsonPropertyName("android.reduced.images_com.netflix.mediaclient")]
-		public bool? AndroidreducedimagesComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.reduced.images_com.oculus.twilight")]
 		public bool? AndroidreducedimagesComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.pinterest")]
-		public bool? AndroidreducedimagesCompinterest { get; init; }
+		[JsonPropertyName("android.reduced.images_com.oneplus.screenshot")]
+		public bool? AndroidreducedimagesComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.reduced.images_com.podimo")]
 		public bool? AndroidreducedimagesCompodimo { get; init; }
@@ -2310,17 +2322,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.reduced.images_com.stupeflix.replay")]
 		public bool? AndroidreducedimagesComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.reduced.images_com.tripledot.woodoku")]
-		public bool? AndroidreducedimagesComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.reduced.images_dk.bilka.app.release")]
 		public bool? AndroidreducedimagesDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.reduced.images_dk.coop.coopplus")]
-		public bool? AndroidreducedimagesDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.reduced.images_dk.gls.consigneeapp")]
-		public bool? AndroidreducedimagesDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.reduced.images_dk.danskebank.mobilepay")]
+		public bool? AndroidreducedimagesDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.reduced.images_dk.taenk.mitdigitaleselvforsvar")]
 		public bool? AndroidreducedimagesDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2331,6 +2337,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.remoteInputHistory_com.android.chrome")]
 		public string? AndroidremoteInputHistoryComandroidchrome { get; init; }
 
+		[JsonPropertyName("android.remoteInputHistory_com.easybrain.sudoku.android")]
+		public string? AndroidremoteInputHistoryComeasybrainsudokuandroid { get; init; }
+
 		[JsonPropertyName("android.remoteInputHistory_com.facebook.katana")]
 		public string? AndroidremoteInputHistoryComfacebookkatana { get; init; }
 
@@ -2340,32 +2349,26 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.remoteInputHistory_com.google.android.apps.maps")]
 		public string? AndroidremoteInputHistoryComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.remoteInputHistory_com.google.android.apps.photos")]
-		public string? AndroidremoteInputHistoryComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.remoteInputHistory_com.google.android.calendar")]
+		public string? AndroidremoteInputHistoryComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.remoteInputHistory_com.google.android.dialer")]
-		public string? AndroidremoteInputHistoryComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.remoteInputHistory_com.google.android.googlequicksearchbox")]
-		public string? AndroidremoteInputHistoryComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.remoteInputHistory_com.google.android.gm")]
+		public string? AndroidremoteInputHistoryComgoogleandroidgm { get; init; }
 
 		[JsonPropertyName("android.remoteInputHistory_com.instagram.android")]
 		public string? AndroidremoteInputHistoryCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.remoteInputHistory_com.lunarway.app")]
-		public string? AndroidremoteInputHistoryComlunarwayapp { get; init; }
+		[JsonPropertyName("android.remoteInputHistory_com.lastpass.lpandroid")]
+		public string? AndroidremoteInputHistoryComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.remoteInputHistory_com.linkedin.android")]
+		public string? AndroidremoteInputHistoryComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.remoteInputHistory_com.microsoft.office.outlook")]
 		public string? AndroidremoteInputHistoryCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.remoteInputHistory_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidremoteInputHistoryComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.remoteInputHistory_com.oculus.twilight")]
 		public string? AndroidremoteInputHistoryComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.remoteInputHistory_com.pinterest")]
-		public string? AndroidremoteInputHistoryCompinterest { get; init; }
 
 		[JsonPropertyName("android.remoteInputHistory_com.podimo")]
 		public string? AndroidremoteInputHistoryCompodimo { get; init; }
@@ -2376,17 +2379,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.remoteInputHistory_com.stupeflix.replay")]
 		public string? AndroidremoteInputHistoryComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.remoteInputHistory_com.tripledot.woodoku")]
-		public string? AndroidremoteInputHistoryComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.remoteInputHistory_dk.bilka.app.release")]
 		public string? AndroidremoteInputHistoryDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.remoteInputHistory_dk.coop.coopplus")]
-		public string? AndroidremoteInputHistoryDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.remoteInputHistory_dk.gls.consigneeapp")]
-		public string? AndroidremoteInputHistoryDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.remoteInputHistory_dk.danskebank.mobilepay")]
+		public string? AndroidremoteInputHistoryDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.remoteInputHistory_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidremoteInputHistoryDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2397,20 +2394,14 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.selfDisplayName_com.facebook.orca")]
 		public string? AndroidselfDisplayNameComfacebookorca { get; init; }
 
-		[JsonPropertyName("android.selfDisplayName_com.google.android.dialer")]
-		public string? AndroidselfDisplayNameComgoogleandroiddialer { get; init; }
-
 		[JsonPropertyName("android.selfDisplayName_com.snapchat.android")]
 		public string? AndroidselfDisplayNameComsnapchatandroid { get; init; }
 
-		[JsonPropertyName("android.showBigPictureWhenCollapsed_com.google.android.apps.photos")]
-		public bool? AndroidshowBigPictureWhenCollapsedComgoogleandroidappsphotos { get; init; }
-
-		[JsonPropertyName("android.showBigPictureWhenCollapsed_com.netflix.mediaclient")]
-		public bool? AndroidshowBigPictureWhenCollapsedComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.showChronometer_com.android.chrome")]
 		public bool? AndroidshowChronometerComandroidchrome { get; init; }
+
+		[JsonPropertyName("android.showChronometer_com.easybrain.sudoku.android")]
+		public bool? AndroidshowChronometerComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.showChronometer_com.facebook.katana")]
 		public bool? AndroidshowChronometerComfacebookkatana { get; init; }
@@ -2421,32 +2412,29 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.showChronometer_com.google.android.apps.maps")]
 		public bool? AndroidshowChronometerComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.showChronometer_com.google.android.apps.photos")]
-		public bool? AndroidshowChronometerComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.showChronometer_com.google.android.calendar")]
+		public bool? AndroidshowChronometerComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.showChronometer_com.google.android.dialer")]
-		public bool? AndroidshowChronometerComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.showChronometer_com.google.android.gm")]
+		public bool? AndroidshowChronometerComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.showChronometer_com.google.android.googlequicksearchbox")]
-		public bool? AndroidshowChronometerComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.showChronometer_com.google.android.youtube")]
+		public bool? AndroidshowChronometerComgoogleandroidyoutube { get; init; }
 
 		[JsonPropertyName("android.showChronometer_com.instagram.android")]
 		public bool? AndroidshowChronometerCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.showChronometer_com.lunarway.app")]
-		public bool? AndroidshowChronometerComlunarwayapp { get; init; }
+		[JsonPropertyName("android.showChronometer_com.lastpass.lpandroid")]
+		public bool? AndroidshowChronometerComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.showChronometer_com.linkedin.android")]
+		public bool? AndroidshowChronometerComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.showChronometer_com.microsoft.office.outlook")]
 		public bool? AndroidshowChronometerCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.showChronometer_com.netcompany.smittestop_exposure_notification")]
-		public bool? AndroidshowChronometerComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.showChronometer_com.oculus.twilight")]
 		public bool? AndroidshowChronometerComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.showChronometer_com.pinterest")]
-		public bool? AndroidshowChronometerCompinterest { get; init; }
 
 		[JsonPropertyName("android.showChronometer_com.podimo")]
 		public bool? AndroidshowChronometerCompodimo { get; init; }
@@ -2457,17 +2445,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.showChronometer_com.stupeflix.replay")]
 		public bool? AndroidshowChronometerComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.showChronometer_com.tripledot.woodoku")]
-		public bool? AndroidshowChronometerComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.showChronometer_dk.bilka.app.release")]
 		public bool? AndroidshowChronometerDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.showChronometer_dk.coop.coopplus")]
-		public bool? AndroidshowChronometerDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.showChronometer_dk.gls.consigneeapp")]
-		public bool? AndroidshowChronometerDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.showChronometer_dk.danskebank.mobilepay")]
+		public bool? AndroidshowChronometerDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.showChronometer_dk.taenk.mitdigitaleselvforsvar")]
 		public bool? AndroidshowChronometerDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2478,6 +2460,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.showWhen_com.android.chrome")]
 		public bool? AndroidshowWhenComandroidchrome { get; init; }
 
+		[JsonPropertyName("android.showWhen_com.easybrain.sudoku.android")]
+		public bool? AndroidshowWhenComeasybrainsudokuandroid { get; init; }
+
 		[JsonPropertyName("android.showWhen_com.facebook.katana")]
 		public bool? AndroidshowWhenComfacebookkatana { get; init; }
 
@@ -2487,32 +2472,32 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.showWhen_com.google.android.apps.maps")]
 		public bool? AndroidshowWhenComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.google.android.apps.photos")]
-		public bool? AndroidshowWhenComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.showWhen_com.google.android.calendar")]
+		public bool? AndroidshowWhenComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.google.android.dialer")]
-		public bool? AndroidshowWhenComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.showWhen_com.google.android.gm")]
+		public bool? AndroidshowWhenComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.google.android.googlequicksearchbox")]
-		public bool? AndroidshowWhenComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.showWhen_com.huawei.health")]
+		public bool? AndroidshowWhenComhuaweihealth { get; init; }
 
 		[JsonPropertyName("android.showWhen_com.instagram.android")]
 		public bool? AndroidshowWhenCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.lunarway.app")]
-		public bool? AndroidshowWhenComlunarwayapp { get; init; }
+		[JsonPropertyName("android.showWhen_com.lastpass.lpandroid")]
+		public bool? AndroidshowWhenComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.showWhen_com.linkedin.android")]
+		public bool? AndroidshowWhenComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.showWhen_com.microsoft.office.outlook")]
 		public bool? AndroidshowWhenCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.netcompany.smittestop_exposure_notification")]
-		public bool? AndroidshowWhenComnetcompanysmittestopExposureNotification { get; init; }
-
 		[JsonPropertyName("android.showWhen_com.oculus.twilight")]
 		public bool? AndroidshowWhenComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.pinterest")]
-		public bool? AndroidshowWhenCompinterest { get; init; }
+		[JsonPropertyName("android.showWhen_com.oneplus.screenshot")]
+		public bool? AndroidshowWhenComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.showWhen_com.podimo")]
 		public bool? AndroidshowWhenCompodimo { get; init; }
@@ -2523,17 +2508,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.showWhen_com.stupeflix.replay")]
 		public bool? AndroidshowWhenComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.showWhen_com.tripledot.woodoku")]
-		public bool? AndroidshowWhenComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.showWhen_dk.bilka.app.release")]
 		public bool? AndroidshowWhenDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.showWhen_dk.coop.coopplus")]
-		public bool? AndroidshowWhenDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.showWhen_dk.gls.consigneeapp")]
-		public bool? AndroidshowWhenDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.showWhen_dk.danskebank.mobilepay")]
+		public bool? AndroidshowWhenDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.showWhen_dk.taenk.mitdigitaleselvforsvar")]
 		public bool? AndroidshowWhenDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2544,6 +2523,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.subText_com.android.chrome")]
 		public string? AndroidsubTextComandroidchrome { get; init; }
 
+		[JsonPropertyName("android.subText_com.easybrain.sudoku.android")]
+		public string? AndroidsubTextComeasybrainsudokuandroid { get; init; }
+
 		[JsonPropertyName("android.subText_com.facebook.katana")]
 		public string? AndroidsubTextComfacebookkatana { get; init; }
 
@@ -2553,35 +2535,29 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.subText_com.google.android.apps.maps")]
 		public string? AndroidsubTextComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.subText_com.google.android.apps.photos")]
-		public string? AndroidsubTextComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.subText_com.google.android.calendar")]
+		public string? AndroidsubTextComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.subText_com.google.android.dialer")]
-		public string? AndroidsubTextComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.subText_com.google.android.gm")]
+		public string? AndroidsubTextComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.subText_com.google.android.googlequicksearchbox")]
-		public string? AndroidsubTextComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.subText_com.google.android.youtube")]
+		public string? AndroidsubTextComgoogleandroidyoutube { get; init; }
 
 		[JsonPropertyName("android.subText_com.instagram.android")]
 		public string? AndroidsubTextCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.subText_com.lunarway.app")]
-		public string? AndroidsubTextComlunarwayapp { get; init; }
+		[JsonPropertyName("android.subText_com.lastpass.lpandroid")]
+		public string? AndroidsubTextComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.subText_com.linkedin.android")]
+		public string? AndroidsubTextComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.subText_com.microsoft.office.outlook")]
 		public string? AndroidsubTextCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.subText_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidsubTextComnetcompanysmittestopExposureNotification { get; init; }
-
-		[JsonPropertyName("android.subText_com.netflix.mediaclient")]
-		public string? AndroidsubTextComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.subText_com.oculus.twilight")]
 		public string? AndroidsubTextComoculustwilight { get; init; }
-
-		[JsonPropertyName("android.subText_com.pinterest")]
-		public string? AndroidsubTextCompinterest { get; init; }
 
 		[JsonPropertyName("android.subText_com.podimo")]
 		public string? AndroidsubTextCompodimo { get; init; }
@@ -2592,17 +2568,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.subText_com.stupeflix.replay")]
 		public string? AndroidsubTextComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.subText_com.tripledot.woodoku")]
-		public string? AndroidsubTextComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.subText_dk.bilka.app.release")]
 		public string? AndroidsubTextDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.subText_dk.coop.coopplus")]
-		public string? AndroidsubTextDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.subText_dk.gls.consigneeapp")]
-		public string? AndroidsubTextDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.subText_dk.danskebank.mobilepay")]
+		public string? AndroidsubTextDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.subText_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidsubTextDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2613,20 +2583,14 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.summaryText_com.microsoft.office.outlook")]
 		public string? AndroidsummaryTextCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.summaryText_com.netflix.mediaclient")]
-		public string? AndroidsummaryTextComnetflixmediaclient { get; init; }
+		[JsonPropertyName("android.support.v4.app.extra.COMPAT_TEMPLATE_com.google.android.calendar")]
+		public string? Androidsupportv4appextraCOMPATTEMPLATEComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.support.v4.app.extra.COMPAT_TEMPLATE_com.google.android.apps.maps")]
-		public string? Androidsupportv4appextraCOMPATTEMPLATEComgoogleandroidappsmaps { get; init; }
+		[JsonPropertyName("android.support.v4.app.extra.COMPAT_TEMPLATE_com.google.android.gm")]
+		public string? Androidsupportv4appextraCOMPATTEMPLATEComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.support.v4.app.extra.COMPAT_TEMPLATE_com.google.android.apps.photos")]
-		public string? Androidsupportv4appextraCOMPATTEMPLATEComgoogleandroidappsphotos { get; init; }
-
-		[JsonPropertyName("android.support.v4.app.extra.COMPAT_TEMPLATE_com.google.android.dialer")]
-		public string? Androidsupportv4appextraCOMPATTEMPLATEComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.support.v4.app.extra.COMPAT_TEMPLATE_com.google.android.googlequicksearchbox")]
-		public string? Androidsupportv4appextraCOMPATTEMPLATEComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.template_com.easybrain.sudoku.android")]
+		public string? AndroidtemplateComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.template_com.facebook.katana")]
 		public string? AndroidtemplateComfacebookkatana { get; init; }
@@ -2634,38 +2598,29 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.template_com.facebook.orca")]
 		public string? AndroidtemplateComfacebookorca { get; init; }
 
-		[JsonPropertyName("android.template_com.google.android.apps.maps")]
-		public string? AndroidtemplateComgoogleandroidappsmaps { get; init; }
+		[JsonPropertyName("android.template_com.google.android.calendar")]
+		public string? AndroidtemplateComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.template_com.google.android.apps.photos")]
-		public string? AndroidtemplateComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.template_com.google.android.gm")]
+		public string? AndroidtemplateComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.template_com.google.android.dialer")]
-		public string? AndroidtemplateComgoogleandroiddialer { get; init; }
-
-		[JsonPropertyName("android.template_com.google.android.googlequicksearchbox")]
-		public string? AndroidtemplateComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.template_com.google.android.youtube")]
+		public string? AndroidtemplateComgoogleandroidyoutube { get; init; }
 
 		[JsonPropertyName("android.template_com.instagram.android")]
 		public string? AndroidtemplateCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.template_com.lunarway.app")]
-		public string? AndroidtemplateComlunarwayapp { get; init; }
+		[JsonPropertyName("android.template_com.linkedin.android")]
+		public string? AndroidtemplateComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.template_com.microsoft.office.outlook")]
 		public string? AndroidtemplateCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.template_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidtemplateComnetcompanysmittestopExposureNotification { get; init; }
-
-		[JsonPropertyName("android.template_com.netflix.mediaclient")]
-		public string? AndroidtemplateComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.template_com.oculus.twilight")]
 		public string? AndroidtemplateComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.template_com.pinterest")]
-		public string? AndroidtemplateCompinterest { get; init; }
+		[JsonPropertyName("android.template_com.oneplus.screenshot")]
+		public string? AndroidtemplateComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.template_com.podimo")]
 		public string? AndroidtemplateCompodimo { get; init; }
@@ -2676,17 +2631,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.template_com.stupeflix.replay")]
 		public string? AndroidtemplateComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.template_com.tripledot.woodoku")]
-		public string? AndroidtemplateComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.template_dk.bilka.app.release")]
 		public string? AndroidtemplateDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.template_dk.coop.coopplus")]
-		public string? AndroidtemplateDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.template_dk.gls.consigneeapp")]
-		public string? AndroidtemplateDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.template_dk.danskebank.mobilepay")]
+		public string? AndroidtemplateDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.template_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidtemplateDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2697,8 +2646,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.text_com.android.chrome")]
 		public string? AndroidtextComandroidchrome { get; init; }
 
-		[JsonPropertyName("android.text_com.android.providers.downloads")]
-		public string? AndroidtextComandroidprovidersdownloads { get; init; }
+		[JsonPropertyName("android.text_com.easybrain.sudoku.android")]
+		public string? AndroidtextComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.text_com.facebook.katana")]
 		public string? AndroidtextComfacebookkatana { get; init; }
@@ -2709,35 +2658,35 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.text_com.google.android.apps.maps")]
 		public string? AndroidtextComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.text_com.google.android.apps.photos")]
-		public string? AndroidtextComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.text_com.google.android.calendar")]
+		public string? AndroidtextComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.text_com.google.android.dialer")]
-		public string? AndroidtextComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.text_com.google.android.gm")]
+		public string? AndroidtextComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.text_com.google.android.googlequicksearchbox")]
-		public string? AndroidtextComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.text_com.google.android.youtube")]
+		public string? AndroidtextComgoogleandroidyoutube { get; init; }
+
+		[JsonPropertyName("android.text_com.huawei.health")]
+		public string? AndroidtextComhuaweihealth { get; init; }
 
 		[JsonPropertyName("android.text_com.instagram.android")]
 		public string? AndroidtextCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.text_com.lunarway.app")]
-		public string? AndroidtextComlunarwayapp { get; init; }
+		[JsonPropertyName("android.text_com.lastpass.lpandroid")]
+		public string? AndroidtextComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.text_com.linkedin.android")]
+		public string? AndroidtextComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.text_com.microsoft.office.outlook")]
 		public string? AndroidtextCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.text_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidtextComnetcompanysmittestopExposureNotification { get; init; }
-
-		[JsonPropertyName("android.text_com.netflix.mediaclient")]
-		public string? AndroidtextComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.text_com.oculus.twilight")]
 		public string? AndroidtextComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.text_com.pinterest")]
-		public string? AndroidtextCompinterest { get; init; }
+		[JsonPropertyName("android.text_com.oneplus.screenshot")]
+		public string? AndroidtextComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.text_com.podimo")]
 		public string? AndroidtextCompodimo { get; init; }
@@ -2748,17 +2697,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.text_com.stupeflix.replay")]
 		public string? AndroidtextComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.text_com.tripledot.woodoku")]
-		public string? AndroidtextComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.text_dk.bilka.app.release")]
 		public string? AndroidtextDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.text_dk.coop.coopplus")]
-		public string? AndroidtextDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.text_dk.gls.consigneeapp")]
-		public string? AndroidtextDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.text_dk.danskebank.mobilepay")]
+		public string? AndroidtextDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.text_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidtextDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2766,23 +2709,23 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.text_io.homeassistant.companion.android")]
 		public string? AndroidtextIohomeassistantcompanionandroid { get; init; }
 
+		[JsonPropertyName("android.textLines_com.google.android.gm")]
+		public string? AndroidtextLinesComgoogleandroidgm { get; init; }
+
 		[JsonPropertyName("android.textLines_com.microsoft.office.outlook")]
 		public string? AndroidtextLinesCommicrosoftofficeoutlook { get; init; }
-
-		[JsonPropertyName("android.title.big_com.google.android.apps.maps")]
-		public string? AndroidtitlebigComgoogleandroidappsmaps { get; init; }
-
-		[JsonPropertyName("android.title.big_com.google.android.apps.photos")]
-		public string? AndroidtitlebigComgoogleandroidappsphotos { get; init; }
 
 		[JsonPropertyName("android.title.big_com.microsoft.office.outlook")]
 		public string? AndroidtitlebigCommicrosoftofficeoutlook { get; init; }
 
+		[JsonPropertyName("android.title.big_dk.danskebank.mobilepay")]
+		public string? AndroidtitlebigDkdanskebankmobilepay { get; init; }
+
 		[JsonPropertyName("android.title_com.android.chrome")]
 		public string? AndroidtitleComandroidchrome { get; init; }
 
-		[JsonPropertyName("android.title_com.android.providers.downloads")]
-		public string? AndroidtitleComandroidprovidersdownloads { get; init; }
+		[JsonPropertyName("android.title_com.easybrain.sudoku.android")]
+		public string? AndroidtitleComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("android.title_com.facebook.katana")]
 		public string? AndroidtitleComfacebookkatana { get; init; }
@@ -2793,35 +2736,35 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.title_com.google.android.apps.maps")]
 		public string? AndroidtitleComgoogleandroidappsmaps { get; init; }
 
-		[JsonPropertyName("android.title_com.google.android.apps.photos")]
-		public string? AndroidtitleComgoogleandroidappsphotos { get; init; }
+		[JsonPropertyName("android.title_com.google.android.calendar")]
+		public string? AndroidtitleComgoogleandroidcalendar { get; init; }
 
-		[JsonPropertyName("android.title_com.google.android.dialer")]
-		public string? AndroidtitleComgoogleandroiddialer { get; init; }
+		[JsonPropertyName("android.title_com.google.android.gm")]
+		public string? AndroidtitleComgoogleandroidgm { get; init; }
 
-		[JsonPropertyName("android.title_com.google.android.googlequicksearchbox")]
-		public string? AndroidtitleComgoogleandroidgooglequicksearchbox { get; init; }
+		[JsonPropertyName("android.title_com.google.android.youtube")]
+		public string? AndroidtitleComgoogleandroidyoutube { get; init; }
+
+		[JsonPropertyName("android.title_com.huawei.health")]
+		public string? AndroidtitleComhuaweihealth { get; init; }
 
 		[JsonPropertyName("android.title_com.instagram.android")]
 		public string? AndroidtitleCominstagramandroid { get; init; }
 
-		[JsonPropertyName("android.title_com.lunarway.app")]
-		public string? AndroidtitleComlunarwayapp { get; init; }
+		[JsonPropertyName("android.title_com.lastpass.lpandroid")]
+		public string? AndroidtitleComlastpasslpandroid { get; init; }
+
+		[JsonPropertyName("android.title_com.linkedin.android")]
+		public string? AndroidtitleComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("android.title_com.microsoft.office.outlook")]
 		public string? AndroidtitleCommicrosoftofficeoutlook { get; init; }
 
-		[JsonPropertyName("android.title_com.netcompany.smittestop_exposure_notification")]
-		public string? AndroidtitleComnetcompanysmittestopExposureNotification { get; init; }
-
-		[JsonPropertyName("android.title_com.netflix.mediaclient")]
-		public string? AndroidtitleComnetflixmediaclient { get; init; }
-
 		[JsonPropertyName("android.title_com.oculus.twilight")]
 		public string? AndroidtitleComoculustwilight { get; init; }
 
-		[JsonPropertyName("android.title_com.pinterest")]
-		public string? AndroidtitleCompinterest { get; init; }
+		[JsonPropertyName("android.title_com.oneplus.screenshot")]
+		public string? AndroidtitleComoneplusscreenshot { get; init; }
 
 		[JsonPropertyName("android.title_com.podimo")]
 		public string? AndroidtitleCompodimo { get; init; }
@@ -2832,17 +2775,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.title_com.stupeflix.replay")]
 		public string? AndroidtitleComstupeflixreplay { get; init; }
 
-		[JsonPropertyName("android.title_com.tripledot.woodoku")]
-		public string? AndroidtitleComtripledotwoodoku { get; init; }
-
 		[JsonPropertyName("android.title_dk.bilka.app.release")]
 		public string? AndroidtitleDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("android.title_dk.coop.coopplus")]
-		public string? AndroidtitleDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("android.title_dk.gls.consigneeapp")]
-		public string? AndroidtitleDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("android.title_dk.danskebank.mobilepay")]
+		public string? AndroidtitleDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("android.title_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidtitleDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2853,8 +2790,14 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("android.wearable.EXTENSIONS_com.facebook.orca")]
 		public string? AndroidwearableEXTENSIONSComfacebookorca { get; init; }
 
+		[JsonPropertyName("android.wearable.EXTENSIONS_com.google.android.gm")]
+		public string? AndroidwearableEXTENSIONSComgoogleandroidgm { get; init; }
+
 		[JsonPropertyName("android.wearable.EXTENSIONS_com.snapchat.android")]
 		public string? AndroidwearableEXTENSIONSComsnapchatandroid { get; init; }
+
+		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.easybrain.sudoku.android")]
+		public string? AndroidxcoreappextraCOMPATTEMPLATEComeasybrainsudokuandroid { get; init; }
 
 		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.facebook.katana")]
 		public string? AndroidxcoreappextraCOMPATTEMPLATEComfacebookkatana { get; init; }
@@ -2865,8 +2808,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.instagram.android")]
 		public string? AndroidxcoreappextraCOMPATTEMPLATECominstagramandroid { get; init; }
 
-		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.lunarway.app")]
-		public string? AndroidxcoreappextraCOMPATTEMPLATEComlunarwayapp { get; init; }
+		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.linkedin.android")]
+		public string? AndroidxcoreappextraCOMPATTEMPLATEComlinkedinandroid { get; init; }
 
 		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.microsoft.office.outlook")]
 		public string? AndroidxcoreappextraCOMPATTEMPLATECommicrosoftofficeoutlook { get; init; }
@@ -2874,20 +2817,14 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.oculus.twilight")]
 		public string? AndroidxcoreappextraCOMPATTEMPLATEComoculustwilight { get; init; }
 
-		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.pinterest")]
-		public string? AndroidxcoreappextraCOMPATTEMPLATECompinterest { get; init; }
-
 		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.snapchat.android")]
 		public string? AndroidxcoreappextraCOMPATTEMPLATEComsnapchatandroid { get; init; }
 
-		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_com.tripledot.woodoku")]
-		public string? AndroidxcoreappextraCOMPATTEMPLATEComtripledotwoodoku { get; init; }
+		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_dk.bilka.app.release")]
+		public string? AndroidxcoreappextraCOMPATTEMPLATEDkbilkaapprelease { get; init; }
 
-		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_dk.coop.coopplus")]
-		public string? AndroidxcoreappextraCOMPATTEMPLATEDkcoopcoopplus { get; init; }
-
-		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_dk.gls.consigneeapp")]
-		public string? AndroidxcoreappextraCOMPATTEMPLATEDkglsconsigneeapp { get; init; }
+		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_dk.danskebank.mobilepay")]
+		public string? AndroidxcoreappextraCOMPATTEMPLATEDkdanskebankmobilepay { get; init; }
 
 		[JsonPropertyName("androidx.core.app.extra.COMPAT_TEMPLATE_dk.taenk.mitdigitaleselvforsvar")]
 		public string? AndroidxcoreappextraCOMPATTEMPLATEDktaenkmitdigitaleselvforsvar { get; init; }
@@ -2910,59 +2847,26 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Chrome.NotificationBundleIconIdExtra_com.android.chrome")]
 		public double? ChromeNotificationBundleIconIdExtraComandroidchrome { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000093_is_clearable")]
-		public bool? Comandroidchrome1000093IsClearable { get; init; }
+		[JsonPropertyName("client_id_com.google.android.youtube")]
+		public string? ClientIdComgoogleandroidyoutube { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000093_is_ongoing")]
-		public bool? Comandroidchrome1000093IsOngoing { get; init; }
+		[JsonPropertyName("com.android.chrome_1000103_is_clearable")]
+		public bool? Comandroidchrome1000103IsClearable { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000093_post_time")]
-		public double? Comandroidchrome1000093PostTime { get; init; }
+		[JsonPropertyName("com.android.chrome_1000103_is_ongoing")]
+		public bool? Comandroidchrome1000103IsOngoing { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000094_is_clearable")]
-		public bool? Comandroidchrome1000094IsClearable { get; init; }
+		[JsonPropertyName("com.android.chrome_1000103_post_time")]
+		public double? Comandroidchrome1000103PostTime { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000094_is_ongoing")]
-		public bool? Comandroidchrome1000094IsOngoing { get; init; }
+		[JsonPropertyName("com.easybrain.sudoku.android_1860650618_is_clearable")]
+		public bool? Comeasybrainsudokuandroid1860650618IsClearable { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000094_post_time")]
-		public double? Comandroidchrome1000094PostTime { get; init; }
+		[JsonPropertyName("com.easybrain.sudoku.android_1860650618_is_ongoing")]
+		public bool? Comeasybrainsudokuandroid1860650618IsOngoing { get; init; }
 
-		[JsonPropertyName("com.android.chrome_1000095_is_clearable")]
-		public bool? Comandroidchrome1000095IsClearable { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000095_is_ongoing")]
-		public bool? Comandroidchrome1000095IsOngoing { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000095_post_time")]
-		public double? Comandroidchrome1000095PostTime { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000096_is_clearable")]
-		public bool? Comandroidchrome1000096IsClearable { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000096_is_ongoing")]
-		public bool? Comandroidchrome1000096IsOngoing { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000096_post_time")]
-		public double? Comandroidchrome1000096PostTime { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000097_is_clearable")]
-		public bool? Comandroidchrome1000097IsClearable { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000097_is_ongoing")]
-		public bool? Comandroidchrome1000097IsOngoing { get; init; }
-
-		[JsonPropertyName("com.android.chrome_1000097_post_time")]
-		public double? Comandroidchrome1000097PostTime { get; init; }
-
-		[JsonPropertyName("com.android.providers.downloads_0_is_clearable")]
-		public bool? Comandroidprovidersdownloads0IsClearable { get; init; }
-
-		[JsonPropertyName("com.android.providers.downloads_0_is_ongoing")]
-		public bool? Comandroidprovidersdownloads0IsOngoing { get; init; }
-
-		[JsonPropertyName("com.android.providers.downloads_0_post_time")]
-		public double? Comandroidprovidersdownloads0PostTime { get; init; }
+		[JsonPropertyName("com.easybrain.sudoku.android_1860650618_post_time")]
+		public double? Comeasybrainsudokuandroid1860650618PostTime { get; init; }
 
 		[JsonPropertyName("com.facebook.katana_0_is_clearable")]
 		public bool? Comfacebookkatana0IsClearable { get; init; }
@@ -2982,50 +2886,59 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("com.facebook.orca_10000_post_time")]
 		public double? Comfacebookorca10000PostTime { get; init; }
 
-		[JsonPropertyName("com.facebook.orca_2147483647_is_clearable")]
-		public bool? Comfacebookorca2147483647IsClearable { get; init; }
+		[JsonPropertyName("com.google.android.apps.maps_1537_is_clearable")]
+		public bool? Comgoogleandroidappsmaps1537IsClearable { get; init; }
 
-		[JsonPropertyName("com.facebook.orca_2147483647_is_ongoing")]
-		public bool? Comfacebookorca2147483647IsOngoing { get; init; }
+		[JsonPropertyName("com.google.android.apps.maps_1537_is_ongoing")]
+		public bool? Comgoogleandroidappsmaps1537IsOngoing { get; init; }
 
-		[JsonPropertyName("com.facebook.orca_2147483647_post_time")]
-		public double? Comfacebookorca2147483647PostTime { get; init; }
+		[JsonPropertyName("com.google.android.apps.maps_1537_post_time")]
+		public double? Comgoogleandroidappsmaps1537PostTime { get; init; }
 
-		[JsonPropertyName("com.google.android.apps.maps_0_is_clearable")]
-		public bool? Comgoogleandroidappsmaps0IsClearable { get; init; }
+		[JsonPropertyName("com.google.android.calendar_1543363936_is_clearable")]
+		public bool? Comgoogleandroidcalendar1543363936IsClearable { get; init; }
 
-		[JsonPropertyName("com.google.android.apps.maps_0_is_ongoing")]
-		public bool? Comgoogleandroidappsmaps0IsOngoing { get; init; }
+		[JsonPropertyName("com.google.android.calendar_1543363936_is_ongoing")]
+		public bool? Comgoogleandroidcalendar1543363936IsOngoing { get; init; }
 
-		[JsonPropertyName("com.google.android.apps.maps_0_post_time")]
-		public double? Comgoogleandroidappsmaps0PostTime { get; init; }
+		[JsonPropertyName("com.google.android.calendar_1543363936_post_time")]
+		public double? Comgoogleandroidcalendar1543363936PostTime { get; init; }
 
-		[JsonPropertyName("com.google.android.apps.photos_0_is_clearable")]
-		public bool? Comgoogleandroidappsphotos0IsClearable { get; init; }
+		[JsonPropertyName("com.google.android.gm_0_is_clearable")]
+		public bool? Comgoogleandroidgm0IsClearable { get; init; }
 
-		[JsonPropertyName("com.google.android.apps.photos_0_is_ongoing")]
-		public bool? Comgoogleandroidappsphotos0IsOngoing { get; init; }
+		[JsonPropertyName("com.google.android.gm_0_is_ongoing")]
+		public bool? Comgoogleandroidgm0IsOngoing { get; init; }
 
-		[JsonPropertyName("com.google.android.apps.photos_0_post_time")]
-		public double? Comgoogleandroidappsphotos0PostTime { get; init; }
+		[JsonPropertyName("com.google.android.gm_0_post_time")]
+		public double? Comgoogleandroidgm0PostTime { get; init; }
 
-		[JsonPropertyName("com.google.android.dialer_1_is_clearable")]
-		public bool? Comgoogleandroiddialer1IsClearable { get; init; }
+		[JsonPropertyName("com.google.android.gm_1395190503_is_clearable")]
+		public bool? Comgoogleandroidgm1395190503IsClearable { get; init; }
 
-		[JsonPropertyName("com.google.android.dialer_1_is_ongoing")]
-		public bool? Comgoogleandroiddialer1IsOngoing { get; init; }
+		[JsonPropertyName("com.google.android.gm_1395190503_is_ongoing")]
+		public bool? Comgoogleandroidgm1395190503IsOngoing { get; init; }
 
-		[JsonPropertyName("com.google.android.dialer_1_post_time")]
-		public double? Comgoogleandroiddialer1PostTime { get; init; }
+		[JsonPropertyName("com.google.android.gm_1395190503_post_time")]
+		public double? Comgoogleandroidgm1395190503PostTime { get; init; }
 
-		[JsonPropertyName("com.google.android.googlequicksearchbox_-1438148997_is_clearable")]
-		public bool? Comgoogleandroidgooglequicksearchbox1438148997IsClearable { get; init; }
+		[JsonPropertyName("com.google.android.gm_-1598481644_is_clearable")]
+		public bool? Comgoogleandroidgm1598481644IsClearable { get; init; }
 
-		[JsonPropertyName("com.google.android.googlequicksearchbox_-1438148997_is_ongoing")]
-		public bool? Comgoogleandroidgooglequicksearchbox1438148997IsOngoing { get; init; }
+		[JsonPropertyName("com.google.android.gm_-1598481644_is_ongoing")]
+		public bool? Comgoogleandroidgm1598481644IsOngoing { get; init; }
 
-		[JsonPropertyName("com.google.android.googlequicksearchbox_-1438148997_post_time")]
-		public double? Comgoogleandroidgooglequicksearchbox1438148997PostTime { get; init; }
+		[JsonPropertyName("com.google.android.gm_-1598481644_post_time")]
+		public double? Comgoogleandroidgm1598481644PostTime { get; init; }
+
+		[JsonPropertyName("com.huawei.health_10010_is_clearable")]
+		public bool? Comhuaweihealth10010IsClearable { get; init; }
+
+		[JsonPropertyName("com.huawei.health_10010_is_ongoing")]
+		public bool? Comhuaweihealth10010IsOngoing { get; init; }
+
+		[JsonPropertyName("com.huawei.health_10010_post_time")]
+		public double? Comhuaweihealth10010PostTime { get; init; }
 
 		[JsonPropertyName("com.instagram.android_64278_is_clearable")]
 		public bool? Cominstagramandroid64278IsClearable { get; init; }
@@ -3036,14 +2949,23 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("com.instagram.android_64278_post_time")]
 		public double? Cominstagramandroid64278PostTime { get; init; }
 
-		[JsonPropertyName("com.lunarway.app_-1218823471_is_clearable")]
-		public bool? Comlunarwayapp1218823471IsClearable { get; init; }
+		[JsonPropertyName("com.lastpass.lpandroid_10005_is_clearable")]
+		public bool? Comlastpasslpandroid10005IsClearable { get; init; }
 
-		[JsonPropertyName("com.lunarway.app_-1218823471_is_ongoing")]
-		public bool? Comlunarwayapp1218823471IsOngoing { get; init; }
+		[JsonPropertyName("com.lastpass.lpandroid_10005_is_ongoing")]
+		public bool? Comlastpasslpandroid10005IsOngoing { get; init; }
 
-		[JsonPropertyName("com.lunarway.app_-1218823471_post_time")]
-		public double? Comlunarwayapp1218823471PostTime { get; init; }
+		[JsonPropertyName("com.lastpass.lpandroid_10005_post_time")]
+		public double? Comlastpasslpandroid10005PostTime { get; init; }
+
+		[JsonPropertyName("com.linkedin.android_-1093672874_is_clearable")]
+		public bool? Comlinkedinandroid1093672874IsClearable { get; init; }
+
+		[JsonPropertyName("com.linkedin.android_-1093672874_is_ongoing")]
+		public bool? Comlinkedinandroid1093672874IsOngoing { get; init; }
+
+		[JsonPropertyName("com.linkedin.android_-1093672874_post_time")]
+		public double? Comlinkedinandroid1093672874PostTime { get; init; }
 
 		[JsonPropertyName("com.microsoft.office.outlook_1_is_clearable")]
 		public bool? Commicrosoftofficeoutlook1IsClearable { get; init; }
@@ -3063,24 +2985,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("com.microsoft.office.outlook_2_post_time")]
 		public double? Commicrosoftofficeoutlook2PostTime { get; init; }
 
-		[JsonPropertyName("com.netcompany.smittestop_exposure_notification_5_is_clearable")]
-		public bool? ComnetcompanysmittestopExposureNotification5IsClearable { get; init; }
-
-		[JsonPropertyName("com.netcompany.smittestop_exposure_notification_5_is_ongoing")]
-		public bool? ComnetcompanysmittestopExposureNotification5IsOngoing { get; init; }
-
-		[JsonPropertyName("com.netcompany.smittestop_exposure_notification_5_post_time")]
-		public double? ComnetcompanysmittestopExposureNotification5PostTime { get; init; }
-
-		[JsonPropertyName("com.netflix.mediaclient_42_is_clearable")]
-		public bool? Comnetflixmediaclient42IsClearable { get; init; }
-
-		[JsonPropertyName("com.netflix.mediaclient_42_is_ongoing")]
-		public bool? Comnetflixmediaclient42IsOngoing { get; init; }
-
-		[JsonPropertyName("com.netflix.mediaclient_42_post_time")]
-		public double? Comnetflixmediaclient42PostTime { get; init; }
-
 		[JsonPropertyName("com.oculus.twilight_10_is_clearable")]
 		public bool? Comoculustwilight10IsClearable { get; init; }
 
@@ -3090,14 +2994,14 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("com.oculus.twilight_10_post_time")]
 		public double? Comoculustwilight10PostTime { get; init; }
 
-		[JsonPropertyName("com.pinterest_-1985303206_is_clearable")]
-		public bool? Compinterest1985303206IsClearable { get; init; }
+		[JsonPropertyName("com.oneplus.screenshot_1_is_clearable")]
+		public bool? Comoneplusscreenshot1IsClearable { get; init; }
 
-		[JsonPropertyName("com.pinterest_-1985303206_is_ongoing")]
-		public bool? Compinterest1985303206IsOngoing { get; init; }
+		[JsonPropertyName("com.oneplus.screenshot_1_is_ongoing")]
+		public bool? Comoneplusscreenshot1IsOngoing { get; init; }
 
-		[JsonPropertyName("com.pinterest_-1985303206_post_time")]
-		public double? Compinterest1985303206PostTime { get; init; }
+		[JsonPropertyName("com.oneplus.screenshot_1_post_time")]
+		public double? Comoneplusscreenshot1PostTime { get; init; }
 
 		[JsonPropertyName("com.podimo_412_is_clearable")]
 		public bool? Compodimo412IsClearable { get; init; }
@@ -3108,41 +3012,32 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("com.podimo_412_post_time")]
 		public double? Compodimo412PostTime { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_1070793219_is_clearable")]
-		public bool? Comsnapchatandroid1070793219IsClearable { get; init; }
+		[JsonPropertyName("com.snapchat.android_1054876811_is_clearable")]
+		public bool? Comsnapchatandroid1054876811IsClearable { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_1070793219_is_ongoing")]
-		public bool? Comsnapchatandroid1070793219IsOngoing { get; init; }
+		[JsonPropertyName("com.snapchat.android_1054876811_is_ongoing")]
+		public bool? Comsnapchatandroid1054876811IsOngoing { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_1070793219_post_time")]
-		public double? Comsnapchatandroid1070793219PostTime { get; init; }
+		[JsonPropertyName("com.snapchat.android_1054876811_post_time")]
+		public double? Comsnapchatandroid1054876811PostTime { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_-1695735583_is_clearable")]
-		public bool? Comsnapchatandroid1695735583IsClearable { get; init; }
+		[JsonPropertyName("com.snapchat.android_1291750045_is_clearable")]
+		public bool? Comsnapchatandroid1291750045IsClearable { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_-1695735583_is_ongoing")]
-		public bool? Comsnapchatandroid1695735583IsOngoing { get; init; }
+		[JsonPropertyName("com.snapchat.android_1291750045_is_ongoing")]
+		public bool? Comsnapchatandroid1291750045IsOngoing { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_-1695735583_post_time")]
-		public double? Comsnapchatandroid1695735583PostTime { get; init; }
+		[JsonPropertyName("com.snapchat.android_1291750045_post_time")]
+		public double? Comsnapchatandroid1291750045PostTime { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_181495953_is_clearable")]
-		public bool? Comsnapchatandroid181495953IsClearable { get; init; }
+		[JsonPropertyName("com.snapchat.android_1842897250_is_clearable")]
+		public bool? Comsnapchatandroid1842897250IsClearable { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_181495953_is_ongoing")]
-		public bool? Comsnapchatandroid181495953IsOngoing { get; init; }
+		[JsonPropertyName("com.snapchat.android_1842897250_is_ongoing")]
+		public bool? Comsnapchatandroid1842897250IsOngoing { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_181495953_post_time")]
-		public double? Comsnapchatandroid181495953PostTime { get; init; }
-
-		[JsonPropertyName("com.snapchat.android_1958544441_is_clearable")]
-		public bool? Comsnapchatandroid1958544441IsClearable { get; init; }
-
-		[JsonPropertyName("com.snapchat.android_1958544441_is_ongoing")]
-		public bool? Comsnapchatandroid1958544441IsOngoing { get; init; }
-
-		[JsonPropertyName("com.snapchat.android_1958544441_post_time")]
-		public double? Comsnapchatandroid1958544441PostTime { get; init; }
+		[JsonPropertyName("com.snapchat.android_1842897250_post_time")]
+		public double? Comsnapchatandroid1842897250PostTime { get; init; }
 
 		[JsonPropertyName("com.snapchat.android_-29004762_is_clearable")]
 		public bool? Comsnapchatandroid29004762IsClearable { get; init; }
@@ -3153,23 +3048,32 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("com.snapchat.android_-29004762_post_time")]
 		public double? Comsnapchatandroid29004762PostTime { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_480251491_is_clearable")]
-		public bool? Comsnapchatandroid480251491IsClearable { get; init; }
+		[JsonPropertyName("com.snapchat.android_326293883_is_clearable")]
+		public bool? Comsnapchatandroid326293883IsClearable { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_480251491_is_ongoing")]
-		public bool? Comsnapchatandroid480251491IsOngoing { get; init; }
+		[JsonPropertyName("com.snapchat.android_326293883_is_ongoing")]
+		public bool? Comsnapchatandroid326293883IsOngoing { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_480251491_post_time")]
-		public double? Comsnapchatandroid480251491PostTime { get; init; }
+		[JsonPropertyName("com.snapchat.android_326293883_post_time")]
+		public double? Comsnapchatandroid326293883PostTime { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_-73000028_is_clearable")]
-		public bool? Comsnapchatandroid73000028IsClearable { get; init; }
+		[JsonPropertyName("com.snapchat.android_-362957803_is_clearable")]
+		public bool? Comsnapchatandroid362957803IsClearable { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_-73000028_is_ongoing")]
-		public bool? Comsnapchatandroid73000028IsOngoing { get; init; }
+		[JsonPropertyName("com.snapchat.android_-362957803_is_ongoing")]
+		public bool? Comsnapchatandroid362957803IsOngoing { get; init; }
 
-		[JsonPropertyName("com.snapchat.android_-73000028_post_time")]
-		public double? Comsnapchatandroid73000028PostTime { get; init; }
+		[JsonPropertyName("com.snapchat.android_-362957803_post_time")]
+		public double? Comsnapchatandroid362957803PostTime { get; init; }
+
+		[JsonPropertyName("com.snapchat.android_969512675_is_clearable")]
+		public bool? Comsnapchatandroid969512675IsClearable { get; init; }
+
+		[JsonPropertyName("com.snapchat.android_969512675_is_ongoing")]
+		public bool? Comsnapchatandroid969512675IsOngoing { get; init; }
+
+		[JsonPropertyName("com.snapchat.android_969512675_post_time")]
+		public double? Comsnapchatandroid969512675PostTime { get; init; }
 
 		[JsonPropertyName("com.stupeflix.replay_1350192_is_clearable")]
 		public bool? Comstupeflixreplay1350192IsClearable { get; init; }
@@ -3179,33 +3083,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("com.stupeflix.replay_1350192_post_time")]
 		public double? Comstupeflixreplay1350192PostTime { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_1137709548_is_clearable")]
-		public bool? Comtripledotwoodoku1137709548IsClearable { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_1137709548_is_ongoing")]
-		public bool? Comtripledotwoodoku1137709548IsOngoing { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_1137709548_post_time")]
-		public double? Comtripledotwoodoku1137709548PostTime { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_1412446498_is_clearable")]
-		public bool? Comtripledotwoodoku1412446498IsClearable { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_1412446498_is_ongoing")]
-		public bool? Comtripledotwoodoku1412446498IsOngoing { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_1412446498_post_time")]
-		public double? Comtripledotwoodoku1412446498PostTime { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_-2032596160_is_clearable")]
-		public bool? Comtripledotwoodoku2032596160IsClearable { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_-2032596160_is_ongoing")]
-		public bool? Comtripledotwoodoku2032596160IsOngoing { get; init; }
-
-		[JsonPropertyName("com.tripledot.woodoku_-2032596160_post_time")]
-		public double? Comtripledotwoodoku2032596160PostTime { get; init; }
 
 		[JsonPropertyName("connected_not_paired_devices")]
 		public string? ConnectedNotPairedDevices { get; init; }
@@ -3219,32 +3096,32 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("device_type")]
 		public string? DeviceType { get; init; }
 
-		[JsonPropertyName("dk.bilka.app.release_930771727_is_clearable")]
-		public bool? Dkbilkaapprelease930771727IsClearable { get; init; }
+		[JsonPropertyName("dk.bilka.app.release_1413843197_is_clearable")]
+		public bool? Dkbilkaapprelease1413843197IsClearable { get; init; }
 
-		[JsonPropertyName("dk.bilka.app.release_930771727_is_ongoing")]
-		public bool? Dkbilkaapprelease930771727IsOngoing { get; init; }
+		[JsonPropertyName("dk.bilka.app.release_1413843197_is_ongoing")]
+		public bool? Dkbilkaapprelease1413843197IsOngoing { get; init; }
 
-		[JsonPropertyName("dk.bilka.app.release_930771727_post_time")]
-		public double? Dkbilkaapprelease930771727PostTime { get; init; }
+		[JsonPropertyName("dk.bilka.app.release_1413843197_post_time")]
+		public double? Dkbilkaapprelease1413843197PostTime { get; init; }
 
-		[JsonPropertyName("dk.coop.coopplus_0_is_clearable")]
-		public bool? Dkcoopcoopplus0IsClearable { get; init; }
+		[JsonPropertyName("dk.bilka.app.release_-1482115484_is_clearable")]
+		public bool? Dkbilkaapprelease1482115484IsClearable { get; init; }
 
-		[JsonPropertyName("dk.coop.coopplus_0_is_ongoing")]
-		public bool? Dkcoopcoopplus0IsOngoing { get; init; }
+		[JsonPropertyName("dk.bilka.app.release_-1482115484_is_ongoing")]
+		public bool? Dkbilkaapprelease1482115484IsOngoing { get; init; }
 
-		[JsonPropertyName("dk.coop.coopplus_0_post_time")]
-		public double? Dkcoopcoopplus0PostTime { get; init; }
+		[JsonPropertyName("dk.bilka.app.release_-1482115484_post_time")]
+		public double? Dkbilkaapprelease1482115484PostTime { get; init; }
 
-		[JsonPropertyName("dk.gls.consigneeapp_0_is_clearable")]
-		public bool? Dkglsconsigneeapp0IsClearable { get; init; }
+		[JsonPropertyName("dk.danskebank.mobilepay_1905852077_is_clearable")]
+		public bool? Dkdanskebankmobilepay1905852077IsClearable { get; init; }
 
-		[JsonPropertyName("dk.gls.consigneeapp_0_is_ongoing")]
-		public bool? Dkglsconsigneeapp0IsOngoing { get; init; }
+		[JsonPropertyName("dk.danskebank.mobilepay_1905852077_is_ongoing")]
+		public bool? Dkdanskebankmobilepay1905852077IsOngoing { get; init; }
 
-		[JsonPropertyName("dk.gls.consigneeapp_0_post_time")]
-		public double? Dkglsconsigneeapp0PostTime { get; init; }
+		[JsonPropertyName("dk.danskebank.mobilepay_1905852077_post_time")]
+		public double? Dkdanskebankmobilepay1905852077PostTime { get; init; }
 
 		[JsonPropertyName("dk.taenk.mitdigitaleselvforsvar_0_is_clearable")]
 		public bool? Dktaenkmitdigitaleselvforsvar0IsClearable { get; init; }
@@ -3273,20 +3150,188 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
-		[JsonPropertyName("grouping_key_com.google.android.googlequicksearchbox")]
-		public string? GroupingKeyComgoogleandroidgooglequicksearchbox { get; init; }
-
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
 
-		[JsonPropertyName("io.homeassistant.companion.android_-116008064_is_clearable")]
-		public bool? Iohomeassistantcompanionandroid116008064IsClearable { get; init; }
+		[JsonPropertyName("io.homeassistant.companion.android_1006927780_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid1006927780IsClearable { get; init; }
 
-		[JsonPropertyName("io.homeassistant.companion.android_-116008064_is_ongoing")]
-		public bool? Iohomeassistantcompanionandroid116008064IsOngoing { get; init; }
+		[JsonPropertyName("io.homeassistant.companion.android_1006927780_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid1006927780IsOngoing { get; init; }
 
-		[JsonPropertyName("io.homeassistant.companion.android_-116008064_post_time")]
-		public double? Iohomeassistantcompanionandroid116008064PostTime { get; init; }
+		[JsonPropertyName("io.homeassistant.companion.android_1006927780_post_time")]
+		public double? Iohomeassistantcompanionandroid1006927780PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1010056572_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid1010056572IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1010056572_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid1010056572IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1010056572_post_time")]
+		public double? Iohomeassistantcompanionandroid1010056572PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1058999382_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid1058999382IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1058999382_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid1058999382IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1058999382_post_time")]
+		public double? Iohomeassistantcompanionandroid1058999382PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1093659188_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid1093659188IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1093659188_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid1093659188IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1093659188_post_time")]
+		public double? Iohomeassistantcompanionandroid1093659188PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1098235795_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid1098235795IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1098235795_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid1098235795IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1098235795_post_time")]
+		public double? Iohomeassistantcompanionandroid1098235795PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1098489396_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid1098489396IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1098489396_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid1098489396IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_1098489396_post_time")]
+		public double? Iohomeassistantcompanionandroid1098489396PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_2147483647_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid2147483647IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_2147483647_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid2147483647IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_2147483647_post_time")]
+		public double? Iohomeassistantcompanionandroid2147483647PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_604431543_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid604431543IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_604431543_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid604431543IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_604431543_post_time")]
+		public double? Iohomeassistantcompanionandroid604431543PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_642602724_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid642602724IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_642602724_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid642602724IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_642602724_post_time")]
+		public double? Iohomeassistantcompanionandroid642602724PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_645248501_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid645248501IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_645248501_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid645248501IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_645248501_post_time")]
+		public double? Iohomeassistantcompanionandroid645248501PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_661626837_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid661626837IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_661626837_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid661626837IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_661626837_post_time")]
+		public double? Iohomeassistantcompanionandroid661626837PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_748223703_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid748223703IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_748223703_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid748223703IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_748223703_post_time")]
+		public double? Iohomeassistantcompanionandroid748223703PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_750231603_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid750231603IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_750231603_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid750231603IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_750231603_post_time")]
+		public double? Iohomeassistantcompanionandroid750231603PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_834789424_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid834789424IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_834789424_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid834789424IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_834789424_post_time")]
+		public double? Iohomeassistantcompanionandroid834789424PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_837199279_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid837199279IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_837199279_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid837199279IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_837199279_post_time")]
+		public double? Iohomeassistantcompanionandroid837199279PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_841421296_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid841421296IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_841421296_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid841421296IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_841421296_post_time")]
+		public double? Iohomeassistantcompanionandroid841421296PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_860471525_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid860471525IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_860471525_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid860471525IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_860471525_post_time")]
+		public double? Iohomeassistantcompanionandroid860471525PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_920905695_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid920905695IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_920905695_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid920905695IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_920905695_post_time")]
+		public double? Iohomeassistantcompanionandroid920905695PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_988127304_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid988127304IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_988127304_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid988127304IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_988127304_post_time")]
+		public double? Iohomeassistantcompanionandroid988127304PostTime { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_991105349_is_clearable")]
+		public bool? Iohomeassistantcompanionandroid991105349IsClearable { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_991105349_is_ongoing")]
+		public bool? Iohomeassistantcompanionandroid991105349IsOngoing { get; init; }
+
+		[JsonPropertyName("io.homeassistant.companion.android_991105349_post_time")]
+		public double? Iohomeassistantcompanionandroid991105349PostTime { get; init; }
 
 		[JsonPropertyName("light")]
 		public double? Light { get; init; }
@@ -3296,12 +3341,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("motion")]
 		public double? Motion { get; init; }
-
-		[JsonPropertyName("opaque_token_com.google.android.googlequicksearchbox")]
-		public string? OpaqueTokenComgoogleandroidgooglequicksearchbox { get; init; }
-
-		[JsonPropertyName("opa.uniqueNotificationId_com.google.android.googlequicksearchbox")]
-		public double? OpauniqueNotificationIdComgoogleandroidgooglequicksearchbox { get; init; }
 
 		[JsonPropertyName("paired_devices")]
 		public string? PairedDevices { get; init; }
@@ -3459,12 +3498,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("mnc")]
 		public string? Mnc { get; init; }
 
-		[JsonPropertyName("number_of_loaded_apps")]
-		public double? NumberOfLoadedApps { get; init; }
-
-		[JsonPropertyName("number_of_running_apps")]
-		public double? NumberOfRunningApps { get; init; }
-
 		[JsonPropertyName("on_bicycle")]
 		public double? OnBicycle { get; init; }
 
@@ -3488,6 +3521,9 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("post_time")]
 		public double? PostTime { get; init; }
+
+		[JsonPropertyName("running")]
+		public double? Running { get; init; }
 
 		[JsonPropertyName("still")]
 		public double? Still { get; init; }
@@ -3527,9 +3563,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("utc_offset")]
 		public double? UtcOffset { get; init; }
-
-		[JsonPropertyName("version")]
-		public string? Version { get; init; }
 
 		[JsonPropertyName("walking")]
 		public double? Walking { get; init; }
@@ -3688,6 +3721,8 @@ namespace HomeAssistantGenerated
 
 		AutomationServices Automation { get; }
 
+		ButtonServices Button { get; }
+
 		CameraServices Camera { get; }
 
 		CastServices Cast { get; }
@@ -3716,6 +3751,8 @@ namespace HomeAssistantGenerated
 
 		InputBooleanServices InputBoolean { get; }
 
+		InputButtonServices InputButton { get; }
+
 		InputDatetimeServices InputDatetime { get; }
 
 		InputNumberServices InputNumber { get; }
@@ -3731,6 +3768,8 @@ namespace HomeAssistantGenerated
 		LogbookServices Logbook { get; }
 
 		MediaPlayerServices MediaPlayer { get; }
+
+		MqttServices Mqtt { get; }
 
 		NetatmoServices Netatmo { get; }
 
@@ -3783,6 +3822,7 @@ namespace HomeAssistantGenerated
 
 		public AlarmControlPanelServices AlarmControlPanel => new(_haContext);
 		public AutomationServices Automation => new(_haContext);
+		public ButtonServices Button => new(_haContext);
 		public CameraServices Camera => new(_haContext);
 		public CastServices Cast => new(_haContext);
 		public ClimateServices Climate => new(_haContext);
@@ -3797,6 +3837,7 @@ namespace HomeAssistantGenerated
 		public HassioServices Hassio => new(_haContext);
 		public HomeassistantServices Homeassistant => new(_haContext);
 		public InputBooleanServices InputBoolean => new(_haContext);
+		public InputButtonServices InputButton => new(_haContext);
 		public InputDatetimeServices InputDatetime => new(_haContext);
 		public InputNumberServices InputNumber => new(_haContext);
 		public InputSelectServices InputSelect => new(_haContext);
@@ -3805,6 +3846,7 @@ namespace HomeAssistantGenerated
 		public LockServices Lock => new(_haContext);
 		public LogbookServices Logbook => new(_haContext);
 		public MediaPlayerServices MediaPlayer => new(_haContext);
+		public MqttServices Mqtt => new(_haContext);
 		public NetatmoServices Netatmo => new(_haContext);
 		public NotifyServices Notify => new(_haContext);
 		public NumberServices Number => new(_haContext);
@@ -4061,6 +4103,22 @@ namespace HomeAssistantGenerated
 		///<summary>Stop currently running actions.</summary>
 		[JsonPropertyName("stop_actions")]
 		public bool? StopActions { get; init; }
+	}
+
+	public class ButtonServices
+	{
+		private readonly IHaContext _haContext;
+		public ButtonServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Press the button entity.</summary>
+		///<param name="target">The target for this service call</param>
+		public void Press(ServiceTarget target)
+		{
+			_haContext.CallService("button", "press", target);
+		}
 	}
 
 	public class CameraServices
@@ -5467,6 +5525,27 @@ namespace HomeAssistantGenerated
 		}
 	}
 
+	public class InputButtonServices
+	{
+		private readonly IHaContext _haContext;
+		public InputButtonServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Press the input button entity.</summary>
+		///<param name="target">The target for this service call</param>
+		public void Press(ServiceTarget target)
+		{
+			_haContext.CallService("input_button", "press", target);
+		}
+
+		public void Reload()
+		{
+			_haContext.CallService("input_button", "reload", null);
+		}
+	}
+
 	public class InputDatetimeServices
 	{
 		private readonly IHaContext _haContext;
@@ -6364,6 +6443,80 @@ namespace HomeAssistantGenerated
 		///<summary>Volume level to set as float.</summary>
 		[JsonPropertyName("volume_level")]
 		public double? VolumeLevel { get; init; }
+	}
+
+	public class MqttServices
+	{
+		private readonly IHaContext _haContext;
+		public MqttServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Dump messages on a topic selector to the 'mqtt_dump.txt' file in your configuration folder.</summary>
+		public void Dump(MqttDumpParameters data)
+		{
+			_haContext.CallService("mqtt", "dump", null, data);
+		}
+
+		///<summary>Dump messages on a topic selector to the 'mqtt_dump.txt' file in your configuration folder.</summary>
+		///<param name="topic">topic to listen to eg: OpenZWave/#</param>
+		///<param name="duration">how long we should listen for messages in seconds</param>
+		public void Dump(string? @topic = null, long? @duration = null)
+		{
+			_haContext.CallService("mqtt", "dump", null, new MqttDumpParameters{Topic = @topic, Duration = @duration});
+		}
+
+		///<summary>Publish a message to an MQTT topic.</summary>
+		public void Publish(MqttPublishParameters data)
+		{
+			_haContext.CallService("mqtt", "publish", null, data);
+		}
+
+		///<summary>Publish a message to an MQTT topic.</summary>
+		///<param name="topic">Topic to publish payload. eg: /homeassistant/hello</param>
+		///<param name="payload">Payload to publish. eg: This is great</param>
+		///<param name="payloadTemplate">Template to render as payload value. Ignored if payload given. eg: {{ states('sensor.temperature') }}</param>
+		///<param name="qos">Quality of Service to use.</param>
+		///<param name="retain">If message should have the retain flag set.</param>
+		public void Publish(string @topic, string? @payload = null, object? @payloadTemplate = null, string? @qos = null, bool? @retain = null)
+		{
+			_haContext.CallService("mqtt", "publish", null, new MqttPublishParameters{Topic = @topic, Payload = @payload, PayloadTemplate = @payloadTemplate, Qos = @qos, Retain = @retain});
+		}
+	}
+
+	public record MqttDumpParameters
+	{
+		///<summary>topic to listen to eg: OpenZWave/#</summary>
+		[JsonPropertyName("topic")]
+		public string? Topic { get; init; }
+
+		///<summary>how long we should listen for messages in seconds</summary>
+		[JsonPropertyName("duration")]
+		public long? Duration { get; init; }
+	}
+
+	public record MqttPublishParameters
+	{
+		///<summary>Topic to publish payload. eg: /homeassistant/hello</summary>
+		[JsonPropertyName("topic")]
+		public string? Topic { get; init; }
+
+		///<summary>Payload to publish. eg: This is great</summary>
+		[JsonPropertyName("payload")]
+		public string? Payload { get; init; }
+
+		///<summary>Template to render as payload value. Ignored if payload given. eg: {{ states('sensor.temperature') }}</summary>
+		[JsonPropertyName("payload_template")]
+		public object? PayloadTemplate { get; init; }
+
+		///<summary>Quality of Service to use.</summary>
+		[JsonPropertyName("qos")]
+		public string? Qos { get; init; }
+
+		///<summary>If message should have the retain flag set.</summary>
+		[JsonPropertyName("retain")]
+		public bool? Retain { get; init; }
 	}
 
 	public class NetatmoServices
@@ -8332,8 +8485,8 @@ namespace HomeAssistantGenerated
 		///<summary>Toggle (enable / disable) an automation.</summary>
 		public static void Toggle(this IEnumerable<AutomationEntity> target)
 		{
-            target.CallService("toggle");
-        }
+			target.CallService("toggle");
+		}
 
 		///<summary>Trigger the actions of an automation.</summary>
 		public static void Trigger(this AutomationEntity target, AutomationTriggerParameters data)
@@ -8401,6 +8554,21 @@ namespace HomeAssistantGenerated
 		public static void TurnOn(this IEnumerable<AutomationEntity> target)
 		{
 			target.CallService("turn_on");
+		}
+	}
+
+	public static class ButtonEntityExtensionMethods
+	{
+		///<summary>Press the button entity.</summary>
+		public static void Press(this ButtonEntity target)
+		{
+			target.CallService("press");
+		}
+
+		///<summary>Press the button entity.</summary>
+		public static void Press(this IEnumerable<ButtonEntity> target)
+		{
+			target.CallService("press");
 		}
 	}
 
@@ -9667,6 +9835,62 @@ namespace HomeAssistantGenerated
 		public static void SetCameraLight(this IEnumerable<LightEntity> target, string @cameraLightMode)
 		{
 			target.CallService("set_camera_light", new NetatmoSetCameraLightParameters{CameraLightMode = @cameraLightMode});
+		}
+
+		///<summary>Set a person as away. If no person is set the home will be marked as empty. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		public static void SetPersonAway(this CameraEntity target, NetatmoSetPersonAwayParameters data)
+		{
+			target.CallService("set_person_away", data);
+		}
+
+		///<summary>Set a person as away. If no person is set the home will be marked as empty. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		public static void SetPersonAway(this IEnumerable<CameraEntity> target, NetatmoSetPersonAwayParameters data)
+		{
+			target.CallService("set_person_away", data);
+		}
+
+		///<summary>Set a person as away. If no person is set the home will be marked as empty. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
+		///<param name="person">Person's name. eg: Bob</param>
+		public static void SetPersonAway(this CameraEntity target, string? @person = null)
+		{
+			target.CallService("set_person_away", new NetatmoSetPersonAwayParameters{Person = @person});
+		}
+
+		///<summary>Set a person as away. If no person is set the home will be marked as empty. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="person">Person's name. eg: Bob</param>
+		public static void SetPersonAway(this IEnumerable<CameraEntity> target, string? @person = null)
+		{
+			target.CallService("set_person_away", new NetatmoSetPersonAwayParameters{Person = @person});
+		}
+
+		///<summary>Set a list of persons as at home. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		public static void SetPersonsHome(this CameraEntity target, NetatmoSetPersonsHomeParameters data)
+		{
+			target.CallService("set_persons_home", data);
+		}
+
+		///<summary>Set a list of persons as at home. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		public static void SetPersonsHome(this IEnumerable<CameraEntity> target, NetatmoSetPersonsHomeParameters data)
+		{
+			target.CallService("set_persons_home", data);
+		}
+
+		///<summary>Set a list of persons as at home. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
+		///<param name="persons">List of names eg: [Alice, Bob]</param>
+		public static void SetPersonsHome(this CameraEntity target, object @persons)
+		{
+			target.CallService("set_persons_home", new NetatmoSetPersonsHomeParameters{Persons = @persons});
+		}
+
+		///<summary>Set a list of persons as at home. Person's name must match a name known by the Netatmo Indoor (Welcome) Camera.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="persons">List of names eg: [Alice, Bob]</param>
+		public static void SetPersonsHome(this IEnumerable<CameraEntity> target, object @persons)
+		{
+			target.CallService("set_persons_home", new NetatmoSetPersonsHomeParameters{Persons = @persons});
 		}
 
 		///<summary>Set the heating schedule for Netatmo climate device. The schedule name must match a schedule configured at Netatmo.</summary>
