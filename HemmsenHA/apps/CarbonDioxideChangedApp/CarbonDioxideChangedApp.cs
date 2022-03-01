@@ -1,7 +1,7 @@
 ﻿namespace HemmsenHA.apps
 {
     [NetDaemonApp]
-    [Focus]
+    //[Focus]
     public class CarbonDioxideChangedApp
     {
         public CarbonDioxideChangedApp(IHaContext haContext, ILogger<CarbonDioxideChangedApp> logger, IMediator mediator)

@@ -28,4 +28,5 @@ global using HemmsenHA.Infrastructure.Strategies.CarbonDioxide;
 global using HemmsenHA.Infrastructure.Strategies.Window;
 global using HemmsenHA.Logging;
 global using NetDaemon.Extensions.Logging;
+global using NetDaemon.HassModel.Integration;
 
