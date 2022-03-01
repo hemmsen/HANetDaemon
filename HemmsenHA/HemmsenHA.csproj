@@ -28,6 +28,7 @@
     <ItemGroup>
         <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
         <PackageReference Include="JoySoftware.NetDaemon.AppModel" Version="22.7.0" />
+        <PackageReference Include="JoySoftware.NetDaemon.HassModel.Integration" Version="22.7.0" />
         <PackageReference Include="JoySoftware.NetDaemon.Runtime" Version="22.7.0" />
         <PackageReference Include="JoySoftware.NetDaemon.HassModel" Version="22.7.0" />
         <PackageReference Include="JoySoftware.NetDaemon.Client" Version="22.7.0" />

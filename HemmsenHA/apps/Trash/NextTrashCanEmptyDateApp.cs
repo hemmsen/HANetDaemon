@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HemmsenHA.apps.Trash
+﻿namespace HemmsenHA.apps.Trash
 {
     [NetDaemonApp]
-    [Focus]
+    //[Focus]
     public class NextTrashCanEmptyDateApp
     {
         private IServices _services;
