@@ -17,8 +17,8 @@
                         var carbonDioxideChanged = new CarbonDioxideChanged()
                         {
                             EntityId = s.Entity.EntityId,
-                            NewCarbonDioxide = s.New,
-                            OldCarbonDioxide = s.Old
+                            NewEntityState = s.New,
+                            OldEntityState = s.Old
                         };
                         mediator.Publish(carbonDioxideChanged);
                     });

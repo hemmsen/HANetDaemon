@@ -17,8 +17,8 @@ namespace HemmsenHA.Tests
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
                 EntityId = new Entities(haContext).Sensor.NetatmoEngelstoft157IndoorCo2.EntityId,
-                NewCarbonDioxide = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = newCarbonLevel }),
-                OldCarbonDioxide = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = oldCarbonLevel })
+                NewEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = newCarbonLevel }),
+                OldEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = oldCarbonLevel })
             };
 
             co2StrategyGreen.CanHandle(co2ChangedEvent).Should().BeTrue();
@@ -38,8 +38,8 @@ namespace HemmsenHA.Tests
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
                 EntityId = new Entities(haContext).Sensor.NetatmoEngelstoft157IndoorCo2.EntityId,
-                NewCarbonDioxide = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = newCarbonLevel }),
-                OldCarbonDioxide = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = oldCarbonLevel })
+                NewEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = newCarbonLevel }),
+                OldEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = oldCarbonLevel })
             };
 
             co2StrategyGreen.CanHandle(co2ChangedEvent).Should().BeFalse();

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HemmsenHA.Core.NotificationMessages
+﻿namespace HemmsenHA.Core.NotificationMessages
 {
-    public class BaseEntityStateChanged : INotification
+    public class BaseEntityStateChanged<TEntityType> : INotification
     {
         public string EntityId { get; set; }
+        public TEntityType? NewEntityState { get; set; }
+        public TEntityType? OldEntityState { get; set; }
+        public DateTimeOffset MeasuredAt { get; set; } = DateTimeOffset.Now;
     }
 }

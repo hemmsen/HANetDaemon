@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HemmsenHA.Core.NotificationMessages
+﻿namespace HemmsenHA.Core.NotificationMessages
 {
-    public class LowPowerOnDevice : BaseEntityStateChanged, INotification
+    public class LowPowerOnDevice : BaseEntityStateChanged<NumericEntityState<NumericSensorAttributes>>, INotification
     {
-        public double? PowerLevel { get; set; }
     }
 }

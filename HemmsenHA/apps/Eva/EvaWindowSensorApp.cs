@@ -14,9 +14,9 @@
                     {
                         var stateChanged = new WindowStateChanged()
                         {
-                            EntityId = x.New.EntityId,
-                            NewState = x.New,
-                            OldState = x.Old,
+                            EntityId = x.Entity.EntityId,
+                            NewEntityState = x.New,
+                            OldEntityState = x.Old,
                         };
                         mediator.Publish(stateChanged);
                     });

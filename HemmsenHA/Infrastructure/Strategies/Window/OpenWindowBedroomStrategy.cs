@@ -21,43 +21,15 @@ namespace HemmsenHA.Infrastructure.Strategies
 
         public Task DoAction(WindowStateChanged windowStateChanged)
         {
-            //Schedule close message here!
-            if (windowStateChanged.NewState.IsOn())
+            // If window is open then turn off the heat!
+            if (windowStateChanged.NewEntityState.IsOn())
             {
-                ScheduleNotification(windowStateChanged);
                 services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "off");
                 return Task.CompletedTask;
             }
+            // If window not open then turn on the heat!
             services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "heat");
             return Task.CompletedTask;
-        }
-
-        private void ScheduleNotification(WindowStateChanged windowStateChanged)
-        {
-            scheduler.Schedule(DateTimeOffset.Now.AddMinutes(5), () =>
-            {
-                var currentTemp = entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseTemperature;
-                var currentCo2 = entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseCo2;
-                var humidity = entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseHumidity;
-                var windowOpen = entities.BinarySensor.BedroomWindow.IsOn();
-                if ((currentTemp.State < 17 || currentCo2.State < 600) && DateTime.Now.TimeOfDay < new TimeSpan(22, 0, 0))
-                {
-                    var notification = new CloseWindowInRoomNotification()
-                    {
-                        CurrentTemperature = currentTemp.State,
-                        EntityId = windowStateChanged.EntityId
-                    };
-                    if (windowOpen)
-                    {
-                        mediator.Publish(notification);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                ScheduleNotification(windowStateChanged);
-            });
         }
     }
 }

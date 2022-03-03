@@ -22,7 +22,7 @@
         {
 
             //Schedule close message here!
-            if (windowStateChanged.NewState.IsOn())
+            if (windowStateChanged.NewEntityState.IsOn())
             {
                 ScheduleNotification(windowStateChanged);
                 services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.NetatmoEva.EntityId), 8.0);

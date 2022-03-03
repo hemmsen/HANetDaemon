@@ -18,7 +18,7 @@ namespace HemmsenHA.Infrastructure.Strategies.CarbonDioxide
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewCarbonDioxide.State <= 1000;
+            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewEntityState.State <= 1000;
         }
 
         public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)

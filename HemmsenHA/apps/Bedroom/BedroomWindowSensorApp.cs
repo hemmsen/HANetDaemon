@@ -1,31 +1,29 @@
-﻿namespace HemmsenHA.apps.Bedroom
+﻿namespace HemmsenHA.apps.Bedroom;
+
+[NetDaemonApp]
+// [Focus]
+public class BedroomWindowSensorApp
 {
-    [NetDaemonApp]
-    //[Focus]
-    public class BedroomWindowSensorApp
+    public BedroomWindowSensorApp(IEntities entities, IMediator mediator, ILogger<BedroomWindowSensorApp> logger, IServices services)
     {
-        public BedroomWindowSensorApp(IHaContext haContext, IMediator mediator, ILogger<BedroomWindowSensorApp> logger)
+        try
         {
-            try
-            {
-                var _entities = new Entities(haContext);
-                _entities.BinarySensor.BedroomWindow
-                    .StateAllChanges()
-                    .Subscribe(x =>
+            entities.BinarySensor.BedroomWindow
+                .StateAllChanges()
+                .Subscribe(x =>
+                {
+                    var stateChanged = new WindowStateChanged()
                     {
-                        var stateChanged = new WindowStateChanged()
-                        {
-                            EntityId = x.New.EntityId,
-                            NewState = x.New,
-                            OldState = x.Old,
-                        };
-                        mediator.Publish(stateChanged);
-                    });
-            }catch (Exception ex)
-            {
-                logger.LogCritical(ex,"Error starting {AppName}", nameof(BedroomWindowSensorApp));
-            }
-            
+                        EntityId = x.Entity.EntityId,
+                        NewEntityState = x.New,
+                        OldEntityState = x.Old,
+                    };
+                    mediator.Publish(stateChanged);
+                });
+        }
+        catch (Exception ex)
+        {
+            logger.LogCritical(ex, "Error starting {AppName}", nameof(BedroomWindowSensorApp));
         }
     }
 }
