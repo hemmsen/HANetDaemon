@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/HemmsenHA/bin/Debug/net6.0/HemmsenHA.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}/HemmsenHA",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
             "name": "Debug Apps",
             "type": "coreclr",
             "request": "launch",

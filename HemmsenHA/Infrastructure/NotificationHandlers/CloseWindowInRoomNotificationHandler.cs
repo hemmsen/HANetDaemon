@@ -10,10 +10,10 @@
         public CloseWindowInRoomNotificationHandler(IHaContext haContext, IMediator mediator)
         {
             _entities = new Entities(haContext);
-            _services = new Services(haContext);    
+            _services = new Services(haContext);
             _mediator = mediator;
             _haContext = haContext;
-        }   
+        }
 
         public Task Handle(CloseWindowInRoomNotification notification, CancellationToken cancellationToken)
         {
@@ -21,7 +21,7 @@
             var notificationMsg = $"Luk vindue i {windowArea}!";
             _services.Notify.MobileAppPixel5(notificationMsg, "Vindue åbent");
             _services.Notify.MobileAppJonnaphone(notificationMsg, "Vindue åbent");
-            _mediator.Publish(new SpeakerNotification() { EntityId = _entities.MediaPlayer.TvStue.EntityId, NotificationMessage = notificationMsg });
+            _mediator.Publish(new SpeakerNotification() { EntityId = _entities.MediaPlayer.TvStue.EntityId, NotificationMessage = notificationMsg }, cancellationToken);
             return Task.CompletedTask;
         }
     }

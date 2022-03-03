@@ -21,6 +21,8 @@ try
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
+            services.AddScoped<IEntities>(s => new Entities(s.GetRequiredService<IHaContext>()));
+            services.AddScoped<IServices>(s => new Services(s.GetRequiredService<IHaContext>()));
         })
         .Build()
         .RunAsync()

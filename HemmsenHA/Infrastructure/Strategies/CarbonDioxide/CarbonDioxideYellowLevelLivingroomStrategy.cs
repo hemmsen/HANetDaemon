@@ -2,36 +2,36 @@
 {
     public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedStrategy
     {
-        private Entities entities;
-        private IServices services;
-        public CarbonDioxideYellowLevelLivingroomStrategy(IHaContext haContext, IScheduler scheduler, IMediator mediator)
+        private IEntities _entities;
+        private IServices _services;
+        public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler)
         {
-            entities = new Entities(haContext);
-            this.services = new Services(haContext);
+            _entities = entities;
+            _services = services;
         }
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewCarbonDioxide.State >= 1000 && carbonDioxideChanged.OldCarbonDioxide.State < 1000;
+            return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State >= 1000 && carbonDioxideChanged.NewEntityState.State < 1000;
         }
 
         public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
         {
             //Check current light state
-            var lightStateLivingroom = entities.Light.LivingroomLights.EntityState;
-            var lightStateKitchen = entities.Light.LivingroomLights.EntityState;
-            
+            var lightStateLivingroomIsOff = _entities.Light.LivingroomLights.EntityState.IsOff();
+            var lightStateKitchenIsOff = _entities.Light.KokkenSpotsLevelOnOff.EntityState.IsOff();
+
             //Flash lights
-            services.Light.TurnOn(ServiceTarget.FromEntities(entities.Light.LivingroomLights.EntityId, entities.Light.KokkenSpotsLevelOnOff.EntityId), new LightTurnOnParameters() { Flash = "short" });
-            
+            _services.Light.TurnOn(ServiceTarget.FromEntities(_entities.Light.LivingroomLights.EntityId, _entities.Light.KokkenSpotsLevelOnOff.EntityId), new LightTurnOnParameters() { Flash = "short" });
+
             //If old state is off then turn off light again
-            if (lightStateLivingroom.IsOff())
+            if (lightStateLivingroomIsOff)
             {
-                services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.LivingroomLights.EntityId));
+                _services.Light.TurnOff(ServiceTarget.FromEntity(_entities.Light.LivingroomLights.EntityId));
             }
-            if (lightStateKitchen.IsOff())
+            if (lightStateKitchenIsOff)
             {
-                services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.KokkenSpotsLevelOnOff.EntityId));
+                _services.Light.TurnOff(ServiceTarget.FromEntity(_entities.Light.KokkenSpotsLevelOnOff.EntityId));
             }
             return Task.CompletedTask;
         }
