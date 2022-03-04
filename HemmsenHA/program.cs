@@ -21,8 +21,11 @@ try
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
+            services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelBedroomStrategy>();
             services.AddScoped<IEntities>(s => new Entities(s.GetRequiredService<IHaContext>()));
             services.AddScoped<IServices>(s => new Services(s.GetRequiredService<IHaContext>()));
+            services.AddTransient<ITemperatureChangedStrategy, LowTemperatureBedroomStrategy>();
+            services.AddTransient<ITemperatureChangedStrategy, LowTemperatureEvaStrategy>();
         })
         .Build()
         .RunAsync()

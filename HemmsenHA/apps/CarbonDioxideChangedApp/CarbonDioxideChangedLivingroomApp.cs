@@ -2,12 +2,10 @@
 {
     [NetDaemonApp]
     //[Focus]
-    public class CarbonDioxideChangedApp
+    public class CarbonDioxideChangedLivingroomApp
     {
-        public CarbonDioxideChangedApp(IHaContext haContext, ILogger<CarbonDioxideChangedApp> logger, IMediator mediator)
+        public CarbonDioxideChangedLivingroomApp(IEntities entities, IServices services, ILogger<CarbonDioxideChangedLivingroomApp> logger, IMediator mediator)
         {
-            var entities = new Entities(haContext);
-            var services = new Services(haContext);
             try
             {
                 entities.Sensor.NetatmoEngelstoft157IndoorCo2
