@@ -3,11 +3,13 @@ public class LowTemperatureBedroomStrategy : ITemperatureChangedStrategy
 {
     private readonly IEntities _entities;
     private readonly IMediator _mediator;
+    private readonly IHaContext haContext;
 
-    public LowTemperatureBedroomStrategy(IEntities entities, IMediator mediator)
+    public LowTemperatureBedroomStrategy(IEntities entities, IMediator mediator, IHaContext haContext)
     {
         _entities = entities;
         _mediator = mediator;
+        this.haContext = haContext;
     }
     public bool CanHandle(ClimateChangedNotification temperatureChangedNotification)
     {
@@ -46,7 +48,7 @@ public class LowTemperatureBedroomStrategy : ITemperatureChangedStrategy
         var speakerNotification = new SpeakerNotification()
         {
             EntityId = _entities.MediaPlayer.TvStue.EntityId,
-            NotificationMessage = $"Temperatur i {_entities.MediaPlayer.TvStue.Area} er {climateChangedNotification.NewEntityState.Attributes.CurrentTemperature} grader. Luk vinduet!"
+            NotificationMessage = $"Temperatur i {new Entity(haContext, climateChangedNotification.EntityId).Area} er {climateChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature} grader. Luk vinduet!"
         };
         _mediator.Publish(speakerNotification);
     }

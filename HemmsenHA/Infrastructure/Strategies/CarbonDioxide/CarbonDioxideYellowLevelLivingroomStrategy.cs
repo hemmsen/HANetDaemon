@@ -12,7 +12,7 @@
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State >= 1000 && carbonDioxideChanged.NewEntityState.State < 1000;
+            return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State >= 1000;
         }
 
         public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
