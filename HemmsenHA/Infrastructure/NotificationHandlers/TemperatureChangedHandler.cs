@@ -16,10 +16,11 @@ public class TemperatureChangedHandler : INotificationHandler<ClimateChangedNoti
 
         if (strategy != null)
         {
+            logger.LogInformation("Chooses strategy for climateNotification with entityId :{entityId} and current temperature: {currentTemp}", notification.EntityId, notification?.NewEntityState?.Attributes?.CurrentTemperature);
             strategy.DoAction(notification);
             return Task.CompletedTask;
         }
-        logger.LogError($"There is no strategy for {nameof(ClimateChangedNotification)} with entityId: {notification.EntityId} and new current temperature: {notification.NewEntityState.Attributes.CurrentTemperature}");
+        logger.LogError($"There is no strategy for {nameof(ClimateChangedNotification)} with entityId: {notification.EntityId} and new current temperature: {notification?.NewEntityState?.Attributes?.CurrentTemperature}");
         return Task.CompletedTask;
     }
 }

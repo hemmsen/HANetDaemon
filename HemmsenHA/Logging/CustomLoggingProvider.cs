@@ -14,6 +14,7 @@ public static class CustomLoggingProvider
 
         var logPath = $"{AppDomain.CurrentDomain.BaseDirectory}/../Logs/log.txt";
         var logger = new LoggerConfiguration()
+        .MinimumLevel.Debug()
         .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
         .CreateLogger();
         return builder.UseSerilog(logger);
