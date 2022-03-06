@@ -25,6 +25,7 @@ try
             services.AddScoped<IServices>(s => new Services(s.GetRequiredService<IHaContext>()));
             services.AddTransient<ITemperatureChangedStrategy, LowTemperatureBedroomStrategy>();
             services.AddTransient<ITemperatureChangedStrategy, LowTemperatureEvaStrategy>();
+            services.AddTransient<ITemperatureChangedStrategy, HighTempBedroomStrategy>();
         })
         .Build()
         .RunAsync()

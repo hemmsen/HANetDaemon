@@ -15,7 +15,7 @@
             return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State >= 1000;
         }
 
-        public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
+        public async Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
         {
             //Check current light state
             var lightStateLivingroomIsOff = _entities.Light.LivingroomLights.EntityState.IsOff();
@@ -24,6 +24,8 @@
             //Flash lights
             _services.Light.TurnOn(ServiceTarget.FromEntities(_entities.Light.LivingroomLights.EntityId, _entities.Light.KokkenSpotsLevelOnOff.EntityId), new LightTurnOnParameters() { Flash = "short" });
 
+            // Delay to wait for flash to complate
+            await Task.Delay(5000);
             //If old state is off then turn off light again
             if (lightStateLivingroomIsOff)
             {
@@ -33,7 +35,6 @@
             {
                 _services.Light.TurnOff(ServiceTarget.FromEntity(_entities.Light.KokkenSpotsLevelOnOff.EntityId));
             }
-            return Task.CompletedTask;
         }
     }
 }
