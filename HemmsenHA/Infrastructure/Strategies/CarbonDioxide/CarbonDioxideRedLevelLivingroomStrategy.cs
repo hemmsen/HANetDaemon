@@ -34,6 +34,8 @@
 
             services.Light.TurnOn(ServiceTarget.FromEntity(entities.Light.LivingroomLights.EntityId), new LightTurnOnParameters() { Flash = "short" });
 
+            // Delay to wait for flash to complate
+            await Task.Delay(5000);
             //If old state is off then turn off light again
             if (lightState.IsOff())
             {
