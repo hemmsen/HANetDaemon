@@ -14,8 +14,8 @@ public class HighTempBedroomStrategy : ITemperatureChangedStrategy
     public bool CanHandle(ClimateChangedNotification climateChangedNotification)
     {
         return climateChangedNotification.EntityId == entities.Climate.BedroomThermostatThermostat.EntityId
-               && climateChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature >= 19
-               && entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseCo2.State > 1000;
+               && climateChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature >= 20
+               && entities.BinarySensor.BedroomWindow.IsOff();
     }
 
     public void DoAction(ClimateChangedNotification climateChangedNotification)
