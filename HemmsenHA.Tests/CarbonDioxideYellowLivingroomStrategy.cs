@@ -1,6 +1,3 @@
-using HemmsenHA.Core.Configuration;
-using Microsoft.Extensions.Options;
-
 namespace HemmsenHA.Tests
 {
     public class CarbonDioxideYellowLevelLivingroomStrategyTests
@@ -8,11 +5,12 @@ namespace HemmsenHA.Tests
         [Theory]
         [InlineData("1500", "800")]
         [InlineData("1001", "800")]
-        [InlineData("10000", "2000")]
+        [InlineData("1001", "2000")]
         public void TestYellowStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
         {
-            var entities = Substitute.For<IEntities>();
-            var services = Substitute.For<IServices>();
+            var haContext = Substitute.For<IHaContext>();
+            var entities = new Entities(haContext);
+            var services = new Services(haContext);
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
             var config = new HaConfigOptions() { CO2YellowLow = 1000, CO2YellowHigh = 2250 };
@@ -31,13 +29,14 @@ namespace HemmsenHA.Tests
         }
 
         [Theory]
-        [InlineData("1500", "800")]
-        [InlineData("1001", "800")]
-        [InlineData("10000", "2000")]
+        [InlineData("700", "800")]
+        [InlineData("999", "800")]
+        [InlineData("999", "2000")]
         public void TestYellowStrategy_CanHandle_ReturnsFalse(string newCarbonLevel, string oldCarbonLevel)
         {
-            var entities = Substitute.For<IEntities>();
-            var services = Substitute.For<IServices>();
+            var haContext = Substitute.For<IHaContext>();
+            var entities = new Entities(haContext);
+            var services = new Services(haContext);
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
             var config = new HaConfigOptions() { CO2YellowLow = 1000, CO2YellowHigh = 2250 };
