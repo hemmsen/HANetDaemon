@@ -8,7 +8,7 @@ namespace HemmsenHA.Tests
         [Theory]
         [InlineData("1500", "800")]
         [InlineData("1001", "800")]
-        [InlineData("1001", "2000")]
+        [InlineData("1201", "700")]
         public void TestYellowStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
         {
             var haContext = Substitute.For<IHaContext>();
