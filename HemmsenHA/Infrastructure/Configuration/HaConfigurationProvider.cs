@@ -8,7 +8,7 @@ public class HaConfigurationProvider : ConfigurationProvider
     public HaConfigurationProvider(HttpClient client)
     {
         this.client = client;
-        var timer = new Timer(x => Load(), null, new TimeSpan(0, 0, 15), new TimeSpan(0, 0, 15));
+        var timer = new Timer(x => Load(), null, new TimeSpan(0, 1, 0), new TimeSpan(0, 1, 0));
     }
     public override void Load()
     {
