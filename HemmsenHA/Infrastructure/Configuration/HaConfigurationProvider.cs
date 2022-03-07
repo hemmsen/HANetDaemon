@@ -6,10 +6,11 @@ namespace HemmsenHA.Infrastructure.Configuration;
 public class HaConfigurationProvider : ConfigurationProvider
 {
     private HttpClient client;
+    private Timer timer;
     public HaConfigurationProvider(HttpClient client)
     {
         this.client = client;
-        var timer = new Timer(x => Load(), null, new TimeSpan(0, 1, 0), new TimeSpan(0, 1, 0));
+        timer = new Timer(x => Load(), null, new TimeSpan(0, 1, 0), new TimeSpan(0, 1, 0));
     }
     public override void Load()
     {
@@ -17,8 +18,6 @@ public class HaConfigurationProvider : ConfigurationProvider
         var count = data.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         var options = JsonSerializer.Deserialize<List<HaOptions>>(count);
         var configOptions = options.Where(x => x.entity_id.Contains("config_")).ToList();
-        Log.Logger.Information("Loading {numberOfConfig} runtime configurations from HA", configOptions.Count);
-        Log.Logger.Information("First config entityId {entityId} and state {state}", configOptions.First().entity_id, configOptions.First().state);
         Data = configOptions.ToDictionary(x =>x.attributes.friendly_name, x => x.state);
     }
 }

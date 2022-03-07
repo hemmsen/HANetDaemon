@@ -5,10 +5,10 @@
     /// Triggers are sensors from mobile phones connected to home assistant
     /// </summary>
     [NetDaemonApp]
-    //[Focus]
+    [Focus]
     public class WakeUpTurnOnEspressoMachineApp
     {
-        public WakeUpTurnOnEspressoMachineApp(IHaContext hAContext, ILogger<WakeUpTurnOnEspressoMachineApp> logger, INetDaemonScheduler scheduler)
+        public WakeUpTurnOnEspressoMachineApp(IHaContext hAContext, ILogger<WakeUpTurnOnEspressoMachineApp> logger, INetDaemonScheduler scheduler, IOptionsSnapshot<HaConfigOptions> options)
         {
             try
             {
