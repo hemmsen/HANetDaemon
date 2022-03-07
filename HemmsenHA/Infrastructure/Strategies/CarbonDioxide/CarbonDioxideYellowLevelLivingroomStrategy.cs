@@ -14,6 +14,7 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
     public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
     {
         return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId
+            && carbonDioxideChanged?.OldEntityState?.State < _haConfigOptions.CO2YellowLow
             && carbonDioxideChanged?.NewEntityState?.State >= _haConfigOptions.CO2YellowLow
             && carbonDioxideChanged?.NewEntityState.State < _haConfigOptions.CO2YellowHigh
             && DateTimeOffset.Now.TimeOfDay < _haConfigOptions.MuteTemperatureNotificationsAfter;

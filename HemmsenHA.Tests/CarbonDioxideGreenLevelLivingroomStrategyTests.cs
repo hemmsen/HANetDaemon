@@ -1,3 +1,6 @@
+using HemmsenHA.Core.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace HemmsenHA.Tests
 {
     public class CarbonDioxideGreenLevelLivingroomStrategyTests
