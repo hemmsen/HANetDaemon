@@ -1,3 +1,6 @@
+using HemmsenHA.Core.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace HemmsenHA.Tests
 {
     public class CarbonDioxideGreenLevelLivingroomStrategyTests
@@ -9,14 +12,18 @@ namespace HemmsenHA.Tests
         [InlineData("1000", "1100")]
         public void TestGreenStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
         {
-            var haContext = Substitute.For<IHaContext>();
+            var entities = Substitute.For<IEntities>();
+            var services = Substitute.For<IServices>();
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(haContext, scheduler, mediator);
+            var config = new HaConfigOptions() { CO2YellowLow = 1000, CO2YellowHigh = 2250 };
+            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
+            options.Value.ReturnsForAnyArgs(config);
+            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(entities, services, scheduler, mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
-                EntityId = new Entities(haContext).Sensor.NetatmoEngelstoft157IndoorCo2.EntityId,
+                EntityId = entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId,
                 NewEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = newCarbonLevel }),
                 OldEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = oldCarbonLevel })
             };
@@ -30,14 +37,18 @@ namespace HemmsenHA.Tests
         [InlineData("10000", "2000")]
         public void TestGreenStrategy_CanHandle_ReturnsFalse(string newCarbonLevel, string oldCarbonLevel)
         {
-            var haContext = Substitute.For<IHaContext>();
+            var entities = Substitute.For<IEntities>();
+            var services = Substitute.For<IServices>();
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(haContext, scheduler, mediator);
+            var config = new HaConfigOptions() { CO2YellowLow = 1000, CO2YellowHigh = 2250 };
+            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
+            options.Value.ReturnsForAnyArgs(config);
+            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(entities, services, scheduler, mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
-                EntityId = new Entities(haContext).Sensor.NetatmoEngelstoft157IndoorCo2.EntityId,
+                EntityId = entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId,
                 NewEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = newCarbonLevel }),
                 OldEntityState = new NumericEntityState<NumericSensorAttributes>(new EntityState() { State = oldCarbonLevel })
             };
