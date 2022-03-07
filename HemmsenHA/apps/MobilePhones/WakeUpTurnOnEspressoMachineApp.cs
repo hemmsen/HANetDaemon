@@ -31,6 +31,7 @@
                     {
                         if (x?.New?.State != null && x.New.State != "unavailable")
                         {
+                            logger.LogInformation("Log this runtime options {value}", options.Value.BedroomTemp);
                             var dt = DateTime.Parse(x.New.State);
                             var dtStr = dt.ToString("yyyy-MM-dd HH:mm:ss");
                             logger.LogInformation("Setting next alarm for Mathias to {nextAlarm}", dtStr);
