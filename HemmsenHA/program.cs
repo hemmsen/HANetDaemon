@@ -1,6 +1,7 @@
 #pragma warning disable CA1812
 try
 {
+    Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
     await Host.CreateDefaultBuilder(args)
         .UseCustomLogging()
         .UseNetDaemonAppSettings()
@@ -10,6 +11,7 @@ try
         var token = tempConfig["HomeAssistant:Token"];
         var host = tempConfig["HomeAssistant:Host"];
         var port = tempConfig["HomeAssistant:Port"];
+        Log.Logger.Information($"{token}-{host}-{port}");
         configuration.AddHaRuntimeConfigration(token, $"http://{host}:{port}/api/");
     })
         .UseNetDaemonRuntime()

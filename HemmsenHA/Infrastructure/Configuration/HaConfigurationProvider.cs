@@ -1,5 +1,6 @@
-using Newtonsoft.Json;
+using NetDaemon.Client;
 using System.Net.Http;
+using System.Text.Json;
 
 namespace HemmsenHA.Infrastructure.Configuration;
 public class HaConfigurationProvider : ConfigurationProvider
@@ -14,25 +15,23 @@ public class HaConfigurationProvider : ConfigurationProvider
     {
         var data = client.GetAsync("states").GetAwaiter().GetResult();
         var count = data.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-        var options = JsonConvert.DeserializeObject<List<HaOptions>>(count);
-        var configOptions = options.Where(x => x.EntityId.Contains("config_")).ToList();
-        Data = configOptions.ToDictionary(x =>x.Attributes.Name, x => x.State);
+        var options = JsonSerializer.Deserialize<List<HaOptions>>(count);
+        var configOptions = options.Where(x => x.entity_id.Contains("config_")).ToList();
+        Log.Logger.Information("Loading {numberOfConfig} runtime configurations from HA", configOptions.Count);
+        Log.Logger.Information("First config entityId {entityId} and state {state}", configOptions.First().entity_id, configOptions.First().state);
+        Data = configOptions.ToDictionary(x =>x.attributes.friendly_name, x => x.state);
     }
 }
 
 public class HaOptions
 {
-    [JsonProperty("entity_id")]
-    public string EntityId { get; set; }
-    [JsonProperty("state")]
-    public string State { get; set; }
+    public string entity_id { get; set; }
+    public string state { get; set; }
 
-    [JsonProperty("attributes")]
-    public StateAttributes Attributes { get; set; }
+    public StateAttributes attributes { get; set; }
 }
 
 public class StateAttributes
 {
-    [JsonProperty("friendly_name")]
-    public string Name { get; set; }
+    public string friendly_name { get; set; }
 }
