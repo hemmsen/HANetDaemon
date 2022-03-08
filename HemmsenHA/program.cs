@@ -1,16 +1,25 @@
 #pragma warning disable CA1812
-
-
 try
 {
+    Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
     await Host.CreateDefaultBuilder(args)
         .UseCustomLogging()
         .UseNetDaemonAppSettings()
+        .ConfigureAppConfiguration((s, configuration) =>
+    {
+        var tempConfig = configuration.Build();
+        var token = tempConfig["HomeAssistant:Token"];
+        var host = tempConfig["HomeAssistant:Host"];
+        var port = tempConfig["HomeAssistant:Port"];
+        Log.Logger.Information($"{token}-{host}-{port}");
+        configuration.AddHaRuntimeConfigration(token, $"http://{host}:{port}/api/");
+    })
         .UseNetDaemonRuntime()
         .UseNetDaemonTextToSpeech()
-        .ConfigureServices((_, services) =>
+        .ConfigureServices((context, services) =>
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.Configure<HaConfigOptions>(context.Configuration);
             services
                 .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
                 .AddNetDaemonStateManager()

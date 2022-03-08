@@ -29,4 +29,7 @@ global using HemmsenHA.Infrastructure.Strategies.Window;
 global using HemmsenHA.Logging;
 global using NetDaemon.Extensions.Logging;
 global using NetDaemon.HassModel.Integration;
+global using HemmsenHA.Infrastructure.Configuration;
+global using HemmsenHA.Core.Configuration;
+global using Microsoft.Extensions.Options;
 
