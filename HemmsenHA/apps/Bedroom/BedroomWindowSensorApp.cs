@@ -1,10 +1,12 @@
-﻿namespace HemmsenHA.apps.Bedroom;
+﻿using Microsoft.Extensions.Options;
+
+namespace HemmsenHA.apps.Bedroom;
 
 [NetDaemonApp]
-// [Focus]
+[Focus]
 public class BedroomWindowSensorApp
 {
-    public BedroomWindowSensorApp(IEntities entities, IMediator mediator, ILogger<BedroomWindowSensorApp> logger, IServices services)
+    public BedroomWindowSensorApp(IEntities entities, IMediator mediator, ILogger<BedroomWindowSensorApp> logger, IServices services, IOptionsMonitor<HaConfigOptions> optionsMonitor)
     {
         try
         {
@@ -12,6 +14,7 @@ public class BedroomWindowSensorApp
                 .StateAllChanges()
                 .Subscribe(x =>
                 {
+                    var temp = optionsMonitor.CurrentValue.BedroomTemp;
                     var stateChanged = new WindowStateChanged()
                     {
                         EntityId = x.Entity.EntityId,

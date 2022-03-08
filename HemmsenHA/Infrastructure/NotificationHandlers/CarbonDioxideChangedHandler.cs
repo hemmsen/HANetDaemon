@@ -4,14 +4,22 @@
     {
         private IEnumerable<ICarbonDioxideChangedStrategy> strategies;
         private readonly ILogger<CarbonDioxideChangedHandler> logger;
-        public CarbonDioxideChangedHandler(IEnumerable<ICarbonDioxideChangedStrategy> strategies, ILogger<CarbonDioxideChangedHandler> logger)
+        private readonly HaConfigOptions haConfigOptions;
+
+        public CarbonDioxideChangedHandler(IEnumerable<ICarbonDioxideChangedStrategy> strategies, ILogger<CarbonDioxideChangedHandler> logger, IOptionsSnapshot<HaConfigOptions> optionsSnapshot)
         {
             this.strategies = strategies;
             this.logger = logger;
+            haConfigOptions = optionsSnapshot.Value;
         }
 
         public Task Handle(CarbonDioxideChanged notification, CancellationToken cancellationToken)
         {
+            if(DateTimeOffset.Now.TimeOfDay > haConfigOptions.MuteTemperatureNotificationsAfter)
+            {
+                logger.LogInformation("Co2 alarm after we wont to mute theese alarms!");
+                return Task.CompletedTask;
+            }
             var strategy = strategies.FirstOrDefault(x => x.CanHandle(notification));
             if (strategy == null)
             {

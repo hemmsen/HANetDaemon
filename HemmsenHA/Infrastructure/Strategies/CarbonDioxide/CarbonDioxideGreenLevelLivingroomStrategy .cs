@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HemmsenHA.Infrastructure.Strategies.CarbonDioxide
+﻿namespace HemmsenHA.Infrastructure.Strategies.CarbonDioxide
 {
     public class CarbonDioxideGreenLevelLivingroomStrategy : ICarbonDioxideChangedStrategy
     {
-        private Entities entities;
+        private IEntities entities;
         private IServices services;
-        public CarbonDioxideGreenLevelLivingroomStrategy(IHaContext haContext, IScheduler scheduler, IMediator mediator)
+        private HaConfigOptions haConfigOptions;
+        public CarbonDioxideGreenLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IMediator mediator, IOptionsSnapshot<HaConfigOptions> options)
         {
-            entities = new Entities(haContext);
-            this.services = new Services(haContext);
+            this.entities = entities;
+            this.services = services;
+            this.haConfigOptions = options.Value;
         }
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewEntityState.State <= 1000;
+            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State < haConfigOptions.CO2GreenHigh;
         }
 
         public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
         {
+            //Air quality is good! Noting happens here!
             return Task.CompletedTask;
         }
     }

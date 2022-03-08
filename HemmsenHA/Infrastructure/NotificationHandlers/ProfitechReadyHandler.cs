@@ -4,15 +4,18 @@
     {
         private readonly Entities _entities;
         private readonly ILogger<ProfitechReadyHandler> _logger;
-        public ProfitechReadyHandler(IHaContext context, ILogger<ProfitechReadyHandler> logger)
+        private readonly HaConfigOptions haConfigOptions;
+
+        public ProfitechReadyHandler(IHaContext context, ILogger<ProfitechReadyHandler> logger, IOptionsSnapshot<HaConfigOptions> optionsSnapshot)
         {
             _entities = new Entities(context);
             _logger = logger;
+            this.haConfigOptions = optionsSnapshot.Value;
         }
 
         public Task Handle(ProfitecCurrentMeasurementChanged notification, CancellationToken cancellationToken)
         {
-            if (notification.OldPowerConsumption > 950000 && notification.CurrentPowerConsumption < 950000)
+            if (notification.OldPowerConsumption > haConfigOptions.EspressoReadyPowerConsumption && notification.CurrentPowerConsumption < haConfigOptions.EspressoReadyPowerConsumption)
             {
                 _entities.InputBoolean.Profitecready.TurnOn();
                 _logger.LogDebug($"Espresso machine is ready!");

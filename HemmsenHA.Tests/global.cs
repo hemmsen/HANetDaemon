@@ -8,3 +8,5 @@ global using MediatR;
 global using HemmsenHA.Core.NotificationMessages;
 global using HomeAssistantGenerated;
 global using FluentAssertions;
+global using Newtonsoft.Json;
+global using System.Net.Http;

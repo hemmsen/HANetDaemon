@@ -16,7 +16,9 @@ public static class CustomLoggingProvider
         var logger = new LoggerConfiguration()
         .MinimumLevel.Information()
         .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)
+        .WriteTo.Console(restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Debug)
         .CreateLogger();
+        Log.Logger = logger;
         return builder.UseSerilog(logger);
     }
 }

@@ -4,12 +4,14 @@ public class LowTemperatureBedroomStrategy : ITemperatureChangedStrategy
     private readonly IEntities _entities;
     private readonly IMediator _mediator;
     private readonly IHaContext haContext;
+    private readonly HaConfigOptions haConfigOptions;
 
-    public LowTemperatureBedroomStrategy(IEntities entities, IMediator mediator, IHaContext haContext)
+    public LowTemperatureBedroomStrategy(IEntities entities, IMediator mediator, IHaContext haContext, IOptionsSnapshot<HaConfigOptions> optionsSnapshot)
     {
         _entities = entities;
         _mediator = mediator;
         this.haContext = haContext;
+        this.haConfigOptions = optionsSnapshot.Value;
     }
     public bool CanHandle(ClimateChangedNotification temperatureChangedNotification)
     {
@@ -18,9 +20,9 @@ public class LowTemperatureBedroomStrategy : ITemperatureChangedStrategy
         temperatureChangedNotification.EntityId == _entities.Climate.BedroomThermostatThermostat.EntityId
         // Check if current temperature is under threshold
         // TODO get threshold from helper in HA
-        && temperatureChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature < 17
+        && temperatureChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature < haConfigOptions.LowTempAlarmBedroom
         //Check that measured at is not night time
-        && temperatureChangedNotification.MeasuredAt.TimeOfDay < new TimeSpan(22, 0, 0)
+        && temperatureChangedNotification.MeasuredAt.TimeOfDay < haConfigOptions.MuteTemperatureNotificationsAfter
         // Window is open in bedroom
         && _entities.BinarySensor.BedroomWindow.IsOn();
     }

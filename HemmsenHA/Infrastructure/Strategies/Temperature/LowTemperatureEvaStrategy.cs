@@ -3,10 +3,12 @@ public class LowTemperatureEvaStrategy : ITemperatureChangedStrategy
 {
     private readonly IEntities entities;
     private readonly IMediator mediator;
-    public LowTemperatureEvaStrategy(IEntities entities, IMediator mediator)
+    private readonly HaConfigOptions haConfigOptions;
+    public LowTemperatureEvaStrategy(IEntities entities, IMediator mediator, IOptionsSnapshot<HaConfigOptions> options)
     {
         this.entities = entities;
         this.mediator = mediator;
+        haConfigOptions = options.Value;
     }
 
     public bool CanHandle(ClimateChangedNotification temperatureChangedNotification)
@@ -15,7 +17,7 @@ public class LowTemperatureEvaStrategy : ITemperatureChangedStrategy
         // Check if entityId mathces Eva's room
         temperatureChangedNotification.EntityId == entities.Climate.NetatmoEva.EntityId
         // Check if current temperature is under threshold
-        && temperatureChangedNotification.NewEntityState.Attributes.CurrentTemperature < 17
+        && temperatureChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature < haConfigOptions.LowTempAlarmEva
         // Check if window is open
         && entities.BinarySensor.LumiLumiSensorMagnetAq261992507OnOff.IsOn();
     }
