@@ -14,11 +14,12 @@
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State < haConfigOptions.CO2YellowLow;
+            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged?.NewEntityState?.State < haConfigOptions.CO2GreenHigh;
         }
 
         public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
         {
+            //Air quality is good! Noting happens here!
             return Task.CompletedTask;
         }
     }

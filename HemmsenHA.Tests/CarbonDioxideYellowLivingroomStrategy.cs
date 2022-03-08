@@ -16,7 +16,7 @@ namespace HemmsenHA.Tests
             var services = new Services(haContext);
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var config = new HaConfigOptions() { CO2YellowLow = 1000, CO2YellowHigh = 2250 };
+            var config = new HaConfigOptions() { CO2GreenHigh = 1000, CO2YellowHigh = 2250 };
             var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
             options.Value.ReturnsForAnyArgs(config);
             var co2StrategyYellow = new CarbonDioxideYellowLevelLivingroomStrategy(entities, services, scheduler, options);
@@ -42,7 +42,7 @@ namespace HemmsenHA.Tests
             var services = new Services(haContext);
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var config = new HaConfigOptions() { CO2YellowLow = 1000, CO2YellowHigh = 2250 };
+            var config = new HaConfigOptions() { CO2GreenHigh = 1000, CO2YellowHigh = 2250 };
             var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
             options.Value.ReturnsForAnyArgs(config);
             var co2StrategyYellow = new CarbonDioxideYellowLevelLivingroomStrategy(entities, services, scheduler, options);
