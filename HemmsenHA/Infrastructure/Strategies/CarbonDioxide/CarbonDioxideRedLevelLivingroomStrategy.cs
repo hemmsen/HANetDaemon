@@ -2,19 +2,21 @@
 {
     public class CarbonDioxideRedLevelLivingroomStrategy : ICarbonDioxideChangedStrategy
     {
-        private Entities entities;
+        private IEntities entities;
         private IServices services;
         private readonly IMediator mediator;
-        public CarbonDioxideRedLevelLivingroomStrategy(IHaContext haContext, IScheduler scheduler, IMediator mediator)
+        private readonly HaConfigOptions haConfigOptions;
+        public CarbonDioxideRedLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IMediator mediator, IOptionsSnapshot<HaConfigOptions> options)
         {
-            entities = new Entities(haContext);
-            this.services = new Services(haContext);
+            this.entities = entities;
+            this.services = services;
             this.mediator = mediator;
+            haConfigOptions = options.Value;
         }
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewEntityState.State >= 2250;
+            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewEntityState.State >= haConfigOptions.CO2YellowHigh;
         }
 
         public async Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
