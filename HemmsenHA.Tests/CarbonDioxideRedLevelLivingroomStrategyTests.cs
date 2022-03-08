@@ -1,3 +1,6 @@
+using HemmsenHA.Core.Configuration;
+using Microsoft.Extensions.Options;
+
 namespace HemmsenHA.Tests
 {
     public class CarbonDioxideRedLevelLivingroomStrategyTests
@@ -6,12 +9,19 @@ namespace HemmsenHA.Tests
         [InlineData("2250", "1000")]
         [InlineData("2500", "2200")]
         [InlineData("3000", "3001")]
-        public void TestRedStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
+        public async void TestRedStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
         {
             var haContext = Substitute.For<IHaContext>();
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(haContext, scheduler, mediator);
+            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
+            var haConfigOptions = new HaConfigOptions()
+            {
+                CO2YellowHigh = 2250
+            };
+            options.Value.ReturnsForAnyArgs(haConfigOptions);
+
+            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(new Entities(haContext), new Services(haContext), scheduler, mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
@@ -32,7 +42,13 @@ namespace HemmsenHA.Tests
             var haContext = Substitute.For<IHaContext>();
             var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(haContext, scheduler, mediator);
+            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
+            var haConfigOptions = new HaConfigOptions()
+            {
+                CO2YellowHigh = 2250
+            };
+            options.Value.ReturnsForAnyArgs(haConfigOptions);
+            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(new Entities(haContext), new Services(haContext), scheduler, mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
