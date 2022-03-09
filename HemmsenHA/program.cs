@@ -30,6 +30,7 @@ try
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
             services.AddScoped<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
             services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelBedroomStrategy>();
+            services.AddScoped<INextAlarmOnPhoneChangedStrategy, MathiasPhoneNextAlarmChanged>();
             services.AddScoped<IEntities>(s => new Entities(s.GetRequiredService<IHaContext>()));
             services.AddScoped<IServices>(s => new Services(s.GetRequiredService<IHaContext>()));
             services.AddTransient<ITemperatureChangedStrategy, LowTemperatureBedroomStrategy>();
