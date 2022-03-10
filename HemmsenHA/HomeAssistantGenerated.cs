@@ -1345,22 +1345,22 @@ namespace HomeAssistantGenerated
 	public record AutomationAttributes
 	{
 		[JsonPropertyName("current")]
-		public double? Current { get; init; }
+		public double Current { get; init; }
 
 		[JsonPropertyName("friendly_name")]
-		public string? FriendlyName { get; init; }
+		public string FriendlyName { get; init; }
 
 		[JsonPropertyName("id")]
-		public string? Id { get; init; }
+		public string Id { get; init; }
 
 		[JsonPropertyName("last_triggered")]
-		public string? LastTriggered { get; init; }
+		public string LastTriggered { get; init; }
 
 		[JsonPropertyName("max")]
-		public double? Max { get; init; }
+		public double Max { get; init; }
 
 		[JsonPropertyName("mode")]
-		public string? Mode { get; init; }
+		public string Mode { get; init; }
 	}
 
 	public record BinarySensorAttributes

@@ -20,7 +20,8 @@
                     .Throttle(TimeSpan.FromMinutes(2))
                     .Subscribe(x =>
                     {
-                        mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, PercentageOpen = Convert.ToInt32(x.New.State.Value) });
+                        var percentageOpen = x?.New?.State != null ? x?.New?.State.Value : throw new ArgumentNullException("New state are null for entityId: {EntityId}", x?.Entity.EntityId);
+                        mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, PercentageOpen = Convert.ToInt32(percentageOpen) });
 
                     });
 

@@ -19,6 +19,8 @@ public class HaConfigurationProvider : ConfigurationProvider
         var options = JsonSerializer.Deserialize<List<HaOptions>>(count);
         var configOptions = options.Where(x => x.entity_id.Contains("config_")).ToList();
         Data = configOptions.ToDictionary(x =>x.attributes.friendly_name, x => x.state);
+        Log.Logger.Information("New value for bedroom temp {targettemp}", Data["BedroomTemp"]);
+        OnReload();
     }
 }
 

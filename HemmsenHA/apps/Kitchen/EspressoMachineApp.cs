@@ -35,13 +35,19 @@
                     .StateChanges()
                     .Subscribe(state =>
                     {
-                        logger.LogDebug("Current {statename} state changed! Old state: {oldState}, new State: {newState}", nameof(entities.Switch.KaffemaskineOnOff), state.Old.State, state.New.State);
-                        var message = new ProfitecStateChanged()
+                        if(state?.New != null && state?.Old != null)
                         {
-                            OldState = state.Old,
-                            NewState = state.New
-                        };
-                        mediator.Publish(message);
+                            logger.LogDebug("Current {statename} state changed! Old state: {oldState}, new State: {newState}", nameof(entities.Switch.KaffemaskineOnOff), state?.Old?.State, state?.New?.State);
+                            var message = new ProfitecStateChanged()
+                            {
+                                OldState = state.Old,
+                                NewState = state.New
+                            };
+                            mediator.Publish(message);
+                            return;
+                        }
+                        throw new ArgumentNullException("State is null for either new or old for Entity with EntityId: {EntityId}", state?.Entity.EntityId);
+
                     });
             }catch (Exception ex)
             {

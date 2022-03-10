@@ -16,7 +16,7 @@
 
             if (strategy != null)
             {
-                strategy.DoAction(notification);
+                strategy.DoAction(notification).Wait();
             }
             else
             {
