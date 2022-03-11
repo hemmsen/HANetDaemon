@@ -1,19 +1,20 @@
 namespace HemmsenHA.apps.TemperatureChangedApp;
 public class EvaRoomTemperatureChangedApp
 {
-    public EvaRoomTemperatureChangedApp(IEntities entities, IMediator mediator)
+    public EvaRoomTemperatureChangedApp(IEntities entities, IMediator mediator, ILogger<EvaRoomTemperatureChangedApp> logger)
     {
         entities.Climate.NetatmoEva
             .StateAllChanges()
-            .Subscribe(entity =>
+            .Subscribe(async entity =>
             {
+                logger.LogInformation($"Climate state changed for Eva - Old current tempearture: {entity?.Old?.Attributes?.CurrentTemperature} and new current temperature: {entity?.New?.Attributes?.CurrentTemperature}");
                 var notification = new ClimateChangedNotification()
                 {
                     EntityId = entity.Entity.EntityId,
                     NewEntityState = entity.New,
                     OldEntityState = entity.Old
                 };
-                mediator.Publish(notification);
+                await mediator.Publish(notification);
             });
     }
 }

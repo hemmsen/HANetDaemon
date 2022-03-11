@@ -1,7 +1,7 @@
 ﻿namespace HemmsenHA.apps
 {
-    [NetDaemonApp]
-    [Focus]
+    // [NetDaemonApp]
+    // [Focus]
     public class BatterySwitchApp
     {
         public BatterySwitchApp(IHaContext haContext, ILogger<BatterySwitchApp> logger)

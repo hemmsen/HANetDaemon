@@ -15,9 +15,9 @@
 
         public Task Handle(CarbonDioxideChanged notification, CancellationToken cancellationToken)
         {
-            if(DateTimeOffset.Now.TimeOfDay > haConfigOptions.MuteTemperatureNotificationsAfter)
+            if (DateTimeOffset.Now.TimeOfDay > haConfigOptions.MuteTemperatureNotificationsAfter)
             {
-                logger.LogInformation("Co2 alarm after we wont to mute theese alarms!");
+                logger.LogInformation("Co2 alarm after we want to mute theese alarms!");
                 return Task.CompletedTask;
             }
             var strategy = strategies.FirstOrDefault(x => x.CanHandle(notification));

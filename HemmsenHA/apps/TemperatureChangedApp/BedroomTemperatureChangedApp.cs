@@ -11,14 +11,14 @@
                 .StateAllChanges()
                 .Subscribe(async entitystate =>
                 {
-                    logger.LogInformation($"Climate state changed - Old current tempearture: {entitystate?.Old?.Attributes?.CurrentTemperature} and new current temperature: {entitystate?.New?.Attributes?.CurrentTemperature}");
+                    logger.LogInformation($"Climate state changed for bedroom - Old current tempearture: {entitystate?.Old?.Attributes?.CurrentTemperature} and new current temperature: {entitystate?.New?.Attributes?.CurrentTemperature}");
                     var tempChanged = new ClimateChangedNotification()
                     {
                         EntityId = entitystate.Entity.EntityId,
                         NewEntityState = entitystate?.New,
                         OldEntityState = entitystate?.Old
                     };
-                    mediator.Publish(tempChanged);
+                    await mediator.Publish(tempChanged);
                 });
         }
     }
