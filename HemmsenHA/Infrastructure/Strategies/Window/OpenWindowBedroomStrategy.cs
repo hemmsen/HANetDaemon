@@ -5,19 +5,19 @@ namespace HemmsenHA.Infrastructure.Strategies
 {
     public class OpenWindowBedroomStrategy : IWindowStateChangedStrategy
     {
-        private Entities entities;
+        private IEntities entities;
         private IServices services;
         private IScheduler scheduler;
         private IMediator mediator;
-        private IOptionsMonitor<HaConfigOptions> options;
+        private HaConfigOptions haConfigOptions;
         private ILogger<OpenWindowBedroomStrategy> logger;
-        public OpenWindowBedroomStrategy(IHaContext haContext, IScheduler scheduler, IMediator mediator, IOptionsMonitor<HaConfigOptions> options, ILogger<OpenWindowBedroomStrategy> logger)
+        public OpenWindowBedroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IMediator mediator, IOptionsSnapshot<HaConfigOptions> options, ILogger<OpenWindowBedroomStrategy> logger)
         {
-            entities = new Entities(haContext);
+            this.entities = entities;
             this.scheduler = scheduler;
             this.mediator = mediator;
-            this.services = new Services(haContext);
-            this.options = options;
+            this.services = services;
+            haConfigOptions = options.Value;
             this.logger = logger;
         }
         public bool CanHandle(WindowStateChanged windowStateChanged)
@@ -37,8 +37,8 @@ namespace HemmsenHA.Infrastructure.Strategies
             services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "heat");
             await Task.Delay(5000);
 
-            logger.LogInformation("Setting new target temperature for {area} to {targettemp}", entities.Climate.BedroomThermostatThermostat.Area, options.CurrentValue.BedroomTemp);
-            services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), options.CurrentValue.BedroomTemp);
+            logger.LogInformation("Setting new target temperature for {area} to {targettemp}", entities.Climate.BedroomThermostatThermostat.Area, haConfigOptions.BedroomTemp);
+            services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), haConfigOptions.BedroomTemp);
         }
     }
 }

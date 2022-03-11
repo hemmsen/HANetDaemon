@@ -4,27 +4,31 @@
     {
         private IServices services;
         private IEntities entities;
+        private readonly IHaContext haContext;
 
-        public BlindsStateChangeHandler(IHaContext haContext)
+        public BlindsStateChangeHandler(IHaContext haContext, IEntities entities, IServices services)
         {
-            services = new Services(haContext);
-            entities = new Entities(haContext); 
+            this.services = services;
+            this.entities = entities;
+            this.haContext = haContext;
         }
 
         public Task Handle(BlindsStateChange notification, CancellationToken cancellationToken)
         {
-            if (notification.PercentageOpen == 100)
+            switch (notification.BlindState)
             {
-                services.InputBoolean.TurnOff(ServiceTarget.FromEntity(entities.InputBoolean.Evablindsclosed.EntityId));
-                services.Number.SetValue(ServiceTarget.FromEntity(notification.EntityId), notification.PercentageOpen.ToString());
+                case BlindState.Open:
+                    services.InputBoolean.TurnOff(ServiceTarget.FromEntity(entities.InputBoolean.Evablindsclosed.EntityId));
+                    services.Cover.CloseCover(ServiceTarget.FromEntity(notification.EntityId));
+                    services.Logbook.Log(nameof(BlindsStateChangeHandler), $"Did open blind for area {new Entity(haContext, notification.EntityId)}", notification.EntityId);
+                    return Task.CompletedTask;
+                case BlindState.Closed:
+                    services.InputBoolean.TurnOff(ServiceTarget.FromEntity(entities.InputBoolean.Evablindsclosed.EntityId));
+                    services.Cover.CloseCover(ServiceTarget.FromEntity(notification.EntityId));
+                    services.Logbook.Log(nameof(BlindsStateChangeHandler), $"Did open blind for area {new Entity(haContext, notification.EntityId)}", notification.EntityId);
+                    return Task.CompletedTask;
             }
-            if (notification.PercentageOpen == 0)
-            {
-                services.InputBoolean.TurnOn(ServiceTarget.FromEntity(entities.InputBoolean.Evablindsclosed.EntityId));
-                services.Number.SetValue(ServiceTarget.FromEntity(notification.EntityId), notification.PercentageOpen.ToString());
-            }
-            services.Logbook.Log(nameof(BlindsStateChangeHandler), $"Changed blinds settings for entity to {notification.PercentageOpen}", notification.EntityId);
-            return Task.CompletedTask;
+            return Task.FromException(new ArgumentException());
         }
     }
 }

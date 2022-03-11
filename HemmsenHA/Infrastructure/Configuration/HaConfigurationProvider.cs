@@ -18,9 +18,13 @@ public class HaConfigurationProvider : ConfigurationProvider
         var count = data.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         var options = JsonSerializer.Deserialize<List<HaOptions>>(count);
         var configOptions = options.Where(x => x.entity_id.Contains("config_")).ToList();
-        Data = configOptions.ToDictionary(x =>x.attributes.friendly_name, x => x.state);
-        Log.Logger.Information("New value for bedroom temp {targettemp}", Data["BedroomTemp"]);
-        OnReload();
+        var newConfig = configOptions.ToDictionary(x =>x.attributes.friendly_name, x => x.state);
+        if (!newConfig.SequenceEqual(Data))
+        {
+            Data = newConfig;
+            Log.Logger.Information("New runtime config available!");
+            OnReload();
+        }
     }
 }
 
