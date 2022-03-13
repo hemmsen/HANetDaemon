@@ -1,5 +1,6 @@
 using HemmsenHA.Core.Configuration;
 using Microsoft.Extensions.Options;
+using NetDaemon.Daemon.Fakes;
 
 namespace HemmsenHA.Tests
 {
