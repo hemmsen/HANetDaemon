@@ -13,8 +13,7 @@ public class CarbonDioxideYellowLevelBedroomStrategy : ICarbonDioxideChangedStra
     public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
     {
         return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorSovevaerelseCo2.EntityId && carbonDioxideChanged.NewEntityState.State > haConfigOptions.CO2GreenHigh
-        && carbonDioxideChanged.MeasuredAt.TimeOfDay < haConfigOptions.MuteTemperatureNotificationsAfter
-        && carbonDioxideChanged.MeasuredAt.TimeOfDay > haConfigOptions.TurnOnNotificationsAfter;
+        && (carbonDioxideChanged.MeasuredAt.TimeOfDay < haConfigOptions.MuteTemperatureNotificationsAfter || carbonDioxideChanged.MeasuredAt.TimeOfDay > haConfigOptions.TurnOnNotificationsAfter);
     }
 
     public Task DoAction(CarbonDioxideChanged carbonDioxideChanged)

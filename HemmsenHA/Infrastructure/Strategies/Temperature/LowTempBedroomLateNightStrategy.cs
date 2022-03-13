@@ -22,8 +22,8 @@ public class LowTempBedroomLateNightStrategy : ITemperatureChangedStrategy
         // Check if current temperature is under threshold
         // TODO get threshold from helper in HA
         && temperatureChangedNotification?.NewEntityState?.Attributes?.CurrentTemperature < haConfigOptions.LowTempAlarmBedroom
-        //Check that measured at is not night time
-        && temperatureChangedNotification.MeasuredAt.TimeOfDay > haConfigOptions.MuteTemperatureNotificationsAfter
+        //Check if mute not mute hours 
+        && (temperatureChangedNotification.MeasuredAt.TimeOfDay > haConfigOptions.MuteTemperatureNotificationsAfter || temperatureChangedNotification.MeasuredAt.TimeOfDay < haConfigOptions.TurnOnNotificationsAfter)
         // Window is open in bedroom
         && entities.BinarySensor.BedroomWindow.IsOn();
     }
