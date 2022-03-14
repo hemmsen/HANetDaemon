@@ -28,7 +28,7 @@ try
             services.AddTransient<IWindowStateChangedStrategy, OpenWindowEvaStrategy>();
             services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
             services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
-            services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
+            services.AddSingleton<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
             services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelBedroomStrategy>();
             services.AddTransient<INextAlarmOnPhoneChangedStrategy, MathiasPhoneNextAlarmChanged>();
             services.AddTransient<IEntities>(s => new Entities(s.GetRequiredService<IHaContext>()));

@@ -5,7 +5,7 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
     private IServices _services;
     private IOptionsMonitor<HaConfigOptions> _optionsMonitor;
     private DateTimeOffset _lastNotificationSendAt;
-    public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, OptionsMonitor<HaConfigOptions> optionsMonitor)
+    public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IOptionsMonitor<HaConfigOptions> optionsMonitor)
     {
         _entities = entities;
         _services = services;
@@ -30,7 +30,7 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
 
         //Flash lights
         _services.Light.TurnOn(ServiceTarget.FromEntities(_entities.Light.LivingroomLights.EntityId, _entities.Light.KokkenSpotsLevelOnOff.EntityId), new LightTurnOnParameters() { Flash = "short" });
-
+        _lastNotificationSendAt = DateTimeOffset.Now;
         // Delay to wait for flash to complate
         await Task.Delay(5000);
         //If old state is off then turn off light again
