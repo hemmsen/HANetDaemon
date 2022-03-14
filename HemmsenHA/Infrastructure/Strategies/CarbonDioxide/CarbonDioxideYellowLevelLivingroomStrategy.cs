@@ -5,7 +5,7 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
     private IServices _services;
     private IOptionsMonitor<HaConfigOptions> _optionsMonitor;
     private DateTimeOffset _lastNotificationSendAt;
-    public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, OptionsMonitor<HaConfigOptions> optionsMonitor)
+    public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IOptionsMonitor<HaConfigOptions> optionsMonitor)
     {
         _entities = entities;
         _services = services;
