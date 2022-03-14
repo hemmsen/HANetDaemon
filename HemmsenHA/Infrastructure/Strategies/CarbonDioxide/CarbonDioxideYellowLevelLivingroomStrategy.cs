@@ -3,20 +3,23 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
 {
     private IEntities _entities;
     private IServices _services;
-    private HaConfigOptions _haConfigOptions;
-    public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IOptionsSnapshot<HaConfigOptions> optionsSnapshot)
+    private IOptionsMonitor<HaConfigOptions> _optionsMonitor;
+    private DateTimeOffset _lastNotificationSendAt;
+    public CarbonDioxideYellowLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, OptionsMonitor<HaConfigOptions> optionsMonitor)
     {
         _entities = entities;
         _services = services;
-        _haConfigOptions = optionsSnapshot.Value;
+        _optionsMonitor = optionsMonitor;
+        _lastNotificationSendAt = DateTimeOffset.MaxValue;
     }
 
     public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
     {
+        var haConfigOptions = _optionsMonitor.CurrentValue;
         return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId
-            && carbonDioxideChanged?.OldEntityState?.State < _haConfigOptions.CO2GreenHigh
-            && carbonDioxideChanged?.NewEntityState?.State >= _haConfigOptions.CO2GreenHigh
-            && carbonDioxideChanged?.NewEntityState.State < _haConfigOptions.CO2YellowHigh;
+            && carbonDioxideChanged?.NewEntityState?.State >= haConfigOptions.CO2GreenHigh
+            && carbonDioxideChanged?.NewEntityState.State < haConfigOptions.CO2YellowHigh
+            && (carbonDioxideChanged.MeasuredAt - _lastNotificationSendAt) < TimeSpan.FromMinutes(haConfigOptions.NotificationDelayInMinutes);
     }
 
     public async Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
