@@ -26,7 +26,7 @@ try
                 .AddNetDaemonScheduler();
             services.AddTransient<IWindowStateChangedStrategy, OpenWindowBedroomStrategy>();
             services.AddTransient<IWindowStateChangedStrategy, OpenWindowEvaStrategy>();
-            services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
+            services.AddSingleton<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
             services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
             services.AddSingleton<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
             services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelBedroomStrategy>();
