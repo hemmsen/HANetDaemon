@@ -19,7 +19,7 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
         return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId
             && carbonDioxideChanged?.NewEntityState?.State >= haConfigOptions.CO2GreenHigh
             && carbonDioxideChanged?.NewEntityState.State < haConfigOptions.CO2YellowHigh
-            && (carbonDioxideChanged.MeasuredAt - _lastNotificationSendAt) < TimeSpan.FromMinutes(haConfigOptions.NotificationDelayInMinutes);
+            && (_lastNotificationSendAt - carbonDioxideChanged.MeasuredAt) > TimeSpan.FromMinutes(haConfigOptions.NotificationDelayInMinutes);
     }
 
     public async Task DoAction(CarbonDioxideChanged carbonDioxideChanged)
