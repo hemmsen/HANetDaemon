@@ -13,22 +13,17 @@
             haConfigOptions = optionsSnapshot.Value;
         }
 
-        public Task Handle(CarbonDioxideChanged notification, CancellationToken cancellationToken)
+        public async Task Handle(CarbonDioxideChanged notification, CancellationToken cancellationToken)
         {
-            if (DateTimeOffset.Now.TimeOfDay > haConfigOptions.MuteTemperatureNotificationsAfter)
-            {
-                logger.LogInformation("Co2 alarm after we want to mute theese alarms!");
-                return Task.CompletedTask;
-            }
             var strategy = strategies.FirstOrDefault(x => x.CanHandle(notification));
             if (strategy == null)
             {
                 logger.LogError("Can't find strategy for {InterfaceStrategyName}, new co2 level = {co2level}, EntityId:{EntityId}", nameof(ICarbonDioxideChangedStrategy), notification?.NewEntityState?.State, notification?.EntityId);
-                return Task.CompletedTask;
+                return;
             }
             logger.LogInformation("Found carbon dioxide strategy for entityId: {entityId} and current co2 measurement {co2level}", notification.EntityId, notification?.NewEntityState?.State);
-            strategy.DoAction(notification);
-            return Task.CompletedTask;
+            await strategy.DoAction(notification);
+            return;
         }
     }
 }
