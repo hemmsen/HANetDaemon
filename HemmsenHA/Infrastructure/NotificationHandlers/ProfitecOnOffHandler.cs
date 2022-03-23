@@ -18,9 +18,9 @@ namespace daemonapp.Handlers
         }
         public Task Handle(ProfitecStateChanged notification, CancellationToken cancellationToken)
         {
-            if(notification.NewState.IsOff() && notification.OldState.IsOn())
+            if (notification.NewState.IsOff() && notification.OldState.IsOn())
             {
-                _services.InputBoolean.TurnOff(ServiceTarget.FromEntity(_entities.InputBoolean.Profitecready.EntityId)); 
+                _services.InputBoolean.TurnOff(ServiceTarget.FromEntity(_entities.InputBoolean.Profitecready.EntityId));
             }
             return Task.CompletedTask;
         }

@@ -2,6 +2,6 @@
 {
     public class ProfitecHeatingMessage : INotification
     {
-        public NumericEntityState<NumericSensorAttributes> CurrentState{ get; set; }
+        public NumericEntityState<NumericSensorAttributes> CurrentState { get; set; }
     }
 }

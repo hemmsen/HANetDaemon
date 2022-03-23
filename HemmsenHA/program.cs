@@ -41,6 +41,7 @@ try
             services.AddTransient<IMotionSensorChangedStrategy, BathroomMotionSensorEveningStrategy>();
             services.AddTransient<IMotionSensorChangedStrategy, BathroomMotionSensorNightStrategy>();
             services.AddTransient<IMotionSensorChangedStrategy, ToiletMotionSensorStrategy>();
+            services.AddTransient<ILightStateChangedStrategy, EvaLightChangedStrategy>();
         })
         .Build()
         .RunAsync()

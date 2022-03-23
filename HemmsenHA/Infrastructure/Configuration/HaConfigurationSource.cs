@@ -6,7 +6,7 @@ public class HaConfigurationSource : IConfigurationSource
     private HttpClient client;
     public HaConfigurationSource(string token, string baseUrl)
     {
-        if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
         {
             client = new HttpClient()
             {
@@ -21,7 +21,7 @@ public class HaConfigurationSource : IConfigurationSource
                 BaseAddress = new Uri("http://supervisor/core/api/")
             };
         }
-        
+
         client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
     }
     public IConfigurationProvider Build(IConfigurationBuilder builder)

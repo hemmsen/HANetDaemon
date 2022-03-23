@@ -17,7 +17,7 @@ namespace HemmsenHA.apps.Vacuum
                      .Where(x => x.New.Attributes.Status == "Charging")
                      .Subscribe(x =>
                      {
-                         if(DateTime.Now.Hour < 7)
+                         if (DateTime.Now.Hour < 7)
                          {
                              services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.LivingroomLights.EntityId));
                              services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.KokkenSpotsLevelOnOff.EntityId));
@@ -40,11 +40,12 @@ namespace HemmsenHA.apps.Vacuum
                         services.Counter.Reset(ServiceTarget.FromEntity(entities.Counter.Dustbinemptycreditsleft.EntityId));
                     }
                 });
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 logger.LogCritical(ex, "Error starting {AppName}", nameof(RobotVacuumApp));
             }
-           
+
         }
     }
 }

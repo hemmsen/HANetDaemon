@@ -9,7 +9,7 @@ namespace HemmsenHA.Tests
         [InlineData("2250", "1000")]
         [InlineData("2500", "2200")]
         [InlineData("3000", "3001")]
-        public async void TestRedStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
+        public void TestRedStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
         {
             var haContext = Substitute.For<IHaContext>();
             var scheduler = new TestScheduler();

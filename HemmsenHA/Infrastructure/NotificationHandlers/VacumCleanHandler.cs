@@ -23,7 +23,8 @@
                 _services.Light.TurnOn(ServiceTarget.FromEntity(_entities.Light.LivingroomLights.EntityId));
                 _services.Light.TurnOn(ServiceTarget.FromEntity(_entities.Light.KokkenSpotsLevelOnOff.EntityId));
                 _services.Counter.Decrement(ServiceTarget.FromEntity(_entities.Counter.Dustbinemptycreditsleft.EntityId));
-            }else
+            }
+            else
             {
                 _services.InputBoolean.Toggle(ServiceTarget.FromEntity(_entities.InputBoolean.Skipnextvacuumcleanlivingroom.EntityId));
             }

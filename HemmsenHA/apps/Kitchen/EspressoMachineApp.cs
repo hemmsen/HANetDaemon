@@ -35,7 +35,7 @@
                     .StateChanges()
                     .Subscribe(state =>
                     {
-                        if(state?.New != null && state?.Old != null)
+                        if (state?.New != null && state?.Old != null)
                         {
                             logger.LogDebug("Current {statename} state changed! Old state: {oldState}, new State: {newState}", nameof(entities.Switch.KaffemaskineOnOff), state?.Old?.State, state?.New?.State);
                             var message = new ProfitecStateChanged()
@@ -49,7 +49,8 @@
                         throw new ArgumentNullException("State is null for either new or old for Entity with EntityId: {EntityId}", state?.Entity.EntityId);
 
                     });
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 logger.LogCritical(ex, "Error starting {AppName}", nameof(EspressoMachineApp));
             }

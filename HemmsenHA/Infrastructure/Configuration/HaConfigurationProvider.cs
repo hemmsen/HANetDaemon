@@ -18,7 +18,7 @@ public class HaConfigurationProvider : ConfigurationProvider
         var count = data.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         var options = JsonSerializer.Deserialize<List<HaOptions>>(count);
         var configOptions = options.Where(x => x.entity_id.Contains("config_")).ToList();
-        var newConfig = configOptions.ToDictionary(x =>x.attributes.friendly_name, x => x.state);
+        var newConfig = configOptions.ToDictionary(x => x.attributes.friendly_name, x => x.state);
         if (!newConfig.SequenceEqual(Data))
         {
             Data = newConfig;
