@@ -21,7 +21,7 @@ public class BathroomMotionSensorApp
         entities.BinarySensor.MotionBathroomIasZone
             .StateAllChanges()
             .Where(x => x.New.State == "off")
-            .Throttle(TimeSpan.FromMinutes(5))
+            .Throttle(TimeSpan.FromMinutes(3))
             .Subscribe(async x =>
             {
                 var motionNotification = new MotionSensorCleared()

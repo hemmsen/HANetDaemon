@@ -10,7 +10,7 @@ public class BathroomMotionSensorNightStrategy : IMotionSensorChangedStrategy
     }
     public bool CanHandle(MotionSensorStateActive motionSensorStateChanged)
     {
-        return motionSensorStateChanged.EntityId == _entities.BinarySensor.MotionBathroomIasZone.EntityId && DateTimeOffset.Now.TimeOfDay >= TimeSpan.FromHours(22);
+        return motionSensorStateChanged.EntityId == _entities.BinarySensor.MotionBathroomIasZone.EntityId && (DateTimeOffset.Now.TimeOfDay >= TimeSpan.FromHours(22) || DateTimeOffset.Now.TimeOfDay < DateTimeOffset.Parse(_entities.Sun.Sun.Attributes.NextDawn).TimeOfDay);
     }
 
     public Task DoAction(MotionSensorStateActive motionSensorStateChanged)

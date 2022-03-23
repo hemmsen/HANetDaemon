@@ -22,23 +22,14 @@ namespace HemmsenHA.Infrastructure.Strategies
         }
         public bool CanHandle(WindowStateChanged windowStateChanged)
         {
-            return windowStateChanged.EntityId == entities.BinarySensor.BedroomWindow.EntityId;
+            return windowStateChanged.EntityId == entities.BinarySensor.BedroomWindow.EntityId && windowStateChanged.NewEntityState.IsOn();
         }
 
-        public async Task DoAction(WindowStateChanged windowStateChanged)
+        public Task DoAction(WindowStateChanged windowStateChanged)
         {
             // If window is open then turn off the heat!
-            if (windowStateChanged.NewEntityState.IsOn())
-            {
-                services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "off");
-                return;
-            }
-            // If window not open then turn on the heat!
-            services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "heat");
-            await Task.Delay(5000);
-            var haConfigOptions = optionsMonitor.CurrentValue;
-            logger.LogInformation("Setting new target temperature for {area} to {targettemp}", entities.Climate.BedroomThermostatThermostat.Area, haConfigOptions.BedroomTemp);
-            services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), haConfigOptions.BedroomTemp);
+            services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.BedroomThermostatThermostat.EntityId), "off");
+            return Task.CompletedTask;
         }
     }
 }

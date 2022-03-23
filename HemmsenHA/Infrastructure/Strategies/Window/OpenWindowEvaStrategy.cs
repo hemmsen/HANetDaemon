@@ -14,17 +14,13 @@ public class OpenWindowEvaStrategy : IWindowStateChangedStrategy
     }
     public bool CanHandle(WindowStateChanged windowStateChanged)
     {
-        return windowStateChanged.EntityId == entities.BinarySensor.LumiLumiSensorMagnetAq261992507OnOff.EntityId;
+        return windowStateChanged.EntityId == entities.BinarySensor.LumiLumiSensorMagnetAq261992507OnOff.EntityId && windowStateChanged.NewEntityState.IsOn();
     }
 
     public Task DoAction(WindowStateChanged windowStateChanged)
     {
-        if (windowStateChanged.NewEntityState.IsOn())
-        {
-            services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.NetatmoEva.EntityId), 8.0);
-            return Task.CompletedTask;
-        }
-        services.Climate.SetHvacMode(ServiceTarget.FromEntity(entities.Climate.NetatmoEva.EntityId), "auto");
+
+        services.Climate.SetTemperature(ServiceTarget.FromEntity(entities.Climate.NetatmoEva.EntityId), 8.0);
         return Task.CompletedTask;
     }
 }
