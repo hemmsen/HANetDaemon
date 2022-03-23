@@ -13,18 +13,18 @@
                 });
 
                 entities.InputBoolean.Evablindsclosed
-                    .StateAllChanges()
-                    .Subscribe(x =>
-                    {
-                        if (x.New.IsOff())
-                        {
-                            mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, BlindState = BlindState.Open });
-                        }
-                        if (x.New.IsOn())
-                        {
-                            mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, BlindState = BlindState.Closed });
-                        }
-                    });
+                  .StateAllChanges()
+                  .Subscribe(x =>
+                  {
+                      if (x.New.IsOff())
+                      {
+                          mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, BlindState = BlindState.Open });
+                      }
+                      if (x.New.IsOn())
+                      {
+                          mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, BlindState = BlindState.Closed });
+                      }
+                  });
             }
             catch (Exception ex)
             {

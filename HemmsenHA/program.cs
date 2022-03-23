@@ -40,6 +40,7 @@ try
             services.AddTransient<ITemperatureChangedStrategy, HighTempBedroomStrategy>();
             services.AddTransient<IMotionSensorChangedStrategy, BathroomMotionSensorEveningStrategy>();
             services.AddTransient<IMotionSensorChangedStrategy, BathroomMotionSensorNightStrategy>();
+            services.AddTransient<IMotionSensorChangedStrategy, ToiletMotionSensorStrategy>();
         })
         .Build()
         .RunAsync()
