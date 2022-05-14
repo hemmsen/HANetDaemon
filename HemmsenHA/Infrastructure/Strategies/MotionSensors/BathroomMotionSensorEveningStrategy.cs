@@ -15,7 +15,7 @@ public class BathroomMotionSensorEveningStrategy : IMotionSensorChangedStrategy
 
     public Task DoAction(MotionSensorStateActive motionSensorStateChanged)
     {
-        _services.Light.TurnOn(ServiceTarget.FromEntity(_entities.Light.BathroomSpotsLevelOnOff.EntityId));
+        _services.Light.TurnOn(ServiceTarget.FromEntity(motionSensorStateChanged.LightEntityId));
         return Task.CompletedTask;
     }
 }

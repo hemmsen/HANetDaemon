@@ -18,11 +18,13 @@
             switch (notification.BlindState)
             {
                 case BlindState.Open:
-                    services.Cover.OpenCover(ServiceTarget.FromEntity(entities.Cover.LumiLumiCurtainAcn002Ea012e00WindowCovering.EntityId));
+                    services.Number.SetValue(ServiceTarget.FromEntity(entities.Number.EvaBlindsPercentageOpen.EntityId), "100");
                     services.Logbook.Log(nameof(BlindsStateChangeHandler), $"Did open blind for area {new Entity(haContext, notification.EntityId)}", notification.EntityId);
+                    entities.InputBoolean.Evablindsclosed.TurnOff();
                     return Task.CompletedTask;
                 case BlindState.Closed:
-                    services.Cover.CloseCover(ServiceTarget.FromEntity(entities.Cover.LumiLumiCurtainAcn002Ea012e00WindowCovering.EntityId));
+                    services.Number.SetValue(ServiceTarget.FromEntity(entities.Number.EvaBlindsPercentageOpen.EntityId), "0");
+                    entities.InputBoolean.Evablindsclosed.TurnOn();
                     services.Logbook.Log(nameof(BlindsStateChangeHandler), $"Did open blind for area {new Entity(haContext, notification.EntityId)}", notification.EntityId);
                     return Task.CompletedTask;
             }

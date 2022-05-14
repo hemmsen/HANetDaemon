@@ -12,6 +12,7 @@
         public double EspressoReadyPowerConsumption { get; set; }
         public double MinutesToStartEspressoMachineBeforeAlarm { get; set; }
         public double NotificationDelayInMinutes { get; set; }
+        public double ThrottleDelayinMinutesMotionCleared { get; set; }
         public TimeSpan MuteTemperatureNotificationsAfter { get; set; }
         public TimeSpan TurnOnNotificationsAfter { get; set; }
     }

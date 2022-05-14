@@ -1,4 +1,6 @@
 #pragma warning disable CA1812
+using HemmsenHA.Infrastructure;
+
 try
 {
     Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
@@ -18,30 +20,7 @@ try
         .UseNetDaemonTextToSpeech()
         .ConfigureServices((context, services) =>
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.Configure<HaConfigOptions>(context.Configuration);
-            services
-                .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
-                .AddNetDaemonStateManager()
-                .AddNetDaemonScheduler();
-            services.AddTransient<IWindowStateChangedStrategy, OpenWindowBedroomStrategy>();
-            services.AddTransient<IWindowStateChangedStrategy, ClosedWindowBedroomStrategy>();
-            services.AddTransient<IWindowStateChangedStrategy, OpenWindowEvaStrategy>();
-            services.AddTransient<IWindowStateChangedStrategy, ClosedWindowEvaStrategy>();
-            services.AddSingleton<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelLivingroomStrategy>();
-            services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideRedLevelLivingroomStrategy>();
-            services.AddSingleton<ICarbonDioxideChangedStrategy, CarbonDioxideGreenLevelLivingroomStrategy>();
-            services.AddTransient<ICarbonDioxideChangedStrategy, CarbonDioxideYellowLevelBedroomStrategy>();
-            services.AddTransient<INextAlarmOnPhoneChangedStrategy, MathiasPhoneNextAlarmChanged>();
-            services.AddTransient<IEntities>(s => new Entities(s.GetRequiredService<IHaContext>()));
-            services.AddTransient<IServices>(s => new Services(s.GetRequiredService<IHaContext>()));
-            services.AddTransient<ITemperatureChangedStrategy, LowTemperatureBedroomStrategy>();
-            services.AddTransient<ITemperatureChangedStrategy, LowTemperatureEvaStrategy>();
-            services.AddTransient<ITemperatureChangedStrategy, HighTempBedroomStrategy>();
-            services.AddTransient<IMotionSensorChangedStrategy, BathroomMotionSensorEveningStrategy>();
-            services.AddTransient<IMotionSensorChangedStrategy, BathroomMotionSensorNightStrategy>();
-            services.AddTransient<IMotionSensorChangedStrategy, ToiletMotionSensorStrategy>();
-            services.AddTransient<ILightStateChangedStrategy, EvaLightChangedStrategy>();
+            services.ConfigureMyServices(context);
         })
         .Build()
         .RunAsync()

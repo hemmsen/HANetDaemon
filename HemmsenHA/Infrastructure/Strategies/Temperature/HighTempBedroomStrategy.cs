@@ -26,7 +26,7 @@ public class HighTempBedroomStrategy : ITemperatureChangedStrategy
         var notification = new SpeakerNotification()
         {
             EntityId = entities.MediaPlayer.TvStue.EntityId,
-            NotificationMessage = $"Der trænger til at blive luftet ud i {new Entity(haContext, climateChangedNotification.EntityId).Area}"
+            NotificationMessage = $"Temperaturen er for høj i {new Entity(haContext, climateChangedNotification.EntityId).Area}"
         };
         mediator.Publish(notification);
     }

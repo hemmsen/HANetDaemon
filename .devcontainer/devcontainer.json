@@ -1,7 +1,7 @@
 {
   "name": "NetDaemon App-development",
   "dockerFile": "./Dockerfile",
-  "postCreateCommand": "dotnet restore *.csproj",
+  "postCreateCommand": "dotnet restore HemmsenHA/HemmsenHA.csproj",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "terminal.integrated.fontSize": 10

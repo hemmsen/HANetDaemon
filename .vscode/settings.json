@@ -1,7 +1,10 @@
 {
     "files.exclude": {
         "**/bin": true,
-        "**/obj": true
+        "**/obj": true,
+        ".github": true,
+        // ".devcontainer": true,
+        ".vs": true
     },
     "todohighlight.include": [
         "**/*.js",

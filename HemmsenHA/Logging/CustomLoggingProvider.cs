@@ -12,7 +12,7 @@ public static class CustomLoggingProvider
             .AddJsonFile("appsettings.json")
             .Build();
 
-        var logPath = $"{AppDomain.CurrentDomain.BaseDirectory}/../Logs/log.txt";
+        var logPath = $"{AppDomain.CurrentDomain.BaseDirectory}/../Logs/log.log";
         var logger = new LoggerConfiguration()
         .MinimumLevel.Information()
         .WriteTo.File(logPath, rollingInterval: RollingInterval.Day)

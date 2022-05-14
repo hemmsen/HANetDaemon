@@ -16,9 +16,13 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
     public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
     {
         var haConfigOptions = _optionsMonitor.CurrentValue;
+        // only for co2 in livingroom
         return carbonDioxideChanged.EntityId == _entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId
+            // check if state is higher than threshold
             && carbonDioxideChanged?.NewEntityState?.State >= haConfigOptions.CO2GreenHigh
+            // check if below co2 yellow high threshold
             && carbonDioxideChanged?.NewEntityState.State < haConfigOptions.CO2YellowHigh
+            // we only want theese notification with an interval set by configuration helper in Home Assistant
             && (_lastNotificationSendAt - carbonDioxideChanged.MeasuredAt) > TimeSpan.FromMinutes(haConfigOptions.NotificationDelayInMinutes);
     }
 
@@ -34,13 +38,15 @@ public class CarbonDioxideYellowLevelLivingroomStrategy : ICarbonDioxideChangedS
         // Delay to wait for flash to complate
         await Task.Delay(5000);
         //If old state is off then turn off light again
+        var lightsToTurnOff = new List<string>();
         if (lightStateLivingroomIsOff)
         {
-            _services.Light.TurnOff(ServiceTarget.FromEntity(_entities.Light.LivingroomLights.EntityId));
+            lightsToTurnOff.Add(_entities.Light.LivingroomLights.EntityId);
         }
         if (lightStateKitchenIsOff)
         {
-            _services.Light.TurnOff(ServiceTarget.FromEntity(_entities.Light.KokkenSpotsLevelOnOff.EntityId));
+            lightsToTurnOff.Add(_entities.Light.LivingroomLights.EntityId);
         }
+        _services.Light.TurnOff(ServiceTarget.FromEntities(lightsToTurnOff));
     }
 }

@@ -12,6 +12,11 @@
                     mediator.Publish(new BlindsStateChange() { EntityId = entities.Number.EvaBlindsPercentageOpen.EntityId, BlindState = BlindState.Open });
                 });
 
+                scheduler.RunDaily(new TimeSpan(7, 0, 0), () =>
+                {
+                    services.Light.TurnOff(ServiceTarget.FromEntity(entities.Light.EvaSengLevelLightColorOnOff.EntityId));
+                });
+
                 entities.InputBoolean.Evablindsclosed
                   .StateAllChanges()
                   .Subscribe(x =>

@@ -10,12 +10,12 @@ public class ToiletMotionSensorStrategy : IMotionSensorChangedStrategy
     }
     public bool CanHandle(MotionSensorStateActive motionSensorStateChanged)
     {
-        return motionSensorStateChanged.EntityId == _entities.BinarySensor.MotionToiletIasZone.EntityId;
+        return motionSensorStateChanged.EntityId == _entities.BinarySensor.MotionToiletIasZone2.EntityId;
     }
 
     public Task DoAction(MotionSensorStateActive motionSensorStateChanged)
     {
-        _services.Light.TurnOn(ServiceTarget.FromEntity(_entities.Light.ToiletOnOff.EntityId));
+        _services.Light.TurnOn(ServiceTarget.FromEntity(motionSensorStateChanged.LightEntityId));
         return Task.CompletedTask;
     }
 }

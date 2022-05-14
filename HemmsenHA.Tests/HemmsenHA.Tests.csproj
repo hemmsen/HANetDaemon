@@ -1,38 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 	<ItemGroup>
-	    <PackageReference Include="JoySoftware.NetDaemon.App" Version="21.47.1" />
-    	<PackageReference Include="JoySoftware.NetDaemon.DaemonRunner" Version="21.47.1" />
-    	<PackageReference Include="JoySoftware.NetDaemon.Fakes" Version="21.47.1" />
-		<PackageReference Include="AutoFixture" Version="4.17.0" />
-		<PackageReference Include="FluentAssertions" Version="6.3.0" />
-		<PackageReference Include="JoySoftware.NetDaemon.Extensions.Tts" Version="22.7.0" />
-		<PackageReference Include="JoySoftware.NetDaemon.Extensions.Scheduling" Version="22.7.0" />
-		<PackageReference Include="JoySoftware.NetDaemon.HassModel" Version="22.7.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-		<PackageReference Include="Microsoft.Reactive.Testing" Version="5.0.0" />
-		<PackageReference Include="Moq" Version="4.16.1" />
-		<PackageReference Include="NSubstitute" Version="4.2.2" />
-		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="JoySoftware.NetDaemon.App" Version="22.1.5"/>
+		<PackageReference Include="JoySoftware.NetDaemon.DaemonRunner" Version="22.1.5"/>
+		<PackageReference Include="JoySoftware.NetDaemon.Fakes" Version="22.1.5"/>
+		<PackageReference Include="AutoFixture" Version="4.17.0"/>
+		<PackageReference Include="FluentAssertions" Version="6.6.0"/>
+		<PackageReference Include="JoySoftware.NetDaemon.Extensions.Tts" Version="22.14.0"/>
+		<PackageReference Include="JoySoftware.NetDaemon.Extensions.Scheduling" Version="22.14.0"/>
+		<PackageReference Include="JoySoftware.NetDaemon.HassModel" Version="22.14.0"/>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
+		<PackageReference Include="Microsoft.Reactive.Testing" Version="5.0.0"/>
+		<PackageReference Include="Moq" Version="4.17.2"/>
+		<PackageReference Include="NSubstitute" Version="4.3.0"/>
+		<PackageReference Include="xunit" Version="2.4.1"/>
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="coverlet.collector" Version="3.1.0">
+		<PackageReference Include="coverlet.collector" Version="3.1.2">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
-
 	<ItemGroup>
-	  <ProjectReference Include="..\HemmsenHA\HemmsenHA.csproj" />
+		<ProjectReference Include="..\HemmsenHA\HemmsenHA.csproj"/>
 	</ItemGroup>
-
 </Project>

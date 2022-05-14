@@ -1,8 +1,17 @@
 namespace HemmsenHA.Infrastructure.NotificationHandlers;
 public class LightStateChangedHandler : INotificationHandler<LightStateChanged>
 {
-    public Task Handle(LightStateChanged notification, CancellationToken cancellationToken)
+    private readonly IEnumerable<ILightStateChangedStrategy> _lightStateChangedStrategies;
+    public LightStateChangedHandler(IEnumerable<ILightStateChangedStrategy> lightStateChangedStrategies)
     {
-        throw new NotImplementedException();
+        _lightStateChangedStrategies = lightStateChangedStrategies;
+    }
+    public async Task Handle(LightStateChanged notification, CancellationToken cancellationToken)
+    {
+        var strategy = _lightStateChangedStrategies.FirstOrDefault(x => x.CanHandle(notification));
+        if (strategy != null)
+        {
+            await strategy.DoAction(notification);
+        };
     }
 }

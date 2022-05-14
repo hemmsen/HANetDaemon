@@ -1,4 +1,5 @@
 namespace HemmsenHA.apps.TemperatureChangedApp;
+[NetDaemonApp]
 public class EvaRoomTemperatureChangedApp
 {
     public EvaRoomTemperatureChangedApp(IEntities entities, IMediator mediator, ILogger<EvaRoomTemperatureChangedApp> logger)

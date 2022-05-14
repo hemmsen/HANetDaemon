@@ -5,12 +5,16 @@ public class MotionSensorStateChangedHandler : INotificationHandler<MotionSensor
     private readonly IEntities _entities;
     private readonly IEnumerable<IMotionSensorChangedStrategy> _motionsSensorChangedStrategies;
     private readonly ILogger<MotionSensorStateChangedHandler> _logger;
-    public MotionSensorStateChangedHandler(IServices services, IEntities entities, IEnumerable<IMotionSensorChangedStrategy> motionSensorChangedStrategies, ILogger<MotionSensorStateChangedHandler> logger)
+    private IHaContext _haContext;
+    private readonly IScheduler _scheduler;
+    public MotionSensorStateChangedHandler(IServices services, IEntities entities, IScheduler scheduler, IHaContext haContext, IEnumerable<IMotionSensorChangedStrategy> motionSensorChangedStrategies, ILogger<MotionSensorStateChangedHandler> logger)
     {
         _services = services;
         _entities = entities;
         _motionsSensorChangedStrategies = motionSensorChangedStrategies;
         _logger = logger;
+        _haContext = haContext;
+        _scheduler = scheduler;
     }
     public async Task Handle(MotionSensorStateActive notification, CancellationToken cancellationToken)
     {
@@ -20,13 +24,14 @@ public class MotionSensorStateChangedHandler : INotificationHandler<MotionSensor
             _logger.LogError("Can't find strategy for motionsensor with entityId: {EntityId}", notification.EntityId);
             return;
         }
-        _logger.LogInformation("Found strategy for motion sensor with entityId: {EntityId} and strategyname: {StrategyName}", notification.EntityId, nameof(strategy));
+        _logger.LogInformation("Found strategy for motion sensor with entityId: {EntityId} and strategyname: {StrategyName}", notification.EntityId, strategy.GetType().FullName);
         await strategy.DoAction(notification);
     }
 
     public Task Handle(MotionSensorCleared notification, CancellationToken cancellationToken)
     {
-        _services.Light.TurnOff(ServiceTarget.FromEntity(_entities.Light.BathroomSpotsLevelOnOff.EntityId));
+        _logger.LogInformation("Turning off light with id {EntityId}", notification.LightEntityId);
+        _services.Light.TurnOff(ServiceTarget.FromEntity(notification.LightEntityId));
         return Task.CompletedTask;
     }
 }

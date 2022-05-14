@@ -2,16 +2,17 @@ namespace HemmsenHA.apps.MotionsSensors;
 [NetDaemonApp]
 public class BathroomMotionSensorApp
 {
-    public BathroomMotionSensorApp(IEntities entities, IMediator mediator)
+    public BathroomMotionSensorApp(IEntities entities, IMediator mediator, IOptionsMonitor<HaConfigOptions> optionsMonitor)
     {
         entities.BinarySensor.MotionBathroomIasZone
             .StateAllChanges()
-            .Where(x => x.New.State == "on")
+            .Where(x => x.New?.State == "on")
             .Subscribe(async x =>
             {
                 var motionNotification = new MotionSensorStateActive()
                 {
                     EntityId = x.Entity.EntityId,
+                    LightEntityId = entities.Light.BathroomSpotsLevelOnOff.EntityId,
                     NewEntityState = x.New,
                     OldEntityState = x.Old
                 };
@@ -20,13 +21,13 @@ public class BathroomMotionSensorApp
 
         entities.BinarySensor.MotionBathroomIasZone
             .StateAllChanges()
-            .Where(x => x.New.State == "off")
-            .Throttle(TimeSpan.FromMinutes(3))
+            .WhenStateIsFor(x => x.State == "off", TimeSpan.FromMinutes(optionsMonitor.CurrentValue.ThrottleDelayinMinutesMotionCleared))
             .Subscribe(async x =>
             {
                 var motionNotification = new MotionSensorCleared()
                 {
                     EntityId = x.Entity.EntityId,
+                    LightEntityId = entities.Light.BathroomSpotsLevelOnOff.EntityId,
                     NewEntityState = x.New,
                     OldEntityState = x.Old
                 };
