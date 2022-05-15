@@ -1,5 +1,6 @@
 namespace HemmsenHA.apps.MotionsSensors;
 [NetDaemonApp]
+[Focus]
 public class BathroomMotionSensorApp
 {
     public BathroomMotionSensorApp(IEntities entities, IMediator mediator, IOptionsMonitor<HaConfigOptions> optionsMonitor)

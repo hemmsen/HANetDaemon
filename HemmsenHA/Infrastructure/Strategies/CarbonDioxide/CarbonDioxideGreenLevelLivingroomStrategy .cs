@@ -5,11 +5,11 @@
         private IEntities entities;
         private IServices services;
         private HaConfigOptions haConfigOptions;
-        public CarbonDioxideGreenLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IMediator mediator, IOptionsSnapshot<HaConfigOptions> options)
+        public CarbonDioxideGreenLevelLivingroomStrategy(IEntities entities, IServices services, IMediator mediator, IOptionsMonitor<HaConfigOptions> options)
         {
             this.entities = entities;
             this.services = services;
-            this.haConfigOptions = options.Value;
+            this.haConfigOptions = options.CurrentValue;
         }
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)

@@ -12,16 +12,15 @@ namespace HemmsenHA.Tests
         public void TestRedStrategy_CanHandle_ReturnsTrue(string newCarbonLevel, string oldCarbonLevel)
         {
             var haContext = Substitute.For<IHaContext>();
-            var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
+            var options = Substitute.For<IOptionsMonitor<HaConfigOptions>>();
             var haConfigOptions = new HaConfigOptions()
             {
                 CO2YellowHigh = 2250
             };
-            options.Value.ReturnsForAnyArgs(haConfigOptions);
+            options.CurrentValue.ReturnsForAnyArgs(haConfigOptions);
 
-            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(new Entities(haContext), new Services(haContext), scheduler, mediator, options);
+            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(new Entities(haContext), new Services(haContext), mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
@@ -40,15 +39,14 @@ namespace HemmsenHA.Tests
         public void TestRedStrategy_CanHandle_ReturnsFalse(string newCarbonLevel, string oldCarbonLevel)
         {
             var haContext = Substitute.For<IHaContext>();
-            var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
-            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
+            var options = Substitute.For<IOptionsMonitor<HaConfigOptions>>();
             var haConfigOptions = new HaConfigOptions()
             {
                 CO2YellowHigh = 2250
             };
-            options.Value.ReturnsForAnyArgs(haConfigOptions);
-            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(new Entities(haContext), new Services(haContext), scheduler, mediator, options);
+            options.CurrentValue.ReturnsForAnyArgs(haConfigOptions);
+            var co2StrategyGreen = new CarbonDioxideRedLevelLivingroomStrategy(new Entities(haContext), new Services(haContext), mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {

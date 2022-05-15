@@ -15,12 +15,11 @@ namespace HemmsenHA.Tests
             var haContext = Substitute.For<IHaContext>();
             var entities = new Entities(haContext);
             var services = new Services(haContext);
-            var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
             var config = new HaConfigOptions() { CO2GreenHigh = 1000, CO2YellowHigh = 2250 };
-            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
-            options.Value.ReturnsForAnyArgs(config);
-            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(entities, services, scheduler, mediator, options);
+            var options = Substitute.For<IOptionsMonitor<HaConfigOptions>>();
+            options.CurrentValue.ReturnsForAnyArgs(config);
+            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(entities, services, mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {
@@ -41,12 +40,11 @@ namespace HemmsenHA.Tests
             var haContext = Substitute.For<IHaContext>();
             var entities = new Entities(haContext);
             var services = new Services(haContext);
-            var scheduler = new TestScheduler();
             var mediator = Substitute.For<IMediator>();
             var config = new HaConfigOptions() { CO2GreenHigh = 1000, CO2YellowHigh = 2250 };
-            var options = Substitute.For<IOptionsSnapshot<HaConfigOptions>>();
-            options.Value.ReturnsForAnyArgs(config);
-            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(entities, services, scheduler, mediator, options);
+            var options = Substitute.For<IOptionsMonitor<HaConfigOptions>>();
+            options.CurrentValue.ReturnsForAnyArgs(config);
+            var co2StrategyGreen = new CarbonDioxideGreenLevelLivingroomStrategy(entities, services, mediator, options);
 
             var co2ChangedEvent = new CarbonDioxideChanged()
             {

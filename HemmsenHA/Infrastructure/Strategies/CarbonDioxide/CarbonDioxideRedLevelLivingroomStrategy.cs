@@ -5,18 +5,18 @@
         private IEntities entities;
         private IServices services;
         private readonly IMediator mediator;
-        private readonly HaConfigOptions haConfigOptions;
-        public CarbonDioxideRedLevelLivingroomStrategy(IEntities entities, IServices services, IScheduler scheduler, IMediator mediator, IOptionsSnapshot<HaConfigOptions> options)
+        private readonly IOptionsMonitor<HaConfigOptions> haConfigOptions;
+        public CarbonDioxideRedLevelLivingroomStrategy(IEntities entities, IServices services, IMediator mediator, IOptionsMonitor<HaConfigOptions> options)
         {
             this.entities = entities;
             this.services = services;
             this.mediator = mediator;
-            haConfigOptions = options.Value;
+            haConfigOptions = options;
         }
 
         public bool CanHandle(CarbonDioxideChanged carbonDioxideChanged)
         {
-            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewEntityState.State >= haConfigOptions.CO2YellowHigh;
+            return carbonDioxideChanged.EntityId == entities.Sensor.NetatmoEngelstoft157IndoorCo2.EntityId && carbonDioxideChanged.NewEntityState.State >= haConfigOptions.CurrentValue.CO2YellowHigh;
         }
 
         public async Task DoAction(CarbonDioxideChanged carbonDioxideChanged)

@@ -80,6 +80,23 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/HemmsenHA/HemmsenHA.csproj"
             }
+        },
+        {
+            "label": "test with coverage",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=./lcov.info",
+                "${workspaceFolder}/hanselminutes.core.tests/hanselminutes.core.tests.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         }
     ]
 }

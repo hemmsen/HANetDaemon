@@ -16,5 +16,6 @@
         "**/*.css",
         "**/*.scss",
         "**/*.cs"
-    ]
+    ],
+    "dotnet-test-explorer.testProjectPath": "./HemmsenHA.Tests/HemmsenHA.Tests.csproj"
 }

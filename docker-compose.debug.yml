@@ -12,6 +12,7 @@ services:
       - 5000:5000
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_ENVIRONMENT=Development
       - NETDAEMON__APPSOURCE=sapp/apps
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
