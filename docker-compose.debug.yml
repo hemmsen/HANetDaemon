@@ -13,7 +13,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DOTNET_ENVIRONMENT=Development
-      - NETDAEMON__APPSOURCE=sapp/apps
+      - NETDAEMON__APPSOURCE=app/apps
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
-      - ./HemmsenHA/apps:/app/apps

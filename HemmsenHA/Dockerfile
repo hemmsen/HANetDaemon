@@ -23,5 +23,6 @@ RUN dotnet publish "HemmsenHA/HemmsenHA.csproj" -c Release -o /app/publish /p:Us
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ADD /HemmsenHA/apps /app/apps
 # COPY . .
 ENTRYPOINT ["dotnet", "HemmsenHA.dll"]
