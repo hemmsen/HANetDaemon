@@ -14,7 +14,9 @@ public class HaConfigurationProvider : ConfigurationProvider
     }
     public override void Load()
     {
+        Console.WriteLine("load!");
         var data = client.GetAsync("states").GetAwaiter().GetResult();
+        Console.WriteLine(data);
         var count = data.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         var options = JsonSerializer.Deserialize<List<HaOptions>>(count);
         var configOptions = options.Where(x => x.entity_id.Contains("config_")).ToList();

@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Start HASeeder",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/HASeeder/bin/Debug/net6.0/HASeeder.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}/HASeeder",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
+        {
             "name": "Docker .NET Core Attach (Preview)",
             "type": "docker",
             "request": "attach",
@@ -11,7 +22,7 @@
             }
         },
         {
-            "name": ".NET Core Launch (console)",
+            "name": "Start netdaemon",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",

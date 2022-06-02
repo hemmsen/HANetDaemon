@@ -1,8 +1,35 @@
 # Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
 
-version: '3.4'
+version: '3.7'
 
 services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    hostname: homeassistant
+    volumes:
+      - C:\Code\homeassistant:/config
+    environment:
+      - TZ=Europe/Copenhagen
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - 8123:8123
+    networks:
+      - homeassistant
+  haseeder:
+    container_name: haseeder
+    build:
+      context: .
+      dockerfile: HASeeder/Dockerfile
+    volumes:
+      - ./HASeeder/HaEntities:/data/hastates
+      - ~/.vsdbg:/remote_debugger:rw
+    networks:
+      - homeassistant
+    depends_on:
+      homeassistant:
+        condition: service_started
   hemmsenha:
     image: hemmsenha
     build:
@@ -16,3 +43,13 @@ services:
       - NETDAEMON__APPSOURCE=app/apps
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
+    networks:
+      - homeassistant
+    depends_on:
+      haseeder:
+        condition: service_completed_successfully
+
+networks:
+  homeassistant:
+    driver: bridge
+    name: homeassistant

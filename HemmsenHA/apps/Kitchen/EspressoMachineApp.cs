@@ -1,6 +1,7 @@
 ﻿namespace HemmsenHA.apps.Kitchen
 {
     [NetDaemonApp]
+    [Focus]
     public class EspressoMachineApp
     {
         public EspressoMachineApp(IHaContext haContext, IMediator mediator, ILogger<EspressoMachineApp> logger)
